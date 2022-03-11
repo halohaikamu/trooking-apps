@@ -16,10 +16,10 @@ class CreateVouchersTable extends Migration
         Schema::create('vouchers', function (Blueprint $table) {
             $table->id();
             $table->string('voucher');
+            // $table->integer('created_by')->nullable();
+            // $table->integer('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('created_by');
-            $table->integer('updated_by');
         });
     }
 

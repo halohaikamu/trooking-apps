@@ -17,10 +17,10 @@ class CreateInformasisTable extends Migration
             $table->id();
             $table->string('jenis_informasi');
             $table->string('isi');
+            // $table->integer('created_by')->nullable();
+            // $table->integer('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('created_by');
-            $table->integer('updated_by');
         });
     }
 

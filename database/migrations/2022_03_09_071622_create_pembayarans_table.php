@@ -21,10 +21,10 @@ class CreatePembayaransTable extends Migration
             $table->string('eksternal_id');
             $table->string('nama');
             $table->string('invoice');
+            // $table->integer('created_by')->nullable();
+            // $table->integer('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('created_by');
-            $table->integer('updated_by');
         });
     }
 

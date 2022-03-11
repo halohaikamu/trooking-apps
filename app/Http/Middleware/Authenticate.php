@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Support\Facades\Auth;
 
 class Authenticate extends Middleware
 {
@@ -17,5 +18,16 @@ class Authenticate extends Middleware
         if (! $request->expectsJson()) {
             return route('login');
         }
+        // if (Auth::guard('admin')) {
+        //     return route('admin.login');
+        // }elseif(Auth::guard('user')){
+        //     return route('user.login');
+        // }elseif(Auth::guard('affiliator')){
+        //     return route('affiliator.login');
+        // }elseif(Auth::guard('agent')){
+        //     return route('agent.login');
+        // }elseif(Auth::guard('vendor')){
+        //     return route('vendor.login');
+        // }
     }
 }

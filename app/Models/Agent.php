@@ -9,10 +9,10 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Agent extends Authenticatable
+class Agent extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
-
+    protected $guard_name = 'agent';
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +22,18 @@ class Agent extends Authenticatable
         'name',
         'email',
         'password',
+        'social_id',
+        'social_type',
+        'last_login_at',
+        'last_login_ip',
+        'browser',
+        'prov_id',
+        'city_id',
+        'dis_id',
+        'subdis_id',
+        'voucher_id',
+        // 'created_by',
+        // 'updated_by'
     ];
 
     /**
@@ -42,4 +54,9 @@ class Agent extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function voucher()
+    {
+        return $this->belongsTo(Voucher::class, 'voucher_id');
+    }
 }

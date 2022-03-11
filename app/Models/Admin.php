@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
-
+    protected $guard_name = 'admin';
     /**
      * The attributes that are mass assignable.
      *
@@ -22,6 +22,11 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
+        'social_id',
+        'social_type',
+        'last_login_at',
+        'last_login_ip',
+        'browser',
     ];
 
     /**

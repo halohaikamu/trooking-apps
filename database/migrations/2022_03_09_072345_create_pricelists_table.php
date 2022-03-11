@@ -20,10 +20,10 @@ class CreatePricelistsTable extends Migration
             $table->bigInteger('berat');
             $table->bigInteger('dimensi');
             $table->bigInteger('harga');
+            // $table->integer('created_by')->nullable();
+            // $table->integer('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('created_by');
-            $table->integer('updated_by');
         });
     }
 

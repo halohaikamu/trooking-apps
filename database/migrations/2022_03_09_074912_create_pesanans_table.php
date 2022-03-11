@@ -30,10 +30,10 @@ class CreatePesanansTable extends Migration
             $table->foreignId('jenis_pembayaran_id')->references('id')->on('pembayarans');
             $table->foreignId('invoice_id')->references('id')->on('pembayarans')->nullable();
             $table->foreignId('nomer_resi_id')->references('id')->on('trackings')->nullable();
+            // $table->integer('created_by')->nullable();
+            // $table->integer('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
-            $table->integer('created_by');
-            $table->integer('updated_by');
         });
     }
 
