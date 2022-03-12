@@ -7,6 +7,14 @@ use App\Http\Controllers\LoginAgentController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\LoginVendorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\Admin\PesananController;
+use App\Http\Controllers\Admin\InformasiController;
+use App\Http\Controllers\Admin\UserAdminController;
+use App\Http\Controllers\Admin\PricelistController;
+use App\Http\Controllers\Admin\PaymentsController;
+use App\Http\Controllers\Admin\TrackingController;
+use App\Http\Controllers\Admin\HistoryOrderController;
 
 
 
@@ -23,6 +31,13 @@ Route::post('/create/admin', [LoginAdminController::class, 'create'])->name('log
 Route::get('/logout/admin', [LoginAdminController::class, 'logout'])->name('logout.admin');
 Route::group(['middleware' => 'auth:admin'], function(){
     Route::get('/admin/dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard');
+    Route::resource('pesanan', PesananController::class);
+    Route::resource('informasi', InformasiController::class);
+    Route::resource('user', UserAdminController::class);
+    Route::resource('pricelist', PricelistController::class);
+    Route::resource('payments', PaymentsController::class);
+    Route::resource('tracking', TrackingController::class);
+    Route::resource('history-order', HistoryOrderController::class);
 });
 
 //menu agent
@@ -64,3 +79,7 @@ Route::get('/logout/vendor', [LoginVendorController::class, 'logout'])->name('lo
 Route::group(['middleware' => 'auth:vendor'], function(){
     Route::get('/vendor/dashboard', [DashboardController::class, 'vendor'])->name('vendor.dashboard');
 });
+
+//auth google
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('callback/google', [GoogleController::class, 'handleCallback']);

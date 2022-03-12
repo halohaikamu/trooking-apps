@@ -14,11 +14,11 @@ class AddWilayahToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('prov_id')->references('id')->on('provinces');
-            $table->foreignId('city_id')->references('id')->on('cities');
-            $table->foreignId('dis_id')->references('id')->on('districts');
-            $table->foreignId('subdis_id')->references('id')->on('subdistricts');
-            $table->foreignId('voucher_id')->references('id')->on('vouchers');
+            $table->foreignId('prov_id')->references('id')->on('provinces')->nullable();
+            $table->foreignId('city_id')->references('id')->on('cities')->nullable();
+            $table->foreignId('dis_id')->references('id')->on('districts')->nullable();
+            $table->foreignId('subdis_id')->references('id')->on('subdistricts')->nullable();
+            $table->foreignId('voucher_id')->references('id')->on('vouchers')->nullable();
         });
     }
 
