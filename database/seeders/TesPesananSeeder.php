@@ -44,7 +44,7 @@ class TesPesananSeeder extends Seeder
         //xendit
         Pembayaran::create([
             'endpoint' => 'mojokerto',
-            'jenis_pembayaran' => 'tunai',
+            'jenis_pembayaran' => 'BCA',
             'harga' => '100.000',
             'eksternal_id' => '145',
             'nama' => 'kang xendit',
@@ -55,7 +55,51 @@ class TesPesananSeeder extends Seeder
 
         Pembayaran::create([
             'endpoint' => 'semarang',
-            'jenis_pembayaran' => 'non tunai',
+            'jenis_pembayaran' => 'BNI',
+            'harga' => '400.000',
+            'eksternal_id' => '145',
+            'nama' => 'kang xenditsemiring',
+            'invoice' => '1451241',
+            // 'created_by' => '1',
+            // 'updated_by' => '1'
+        ]);
+
+        Pembayaran::create([
+            'endpoint' => 'mojokerto',
+            'jenis_pembayaran' => 'BRI',
+            'harga' => '100.000',
+            'eksternal_id' => '145',
+            'nama' => 'kang xendit',
+            'invoice' => '1451241',
+            // 'created_by' => '1',
+            // 'updated_by' => '1'
+        ]);
+
+        Pembayaran::create([
+            'endpoint' => 'semarang',
+            'jenis_pembayaran' => 'BSI',
+            'harga' => '400.000',
+            'eksternal_id' => '145',
+            'nama' => 'kang xenditsemiring',
+            'invoice' => '1451241',
+            // 'created_by' => '1',
+            // 'updated_by' => '1'
+        ]);
+
+        Pembayaran::create([
+            'endpoint' => 'mojokerto',
+            'jenis_pembayaran' => 'CIMB',
+            'harga' => '100.000',
+            'eksternal_id' => '145',
+            'nama' => 'kang xendit',
+            'invoice' => '1451241',
+            // 'created_by' => '1',
+            // 'updated_by' => '1'
+        ]);
+
+        Pembayaran::create([
+            'endpoint' => 'semarang',
+            'jenis_pembayaran' => 'MANDIRI',
             'harga' => '400.000',
             'eksternal_id' => '145',
             'nama' => 'kang xenditsemiring',

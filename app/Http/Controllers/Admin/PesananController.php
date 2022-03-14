@@ -19,21 +19,23 @@ class PesananController extends Controller
     public function rules($id = false)
     {
         return  [
-            'name_id' => 'required',
-            'username_id' => 'required',
+            'name_id' => 'nullable',
+            'username_id' => 'nullable',
             'origin' => 'required',
             'destinasi' => 'required',
             'jenis_barang_id' => 'required',
-            'berat_id' => 'required',
-            'dimensi_id' => 'required',
+            'berat_id' => 'nullable',
+            'dimensi_id' => 'nullable',
             'harga_id' => 'required',
             'note' => 'required',
             'packing' => 'required',
             'gambar' => 'required',
-            'voucher_id' => 'required',
+            'voucher_id' => 'nullable',
             'jenis_pembayaran_id' => 'required',
-            'invoice_id' => 'required',
-            'nomer_resi_id' => 'required',
+            'invoice_id' => 'nullable',
+            'nomer_resi_id' => 'nullable',
+            'penjemputan' => 'nullable',
+            'pengantaran' => 'nullable',
         ];
     }
 
@@ -53,37 +55,15 @@ class PesananController extends Controller
         $getusername = User::select('id', 'username')->get();
         $getorigin = Pricelist::select('id', 'origin')->get();
         $getdestinasi = Pricelist::select('id', 'destinasi')->get();
+        $getjenisbarang = Barang::select('id', 'jenis_barang')->get();
         $getberat = Pricelist::select('id', 'berat')->get();
         $getdimensi = Pricelist::select('id', 'dimensi')->get();
         $getharga = Pricelist::select('id', 'harga')->get();
-        $getjenisbarang = Barang::select('id', 'jenis_barang')->get();
         $getvoucher = Voucher::select('id', 'voucher')->get();
         $getjenispembayaran = Pembayaran::select('id', 'jenis_pembayaran')->get();
         $getinvoice = Pembayaran::select('id', 'invoice')->get();
         $getnomerresi = Tracking::select('id', 'nomer_resi')->get();
-        $origins = Pricelist::pluck('origin','id');
-        //$destinasis = Pricelist::where('origin', $origins)->pluck('destinasi','id');
-        // $getorigin = Pricelist::select('origin')
-        // ->whereIn('id',function($query){
-        //     $query->select('origin')->from('pricelists');
-        // })->get();
-        // $getdestinasi = Pricelist::select('destinasi')
-        // ->whereIn('id',function($query){
-        //    $query->select('destinasi')->from('pricelists');
-        // })->get();
-        // $getberat = Pricelist::select('berat')
-        // ->whereIn('origin',function($query){
-        //    $query->select('destinasi')->from('pricelists');
-        // })->get();
-        // $getdimensi = Pricelist::select('dimensi')
-        // ->whereIn('origin',function($query){
-        //    $query->select('destinasi')->from('pricelists');
-        // })->get();
-        // $getharga = Pricelist::select('harga')
-        // ->whereIn('berat',function($query){
-        //    $query->select('dimensi')->from('pricelists');
-        // })->get();
-
+        $getpricelist = Pricelist::all();
         return view('admin.pesanan.create', compact(
             'getname',
             'getusername',
@@ -97,16 +77,9 @@ class PesananController extends Controller
             'getjenispembayaran',
             'getnomerresi',
             'getinvoice',
-            'origins'
+            'getpricelist'
         ));
-    }
 
-    public function getDestinasi(Request $request)
-    {
-        $destinasis = Pricelist::where('origin', $request->get('id'))
-            ->pluck('destinasi', 'id');
-        
-        return response()->json($destinasis);
     }
 
     public function store(Request $request)

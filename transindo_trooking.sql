@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2022 at 07:54 AM
+-- Generation Time: Mar 14, 2022 at 07:08 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -50,7 +50,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$PAkon/LeL5QTVX5yBEehmu9QfDGmgo2fty.Xx5GWm8MmdRq1ZQ4B6', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-09 23:15:37', '2022-03-09 23:15:37', NULL);
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$YX/3uAKvf6th/ZxNWu21ZeQMp/csjsKvd6VMzte0ciT1rl5S/4t4C', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-13 20:51:03', '2022-03-13 20:51:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ CREATE TABLE `affiliators` (
 --
 
 INSERT INTO `affiliators` (`id`, `name`, `email`, `email_verified_at`, `password`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `prov_id`, `city_id`, `dis_id`, `subdis_id`, `voucher_id`) VALUES
-(1, 'affiliator', 'affiliator@gmail.com', '2022-03-09 23:15:38', '$2y$10$gCcZ3q52igRrfwYDV3wiv.H2.CBKSGBCXr6EZ2mB7m4tv7FsHOgdu', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-09 23:15:38', '2022-03-09 23:15:38', NULL, 1, 2, 3, 4, 1);
+(1, 'affiliator', 'affiliator@gmail.com', '2022-03-13 20:51:03', '$2y$10$1wb2nOcUIf/P68JHbe2tBuIfT1vO4X6Ygq6jbVZrOXe4sDoRIVOMy', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-13 20:51:03', '2022-03-13 20:51:03', NULL, 1, 2, 3, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -120,7 +120,7 @@ CREATE TABLE `agents` (
 --
 
 INSERT INTO `agents` (`id`, `name`, `email`, `email_verified_at`, `password`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `prov_id`, `city_id`, `dis_id`, `subdis_id`, `voucher_id`) VALUES
-(1, 'agent', 'agent@gmail.com', '2022-03-09 23:15:37', '$2y$10$IEU3vB60cP3cdQotbKtuzeS7NzIQ5ZsWr02/nThovlhRyMc.O4nZO', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-09 23:15:37', '2022-03-09 23:15:37', NULL, 1, 2, 3, 4, 1);
+(1, 'agent', 'agent@gmail.com', '2022-03-13 20:51:03', '$2y$10$Ssa9GYhXlOYeDsCe2W5vCei2ARXI0pPI2MNachhfRaR4YDKZ9AIzm', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-13 20:51:03', '2022-03-13 20:51:03', NULL, 1, 2, 3, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -141,8 +141,8 @@ CREATE TABLE `barangs` (
 --
 
 INSERT INTO `barangs` (`id`, `jenis_barang`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'padat', '2022-03-09 23:15:39', '2022-03-09 23:15:39', NULL),
-(2, 'cair', '2022-03-09 23:15:39', '2022-03-09 23:15:39', NULL);
+(1, 'padat', '2022-03-13 20:51:04', '2022-03-13 20:51:04', NULL),
+(2, 'cair', '2022-03-13 20:51:04', '2022-03-13 20:51:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -7766,8 +7766,12 @@ CREATE TABLE `pembayarans` (
 --
 
 INSERT INTO `pembayarans` (`id`, `endpoint`, `jenis_pembayaran`, `harga`, `eksternal_id`, `nama`, `invoice`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'mojokerto', 'tunai', 100, '145', 'kang xendit', '1451241', '2022-03-09 23:15:40', '2022-03-09 23:15:40', NULL),
-(2, 'semarang', 'non tunai', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-09 23:15:40', '2022-03-09 23:15:40', NULL);
+(1, 'mojokerto', 'BCA', 100, '145', 'kang xendit', '1451241', '2022-03-13 20:51:04', '2022-03-13 20:51:04', NULL),
+(2, 'semarang', 'BNI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-13 20:51:04', '2022-03-13 20:51:04', NULL),
+(3, 'mojokerto', 'BRI', 100, '145', 'kang xendit', '1451241', '2022-03-13 20:51:05', '2022-03-13 20:51:05', NULL),
+(4, 'semarang', 'BSI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-13 20:51:05', '2022-03-13 20:51:05', NULL),
+(5, 'mojokerto', 'CIMB', 100, '145', 'kang xendit', '1451241', '2022-03-13 20:51:05', '2022-03-13 20:51:05', NULL),
+(6, 'semarang', 'MANDIRI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-13 20:51:05', '2022-03-13 20:51:05', NULL);
 
 -- --------------------------------------------------------
 
@@ -7798,7 +7802,9 @@ CREATE TABLE `pesanans` (
   `name_id` bigint(20) UNSIGNED NOT NULL,
   `username_id` bigint(20) UNSIGNED NOT NULL,
   `origin` bigint(20) UNSIGNED NOT NULL,
+  `penjemputan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `destinasi` bigint(20) UNSIGNED NOT NULL,
+  `pengantaran` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jenis_barang_id` bigint(20) UNSIGNED NOT NULL,
   `berat_id` bigint(20) UNSIGNED NOT NULL,
   `dimensi_id` bigint(20) UNSIGNED NOT NULL,
@@ -89865,8 +89871,8 @@ CREATE TABLE `trackings` (
 --
 
 INSERT INTO `trackings` (`id`, `nomer_resi`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '123', 'sukses', '2022-03-09 23:15:39', '2022-03-09 23:15:39', NULL),
-(2, '456', 'gagal', '2022-03-09 23:15:40', '2022-03-09 23:15:40', NULL);
+(1, '123', 'sukses', '2022-03-13 20:51:04', '2022-03-13 20:51:04', NULL),
+(2, '456', 'gagal', '2022-03-13 20:51:04', '2022-03-13 20:51:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -89877,7 +89883,7 @@ INSERT INTO `trackings` (`id`, `nomer_resi`, `status`, `created_at`, `updated_at
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -89894,11 +89900,11 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
-  `prov_id` bigint(20) UNSIGNED NOT NULL,
-  `city_id` bigint(20) UNSIGNED NOT NULL,
-  `dis_id` bigint(20) UNSIGNED NOT NULL,
-  `subdis_id` bigint(20) UNSIGNED NOT NULL,
-  `voucher_id` bigint(20) UNSIGNED NOT NULL
+  `prov_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `city_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `dis_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `subdis_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `voucher_id` bigint(20) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -89906,7 +89912,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `social_id`, `nomer`, `kode_pos`, `alamat`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `foto_ktp`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `prov_id`, `city_id`, `dis_id`, `subdis_id`, `voucher_id`) VALUES
-(1, 'user', 'username', 'user@gmail.com', '2022-03-09 23:15:37', '$2y$10$iA4WAx2FAoTiCAtt.oo07.xxfF/1HB0yXSd.ksUlVh.Onq9ftDCfK', NULL, '081235578685', 61384, 'semarang utara', NULL, NULL, NULL, NULL, 'default.jpg', NULL, '2022-03-09 23:15:37', '2022-03-09 23:15:37', NULL, 1, 2, 3, 4, 1);
+(1, 'user', 'username', 'user@gmail.com', '2022-03-13 20:51:03', '$2y$10$eygNqg91Mx7PxuMMfvpPvuhMM0A4dv.mxp6wxo9LZO.acQfIRWlbS', NULL, '081235578685', 61384, 'semarang utara', NULL, NULL, NULL, NULL, 'default.jpg', NULL, '2022-03-13 20:51:03', '2022-03-13 20:51:03', NULL, 1, 2, 3, 4, 1),
+(2, 'felix nn', 'adioswokeh@gmail.com', 'adioswokeh@gmail.com', NULL, 'eyJpdiI6InJhUkdjNS9SUGNGZGhRYlNONUVjZ0E9PSIsInZhbHVlIjoiRFJvNkxKQm9XN1A5ckRUd0dtK09HaHdTSTdLckhXSGVxa240TStQREpwOD0iLCJtYWMiOiI1M2YyYTQ3NWY3ZDk3ZDMwNGJhMDE5YzUyYTJlN2M2NTE1ODZjMjE0ZjJkZmE4Y2U0MDc2ZTI4YTMwM2UwOWZkIiwidGFnIjoiIn0=', '114877537485909066463', NULL, NULL, NULL, 'google', NULL, NULL, NULL, NULL, NULL, '2022-03-13 23:03:28', '2022-03-13 23:03:28', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -89941,7 +89948,7 @@ CREATE TABLE `vendors` (
 --
 
 INSERT INTO `vendors` (`id`, `name`, `email`, `email_verified_at`, `password`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `prov_id`, `city_id`, `dis_id`, `subdis_id`, `voucher_id`) VALUES
-(1, 'vendor', 'vendor@gmail.com', '2022-03-09 23:15:39', '$2y$10$/kMyRhLzcdtP6F/4E3aC8uPewx.VmVKm1/H4JX/tznllVgZOEhBpm', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-09 23:15:39', '2022-03-09 23:15:39', NULL, 1, 2, 3, 4, 1);
+(1, 'vendor', 'vendor@gmail.com', '2022-03-13 20:51:04', '$2y$10$ye4IrsXE11Y4biucEkV05.4dK2bvIqaqCCGg9LDeT8aAUMN35jsle', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-13 20:51:04', '2022-03-13 20:51:04', NULL, 1, 2, 3, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -89962,7 +89969,7 @@ CREATE TABLE `vouchers` (
 --
 
 INSERT INTO `vouchers` (`id`, `voucher`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'free ongkir', '2022-03-09 23:15:36', '2022-03-09 23:15:36', NULL);
+(1, 'free ongkir', '2022-03-13 20:51:02', '2022-03-13 20:51:02', NULL);
 
 --
 -- Indexes for dumped tables
@@ -90195,7 +90202,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `pembayarans`
 --
 ALTER TABLE `pembayarans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -90207,7 +90214,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `pesanans`
 --
 ALTER TABLE `pesanans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pricelists`
@@ -90237,7 +90244,7 @@ ALTER TABLE `trackings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `vendors`

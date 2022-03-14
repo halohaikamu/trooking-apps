@@ -18,7 +18,9 @@ class CreatePesanansTable extends Migration
             $table->foreignId('name_id')->references('id')->on('users')->nullable();
             $table->foreignId('username_id')->references('id')->on('users')->nullable();
             $table->foreignId('origin')->references('id')->on('pricelists');
+            $table->string('penjemputan')->nullable();
             $table->foreignId('destinasi')->references('id')->on('pricelists');
+            $table->string('pengantaran')->nullable();
             $table->foreignId('jenis_barang_id')->references('id')->on('barangs');
             $table->foreignId('berat_id')->references('id')->on('pricelists')->nullable();
             $table->foreignId('dimensi_id')->references('id')->on('pricelists')->nullable();

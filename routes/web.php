@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginAdminController;
 use App\Http\Controllers\LoginAffiliatorController;
@@ -16,7 +17,7 @@ use App\Http\Controllers\Admin\PaymentsController;
 use App\Http\Controllers\Admin\TrackingController;
 use App\Http\Controllers\Admin\HistoryOrderController;
 
-
+// Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,8 +30,8 @@ Route::get('/login/admin', function () {
 });
 Route::post('/create/admin', [LoginAdminController::class, 'create'])->name('login.create.admin');
 Route::get('/logout/admin', [LoginAdminController::class, 'logout'])->name('logout.admin');
-Route::group(['middleware' => 'auth:admin'], function(){
-    Route::get('/admin/dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard');
     Route::resource('pesanan', PesananController::class);
     Route::resource('informasi', InformasiController::class);
     Route::resource('user', UserAdminController::class);
@@ -46,8 +47,8 @@ Route::get('/login/agent', function () {
 });
 Route::post('/create/agent', [LoginAgentController::class, 'create'])->name('login.create.agent');
 Route::get('/logout/agent', [LoginAgentController::class, 'logout'])->name('logout.agent');
-Route::group(['middleware' => 'auth:agent'], function(){
-    Route::get('/agent/dashboard', [DashboardController::class, 'agent'])->name('agent.dashboard');
+Route::group(['prefix' => 'agent', 'middleware' => 'auth:agent'], function(){
+    Route::get('/dashboard', [DashboardController::class, 'agent'])->name('agent.dashboard');
 });
 
 //menu affiliator
@@ -56,8 +57,8 @@ Route::get('/login/affiliator', function () {
 });
 Route::post('/create/affiliator', [LoginAffiliatorController::class, 'create'])->name('login.create.affiliator');
 Route::get('/logout/affiliator', [LoginAffiliatorController::class, 'logout'])->name('logout.affiliator');
-Route::group(['middleware' => 'auth:affiliator'], function(){
-    Route::get('/affiliator/dashboard', [DashboardController::class, 'affiliator'])->name('affiliator.dashboard');
+Route::group(['prefix' => 'affiliator', 'middleware' => 'auth:affiliator'], function(){
+    Route::get('/dashboard', [DashboardController::class, 'affiliator'])->name('affiliator.dashboard');
 });
 
 //menu user
@@ -66,8 +67,8 @@ Route::get('/login/user', function () {
 });
 Route::post('/create/user', [LoginUserController::class, 'create'])->name('login.create.user');
 Route::get('/logout/user', [LoginUserController::class, 'logout'])->name('logout.user');
-Route::group(['middleware' => 'auth:user'], function(){
-    Route::get('/user/dashboard', [DashboardController::class, 'user'])->name('user.dashboard');
+Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function(){
+    Route::get('/dashboard', [DashboardController::class, 'user'])->name('user.dashboard');
 });
 
 //menu vendor
@@ -76,8 +77,8 @@ Route::get('/login/vendor', function () {
 });
 Route::post('/create/vendor', [LoginVendorController::class, 'create'])->name('login.create.vendor');
 Route::get('/logout/vendor', [LoginVendorController::class, 'logout'])->name('logout.vendor');
-Route::group(['middleware' => 'auth:vendor'], function(){
-    Route::get('/vendor/dashboard', [DashboardController::class, 'vendor'])->name('vendor.dashboard');
+Route::group(['prefix' => 'vendor', 'middleware' => 'auth:vendor'], function(){
+    Route::get('/dashboard', [DashboardController::class, 'vendor'])->name('vendor.dashboard');
 });
 
 //auth google

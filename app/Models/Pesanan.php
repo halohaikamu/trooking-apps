@@ -25,6 +25,8 @@ class Pesanan extends Model
         'jenis_pembayaran_id',
         'invoice_id',
         'nomer_resi_id',
+        'penjemputan',
+        'pengantaran',
         // 'created_by',
         // 'updated_by'
     ];
