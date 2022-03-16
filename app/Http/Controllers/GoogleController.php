@@ -25,7 +25,6 @@ class GoogleController extends Controller
                     'social_id'=> $user->id,
                     'social_type'=> 'google',
                     'password' => encrypt('my-google'),
-                    'email_verified_at'    => now()
                 ]);
                 Auth::login($newUser);
                 return redirect('/user/dashboard');

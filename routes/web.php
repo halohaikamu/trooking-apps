@@ -7,8 +7,11 @@ use App\Http\Controllers\LoginAffiliatorController;
 use App\Http\Controllers\LoginAgentController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\LoginVendorController;
+use App\Http\Controllers\User\RegisterUserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\User\DashboardUserController;
 use App\Http\Controllers\Admin\PesananController;
 use App\Http\Controllers\Admin\InformasiController;
 use App\Http\Controllers\Admin\UserAdminController;
@@ -17,7 +20,7 @@ use App\Http\Controllers\Admin\PaymentsController;
 use App\Http\Controllers\Admin\TrackingController;
 use App\Http\Controllers\Admin\HistoryOrderController;
 
-// Auth::routes(['verify' => true]);
+Auth::routes(['verify' => true]);
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,7 +50,7 @@ Route::get('/login/agent', function () {
 });
 Route::post('/create/agent', [LoginAgentController::class, 'create'])->name('login.create.agent');
 Route::get('/logout/agent', [LoginAgentController::class, 'logout'])->name('logout.agent');
-Route::group(['prefix' => 'agent', 'middleware' => 'auth:agent'], function(){
+Route::group(['prefix' => 'agent', 'middleware' => 'auth:agent', 'verified'], function(){
     Route::get('/dashboard', [DashboardController::class, 'agent'])->name('agent.dashboard');
 });
 
@@ -57,7 +60,7 @@ Route::get('/login/affiliator', function () {
 });
 Route::post('/create/affiliator', [LoginAffiliatorController::class, 'create'])->name('login.create.affiliator');
 Route::get('/logout/affiliator', [LoginAffiliatorController::class, 'logout'])->name('logout.affiliator');
-Route::group(['prefix' => 'affiliator', 'middleware' => 'auth:affiliator'], function(){
+Route::group(['prefix' => 'affiliator', 'middleware' => 'auth:affiliator', 'verified'], function(){
     Route::get('/dashboard', [DashboardController::class, 'affiliator'])->name('affiliator.dashboard');
 });
 
@@ -67,8 +70,12 @@ Route::get('/login/user', function () {
 });
 Route::post('/create/user', [LoginUserController::class, 'create'])->name('login.create.user');
 Route::get('/logout/user', [LoginUserController::class, 'logout'])->name('logout.user');
-Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function(){
-    Route::get('/dashboard', [DashboardController::class, 'user'])->name('user.dashboard');
+Route::get('/register/user', function () {
+    return view('user.register');
+});
+Route::post('/store/user', [RegisterUserController::class, 'store'])->name('register.create.user');
+Route::group(['prefix' => 'user', 'middleware' => 'auth:user', 'verified'], function(){
+    Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
 });
 
 //menu vendor
@@ -84,3 +91,9 @@ Route::group(['prefix' => 'vendor', 'middleware' => 'auth:vendor'], function(){
 //auth google
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 Route::get('callback/google', [GoogleController::class, 'handleCallback']);
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+    Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware(['signed']);
+    Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+});
