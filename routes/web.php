@@ -8,10 +8,13 @@ use App\Http\Controllers\LoginAgentController;
 use App\Http\Controllers\LoginUserController;
 use App\Http\Controllers\LoginVendorController;
 use App\Http\Controllers\User\RegisterUserController;
+use App\Http\Controllers\Affiliator\RegisterAffiliatorController;
+use App\Http\Controllers\Affiliator\DashboardAffiliatorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\User\DashboardUserController;
+use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\PesananController;
 use App\Http\Controllers\Admin\InformasiController;
 use App\Http\Controllers\Admin\UserAdminController;
@@ -34,7 +37,7 @@ Route::get('/login/admin', function () {
 Route::post('/create/admin', [LoginAdminController::class, 'create'])->name('login.create.admin');
 Route::get('/logout/admin', [LoginAdminController::class, 'logout'])->name('logout.admin');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
-    Route::get('/dashboard', [DashboardController::class, 'admin'])->name('admin.dashboard');
+    Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('pesanan', PesananController::class);
     Route::resource('informasi', InformasiController::class);
     Route::resource('user', UserAdminController::class);
@@ -60,8 +63,12 @@ Route::get('/login/affiliator', function () {
 });
 Route::post('/create/affiliator', [LoginAffiliatorController::class, 'create'])->name('login.create.affiliator');
 Route::get('/logout/affiliator', [LoginAffiliatorController::class, 'logout'])->name('logout.affiliator');
+Route::get('/register/affiliator', function () {
+    return view('affiliator.register');
+});
+Route::post('/store/affiliator', [RegisterAffiliatorController::class, 'store'])->name('register.create.affiliator');
 Route::group(['prefix' => 'affiliator', 'middleware' => 'auth:affiliator', 'verified'], function(){
-    Route::get('/dashboard', [DashboardController::class, 'affiliator'])->name('affiliator.dashboard');
+    Route::get('/dashboard', [DashboardAffiliatorController::class, 'index'])->name('affiliator.dashboard');
 });
 
 //menu user
@@ -74,6 +81,9 @@ Route::get('/register/user', function () {
     return view('user.register');
 });
 Route::post('/store/user', [RegisterUserController::class, 'store'])->name('register.create.user');
+Route::get('/landing-page', function () {
+    return view('user.landingPage');
+});
 Route::group(['prefix' => 'user', 'middleware' => 'auth:user', 'verified'], function(){
     Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
 });

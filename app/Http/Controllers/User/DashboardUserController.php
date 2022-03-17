@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class DashboardUserController extends Controller
 {
@@ -13,6 +14,7 @@ class DashboardUserController extends Controller
     
     public function index()
     {
-        return view('user.dashboard');
+        $user = User::all();
+        return view('user.dashboard', compact('user'));
     }
 }
