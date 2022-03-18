@@ -2,18 +2,10 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginAdminController;
-use App\Http\Controllers\LoginAffiliatorController;
-use App\Http\Controllers\LoginAgentController;
-use App\Http\Controllers\LoginUserController;
-use App\Http\Controllers\LoginVendorController;
-use App\Http\Controllers\User\RegisterUserController;
-use App\Http\Controllers\Affiliator\RegisterAffiliatorController;
-use App\Http\Controllers\Affiliator\DashboardAffiliatorController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\VerificationController;
-use App\Http\Controllers\User\DashboardUserController;
+use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\PesananController;
 use App\Http\Controllers\Admin\InformasiController;
@@ -22,6 +14,20 @@ use App\Http\Controllers\Admin\PricelistController;
 use App\Http\Controllers\Admin\PaymentsController;
 use App\Http\Controllers\Admin\TrackingController;
 use App\Http\Controllers\Admin\HistoryOrderController;
+use App\Http\Controllers\User\LoginUserController;
+use App\Http\Controllers\User\RegisterUserController;
+use App\Http\Controllers\User\InformasiUserController;
+use App\Http\Controllers\User\HistoryOrderUserController;
+use App\Http\Controllers\User\CekOngkirController;
+use App\Http\Controllers\User\LandingPageController;
+use App\Http\Controllers\User\PesananUserController;
+use App\Http\Controllers\User\DashboardUserController;
+use App\Http\Controllers\Affiliator\RegisterAffiliatorController;
+use App\Http\Controllers\Affiliator\DashboardAffiliatorController;
+use App\Http\Controllers\Affiliator\LoginAffiliatorController;
+use App\Http\Controllers\Agent\LoginAgentController;
+use App\Http\Controllers\Vendor\LoginVendorController;
+
 
 Auth::routes(['verify' => true]);
 
@@ -86,6 +92,10 @@ Route::get('/landing-page', function () {
 });
 Route::group(['prefix' => 'user', 'middleware' => 'auth:user', 'verified'], function(){
     Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
+    Route::resource('informasi', InformasiUserController::class);
+    Route::resource('history-order', HistoryOrderUserController::class);
+    Route::resource('pesanan', PesananUserController::class);
+    Route::resource('cek-ongkir', CekOngkirController::class);
 });
 
 //menu vendor

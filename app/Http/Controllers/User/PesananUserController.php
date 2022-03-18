@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pesanan;
@@ -11,9 +11,8 @@ use App\Models\Voucher;
 use App\Models\Pembayaran;
 use App\Models\Tracking;
 use Illuminate\Http\Request;
-use Str;
 
-class PesananController extends Controller
+class PesananUserController extends Controller
 {
     public function rules($id = false)
     {
@@ -38,16 +37,6 @@ class PesananController extends Controller
         ];
     }
 
-    public function index()
-    {
-        $pesanan = Pesanan::latest()->when(request()->search, function ($pesanan) {
-            $pesanan = $pesanan->where('name', 'like', '%' . request()->search . '%');
-            $pesanan = $pesanan->where('username', 'like', '%' . request()->search . '%');
-        })->paginate(10);
-
-        return view('admin.pesanan.index', compact('pesanan'));
-    }
-
     public function create()
     {
         $getname = User::select('id', 'name')->get();
@@ -63,7 +52,7 @@ class PesananController extends Controller
         $getinvoice = Pembayaran::select('id', 'invoice')->get();
         $getnomerresi = Tracking::select('id', 'nomer_resi')->get();
         $getpricelist = Pricelist::all();
-        return view('admin.pesanan.create', compact(
+        return view('user.pesanan.create', compact(
             'getname',
             'getusername',
             'getorigin',
@@ -92,41 +81,7 @@ class PesananController extends Controller
             $input['gambar'] = "$profileImage";
         }
         Pesanan::create($input);
-        return redirect()->route('pesanan.index')
+        return redirect()->route('history-order.index')
             ->withSuccess(__('Pesanan created successfully.'));
-    }
-
-    public function show(Pesanan $pesanan)
-    {
-        return view('admin.pesanan.show', compact('pesanan'));
-    }
-
-    public function edit(Pesanan $pesanan)
-    {
-        return view('admin.pesanan.edit', compact('pesanan'));
-    }
-
-    public function update(Request $request, Pesanan $pesanan)
-    {
-        $data = $this->validate($request, $this->rules($pesanan));
-
-        $input = $request->all();
-        if ($gambar = $request->file('gambar')) {
-            $destinationPath = 'gambar/pesanan';
-            $profileImage = date('YmdHis') . "." . $gambar->getClientOriginalExtension();
-            $gambar->move($destinationPath, $profileImage);
-            $input['gambar'] = "$profileImage";
-        }else{
-            unset($input['gambar']);
-        }
-        $pesanan->update($input);
-        return redirect()->route('pesanan.index', compact('pesanan'))
-            ->withSuccess(__('Pesanan updated successfully.'));
-    }
-
-    public function destroy(Pesanan $pesanan)
-    {
-        $pesanan->delete();
-        return redirect()->route('pesanan.index', $pesanan)->with('success', 'Pesanan deleted successfully');
     }
 }
