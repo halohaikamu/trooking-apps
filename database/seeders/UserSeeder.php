@@ -12,11 +12,7 @@ use Carbon\Carbon;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+   
     public function run()
     {
         Admin::create([
@@ -40,8 +36,6 @@ class UserSeeder extends Seeder
             'kode_pos' => '61384',
             'alamat' => 'semarang utara',
             'foto_ktp' => 'default.jpg',
-            // 'created_by' => '1',
-            // 'updated_by' => '1'
         ]);
 
         Agent::create([
@@ -54,8 +48,6 @@ class UserSeeder extends Seeder
             'dis_id' => '3',
             'subdis_id' => '4',
             'voucher_id' => '1',
-            // 'created_by' => '1',
-            // 'updated_by' => '1'
         ]);
 
         Affiliator::create([
@@ -68,8 +60,6 @@ class UserSeeder extends Seeder
             'dis_id' => '3',
             'subdis_id' => '4',
             'voucher_id' => '1',
-            // 'created_by' => '1',
-            // 'updated_by' => '1'
         ]);
 
         Vendor::create([
@@ -82,8 +72,6 @@ class UserSeeder extends Seeder
             'dis_id' => '3',
             'subdis_id' => '4',
             'voucher_id' => '1',
-            // 'created_by' => '1',
-            // 'updated_by' => '1'
         ]);
     }
 }

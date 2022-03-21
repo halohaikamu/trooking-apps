@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\PricelistController;
 use App\Http\Controllers\Admin\PaymentsController;
 use App\Http\Controllers\Admin\TrackingController;
 use App\Http\Controllers\Admin\HistoryOrderController;
+use App\Http\Controllers\User\ChangePasswordController;
 use App\Http\Controllers\User\LoginUserController;
 use App\Http\Controllers\User\RegisterUserController;
 use App\Http\Controllers\User\InformasiUserController;
@@ -92,12 +93,15 @@ Route::get('/landing-page', function () {
 });
 Route::group(['prefix' => 'user', 'middleware' => 'auth:user', 'verified'], function(){
     Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
+    Route::get('forgot-password', [ChangePasswordController::class, 'forgotPassword'])->name('user.dashboard.forgot-password');
+    Route::post('forgot-password', [ChangePasswordController::class, 'resetPassword'])->name('user.dashboard.forgot-password');
     Route::resource('informasi', InformasiUserController::class);
     Route::resource('history-order', HistoryOrderUserController::class);
     Route::resource('pesanan', PesananUserController::class);
     Route::resource('cek-ongkir', CekOngkirController::class);
 });
-
+Route::get('forgot-password/{token}', [ChangePasswordController::class, 'forgotPasswordValidate']);
+Route::put('reset-password', [ChangePasswordController::class, 'updatePassword'])->name('user.dashboard.reset-password');
 //menu vendor
 Route::get('/login/vendor', function () {
     return view('vendor.login');
