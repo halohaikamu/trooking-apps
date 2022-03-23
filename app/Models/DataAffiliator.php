@@ -7,17 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
-class Barang extends Model
+class DataAffiliator extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
         'jenis_barang',
     ];
-
-    public function pesanan()
-    {
-        return $this->hasOne(Pesanan::class, 'pesanan_id');
-    }
 
     protected static function boot()
     {

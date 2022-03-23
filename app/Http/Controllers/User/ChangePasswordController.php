@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class ChangePasswordController extends Controller
 {
@@ -32,8 +33,8 @@ class ChangePasswordController extends Controller
         $this->validate($request, [
             'email' => 'required|email',
         ]);
-
-        $user = User::where('email', $request->email)->first();
+        $id = Auth::user()->id;
+        $user = User::where('id', $id)->where('email', $request->email)->first();
         if (!$user) {
             return back()->with('failed', 'Failed! email is not registered.');
         }

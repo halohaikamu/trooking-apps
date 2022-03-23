@@ -27,15 +27,6 @@ class UserSeeder extends Seeder
             'email' => 'user@gmail.com',
             'password' => bcrypt('12345678'),
             'email_verified_at' => Carbon::now()->toDateTimeString(),
-            'prov_id' => '1',
-            'city_id' => '2',
-            'dis_id' => '3',
-            'subdis_id' => '4',
-            'voucher_id' => '1',
-            'nomer' => '081235578685',
-            'kode_pos' => '61384',
-            'alamat' => 'semarang utara',
-            'foto_ktp' => 'default.jpg',
         ]);
 
         Agent::create([
@@ -43,11 +34,6 @@ class UserSeeder extends Seeder
             'email' => 'agent@gmail.com',
             'password' => bcrypt('12345678'),
             'email_verified_at' => Carbon::now()->toDateTimeString(),
-            'prov_id' => '1',
-            'city_id' => '2',
-            'dis_id' => '3',
-            'subdis_id' => '4',
-            'voucher_id' => '1',
         ]);
 
         Affiliator::create([
@@ -55,11 +41,6 @@ class UserSeeder extends Seeder
             'email' => 'affiliator@gmail.com',
             'password' => bcrypt('12345678'),
             'email_verified_at' => Carbon::now()->toDateTimeString(),
-            'prov_id' => '1',
-            'city_id' => '2',
-            'dis_id' => '3',
-            'subdis_id' => '4',
-            'voucher_id' => '1',
         ]);
 
         Vendor::create([
@@ -67,11 +48,6 @@ class UserSeeder extends Seeder
             'email' => 'vendor@gmail.com',
             'password' => bcrypt('12345678'),
             'email_verified_at' => Carbon::now()->toDateTimeString(),
-            'prov_id' => '1',
-            'city_id' => '2',
-            'dis_id' => '3',
-            'subdis_id' => '4',
-            'voucher_id' => '1',
         ]);
     }
 }

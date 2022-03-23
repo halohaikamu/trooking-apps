@@ -5,7 +5,7 @@
     {{-- <h1 class="text-2xl font-semibold text-gray-900">Reset Password</h1> --}}
   </div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-    <form action="{{ route('user.dashboard.forgot-password') }}" method="post" autocomplete="off">
+    <form action="{{ route('user.dashboard.forgot-email') }}" method="post" autocomplete="off">
         @csrf
         <div class="card shadow">
 
@@ -22,7 +22,7 @@
             @endif
 
             <div class="card-header">
-                <h5 class="card-title"> Reset Password </h5>
+                <h5 class="card-title"> Reset Email </h5>
             </div>
 
             <div class="card-body px-4">
@@ -34,7 +34,7 @@
             </div>
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary"> Reset Password </button>
+                <button type="submit" class="btn btn-primary"> Reset Email </button>
             </div>
         </div>
     </form>

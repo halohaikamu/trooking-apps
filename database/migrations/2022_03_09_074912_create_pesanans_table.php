@@ -6,15 +6,10 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePesanansTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('pesanans', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->foreignId('name_id')->references('id')->on('users')->nullable();
             $table->foreignId('username_id')->references('id')->on('users')->nullable();
             $table->foreignId('origin')->references('id')->on('pricelists');
@@ -32,18 +27,11 @@ class CreatePesanansTable extends Migration
             $table->foreignId('jenis_pembayaran_id')->references('id')->on('pembayarans');
             $table->foreignId('invoice_id')->references('id')->on('pembayarans')->nullable();
             $table->foreignId('nomer_resi_id')->references('id')->on('trackings')->nullable();
-            // $table->integer('created_by')->nullable();
-            // $table->integer('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('pesanans');

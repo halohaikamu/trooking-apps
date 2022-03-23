@@ -6,28 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateVouchersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('vouchers', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('voucher');
-            // $table->integer('created_by')->nullable();
-            // $table->integer('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('vouchers');

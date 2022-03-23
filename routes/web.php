@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\PaymentsController;
 use App\Http\Controllers\Admin\TrackingController;
 use App\Http\Controllers\Admin\HistoryOrderController;
 use App\Http\Controllers\User\ChangePasswordController;
+use App\Http\Controllers\User\ChangeEmailController;
 use App\Http\Controllers\User\LoginUserController;
 use App\Http\Controllers\User\RegisterUserController;
 use App\Http\Controllers\User\InformasiUserController;
@@ -95,6 +96,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:user', 'verified'], func
     Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
     Route::get('forgot-password', [ChangePasswordController::class, 'forgotPassword'])->name('user.dashboard.forgot-password');
     Route::post('forgot-password', [ChangePasswordController::class, 'resetPassword'])->name('user.dashboard.forgot-password');
+    Route::get('forgot-email', [ChangeEmailController::class, 'forgotEmail'])->name('user.dashboard.forgot-email');
+    Route::post('forgot-email', [ChangeEmailController::class, 'resetEmail'])->name('user.dashboard.forgot-email');
     Route::resource('informasi', InformasiUserController::class);
     Route::resource('history-order', HistoryOrderUserController::class);
     Route::resource('pesanan', PesananUserController::class);
@@ -102,6 +105,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:user', 'verified'], func
 });
 Route::get('forgot-password/{token}', [ChangePasswordController::class, 'forgotPasswordValidate']);
 Route::put('reset-password', [ChangePasswordController::class, 'updatePassword'])->name('user.dashboard.reset-password');
+Route::get('forgot-email/{token}', [ChangeEmailController::class, 'forgotEmailValidate']);
+Route::put('reset-email', [ChangeEmailController::class, 'updateEmail'])->name('user.dashboard.reset-email');
 //menu vendor
 Route::get('/login/vendor', function () {
     return view('vendor.login');
