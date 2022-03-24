@@ -15,23 +15,4 @@ class Informasi extends Model
         'jenis_informasi',
         'isi',
     ];
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($informasi) {
-            $informasi->{$informasi->getKeyName()} = (string) Str::uuid();
-        });
-    }
-
-    public function getIncrementing()
-    {
-        return false;
-    }
-
-    public function getKeyType()
-    {
-        return 'string';
-    }
 }

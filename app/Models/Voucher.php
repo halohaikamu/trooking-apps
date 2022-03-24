@@ -44,23 +44,4 @@ class Voucher extends Model
     {
         return $this->hasOne(Pesanan::class, 'pesanan_id');
     }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($voucher) {
-            $voucher->{$voucher->getKeyName()} = (string) Str::uuid();
-        });
-    }
-
-    public function getIncrementing()
-    {
-        return false;
-    }
-
-    public function getKeyType()
-    {
-        return 'string';
-    }
 }

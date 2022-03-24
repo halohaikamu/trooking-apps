@@ -90,23 +90,4 @@ class Pesanan extends Model
     {
         return $this->belongsTo(Tracking::class, 'nomer_resi_id');
     }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($pesanan) {
-            $pesanan->{$pesanan->getKeyName()} = (string) Str::uuid();
-        });
-    }
-
-    public function getIncrementing()
-    {
-        return false;
-    }
-
-    public function getKeyType()
-    {
-        return 'string';
-    }
 }

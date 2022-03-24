@@ -32,23 +32,4 @@ class DataVendor extends Model
     {
         return $this->belongsTo(City::class, 'coverage_area');
     }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($dataVendor) {
-            $dataVendor->{$dataVendor->getKeyName()} = (string) Str::uuid();
-        });
-    }
-
-    public function getIncrementing()
-    {
-        return false;
-    }
-
-    public function getKeyType()
-    {
-        return 'string';
-    }
 }

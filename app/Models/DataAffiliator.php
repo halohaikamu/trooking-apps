@@ -22,23 +22,4 @@ class DataAffiliator extends Model
     {
         return $this->belongsTo(Affiliator::class, 'affiliator_id');
     }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($affiliator) {
-            $affiliator->{$affiliator->getKeyName()} = (string) Str::uuid();
-        });
-    }
-
-    public function getIncrementing()
-    {
-        return false;
-    }
-
-    public function getKeyType()
-    {
-        return 'string';
-    }
 }

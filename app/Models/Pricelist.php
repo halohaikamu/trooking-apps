@@ -33,23 +33,4 @@ class Pricelist extends Model
     {
         return $this->hasOne(Pesanan::class, 'pesanan_id');
     }
-
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($pricelist) {
-            $pricelist->{$pricelist->getKeyName()} = (string) Str::uuid();
-        });
-    }
-
-    public function getIncrementing()
-    {
-        return false;
-    }
-
-    public function getKeyType()
-    {
-        return 'string';
-    }
 }
