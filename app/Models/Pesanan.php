@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use App\Traits\UsesUuid;
 
 class Pesanan extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, UsesUuid;
     protected $fillable = [
         'name_id',
         'username_id',
@@ -28,8 +29,6 @@ class Pesanan extends Model
         'nomer_resi_id',
         'penjemputan',
         'pengantaran',
-        // 'created_by',
-        // 'updated_by'
     ];
 
     public function nameId()
@@ -90,5 +89,24 @@ class Pesanan extends Model
     public function nomerResiId()
     {
         return $this->belongsTo(Tracking::class, 'nomer_resi_id');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($pesanan) {
+            $pesanan->{$pesanan->getKeyName()} = (string) Str::uuid();
+        });
+    }
+
+    public function getIncrementing()
+    {
+        return false;
+    }
+
+    public function getKeyType()
+    {
+        return 'string';
     }
 }

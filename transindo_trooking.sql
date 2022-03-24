@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2022 at 07:52 AM
+-- Generation Time: Mar 24, 2022 at 03:41 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -29,11 +29,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `social_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `social_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_login_at` datetime DEFAULT NULL,
@@ -49,8 +50,10 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$uKHXY.6ZxCUe3Vel5kLGxOm2traadTrer0kRB4xwEOfx8uiltK7R6', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-20 23:51:07', '2022-03-20 23:51:07', NULL);
+INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `token`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('11a22f09-db5a-4b46-abc9-7af73e14022c', 'admin', 'admin@gmail.com', NULL, '$2y$10$vm7VQSOjtyJIIAWnJjgEuejSKqo6VqThPnALyBIT4vR2V6vEUY.Q.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:28:49', '2022-03-23 19:28:49', NULL),
+('7269d3ee-3b8b-4ecb-ae87-a2b3c602d4e2', 'felix', 'felix@gmail.com', NULL, '$2y$10$4vpsDDu0OjSj1gerbNtNVe6MflmAeq.kykHwXlt0HWSXBnKcki5Yi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:33:51', '2022-03-23 19:33:51', NULL),
+('910acb51-4f13-4885-9fe6-813f499dc8fa', 'admin2', 'admin2@gmail.com', NULL, '$2y$10$ZMn4lhvgU21.hq7hOYxA1.xPrpyvrAPnABXT9M3haFNChuvOWlL3y', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:31:15', '2022-03-23 19:31:15', NULL);
 
 -- --------------------------------------------------------
 
@@ -59,11 +62,12 @@ INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `s
 --
 
 CREATE TABLE `affiliators` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `social_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `social_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_login_at` datetime DEFAULT NULL,
@@ -72,20 +76,15 @@ CREATE TABLE `affiliators` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  `prov_id` bigint(20) UNSIGNED NOT NULL,
-  `city_id` bigint(20) UNSIGNED NOT NULL,
-  `dis_id` bigint(20) UNSIGNED NOT NULL,
-  `subdis_id` bigint(20) UNSIGNED NOT NULL,
-  `voucher_id` bigint(20) UNSIGNED NOT NULL
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `affiliators`
 --
 
-INSERT INTO `affiliators` (`id`, `name`, `email`, `email_verified_at`, `password`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `prov_id`, `city_id`, `dis_id`, `subdis_id`, `voucher_id`) VALUES
-(1, 'affiliator', 'affiliator@gmail.com', '2022-03-20 23:51:08', '$2y$10$VVVDFz.odsUMDi3QIf9.Kucoko5oemJz3qo0.dwifw/95qHkFmv2C', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-20 23:51:08', '2022-03-20 23:51:08', NULL, 1, 2, 3, 4, 1);
+INSERT INTO `affiliators` (`id`, `name`, `email`, `email_verified_at`, `password`, `token`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('28206722-3fc6-420e-a535-b15e04e888c6', 'affiliator', 'affiliator@gmail.com', '2022-03-23 19:28:50', '$2y$10$zf4h2fWjyZDWGu7Xub97R.zTWjP7j66dGG.GYqyycmYrnFZMNtoCm', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -94,11 +93,12 @@ INSERT INTO `affiliators` (`id`, `name`, `email`, `email_verified_at`, `password
 --
 
 CREATE TABLE `agents` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `social_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `social_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_login_at` datetime DEFAULT NULL,
@@ -107,20 +107,15 @@ CREATE TABLE `agents` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  `prov_id` bigint(20) UNSIGNED NOT NULL,
-  `city_id` bigint(20) UNSIGNED NOT NULL,
-  `dis_id` bigint(20) UNSIGNED NOT NULL,
-  `subdis_id` bigint(20) UNSIGNED NOT NULL,
-  `voucher_id` bigint(20) UNSIGNED NOT NULL
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `agents`
 --
 
-INSERT INTO `agents` (`id`, `name`, `email`, `email_verified_at`, `password`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `prov_id`, `city_id`, `dis_id`, `subdis_id`, `voucher_id`) VALUES
-(1, 'agent', 'agent@gmail.com', '2022-03-20 23:51:07', '$2y$10$bUrczCOYMEGojMVgqyWA.O7ySh3slJnl0/365g.WBV0LXuLWONuaK', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-20 23:51:07', '2022-03-20 23:51:07', NULL, 1, 2, 3, 4, 1);
+INSERT INTO `agents` (`id`, `name`, `email`, `email_verified_at`, `password`, `token`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('c47ed158-3f08-4f77-8a62-79fc13506bd0', 'agent', 'agent@gmail.com', '2022-03-23 19:28:50', '$2y$10$4MBsPscP9Vc/l3Iho68U2u/DZlH7Dw97fklsl/Toy6yoALj.9W3x6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -129,7 +124,7 @@ INSERT INTO `agents` (`id`, `name`, `email`, `email_verified_at`, `password`, `s
 --
 
 CREATE TABLE `barangs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenis_barang` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -141,8 +136,8 @@ CREATE TABLE `barangs` (
 --
 
 INSERT INTO `barangs` (`id`, `jenis_barang`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'padat', '2022-03-20 23:51:08', '2022-03-20 23:51:08', NULL),
-(2, 'cair', '2022-03-20 23:51:08', '2022-03-20 23:51:08', NULL);
+('3c57553a-8954-43cd-836b-b5a000fa4162', 'cair', '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL),
+('e4709fec-91b7-4665-a842-67da35e2515a', 'padat', '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -638,6 +633,45 @@ INSERT INTO `cities` (`id`, `prov_id`, `name`, `created_at`, `updated_at`) VALUE
 (473, 34, 'SORONG', NULL, NULL),
 (474, 34, 'TELUK WONDAMA', NULL, NULL),
 (475, 34, 'TELUK BINTUNI', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_affiliators`
+--
+
+CREATE TABLE `data_affiliators` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `affiliator_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `whatsapp` int(11) NOT NULL,
+  `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto_npwp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_vendors`
+--
+
+CREATE TABLE `data_vendors` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `vendor_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `whatsapp` int(11) NOT NULL,
+  `nama_driver` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nopol_driver` int(11) NOT NULL,
+  `coverage_area` bigint(20) UNSIGNED NOT NULL,
+  `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto_unit` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `foto_sim` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `foto_stnk` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -7681,7 +7715,7 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `informasis` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenis_informasi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `isi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -7722,13 +7756,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2022_03_09_071934_create_districts_table', 1),
 (15, '2022_03_09_071950_create_subdistricts_table', 1),
 (16, '2022_03_09_072345_create_pricelists_table', 1),
-(17, '2022_03_09_074630_add_wilayah_to_users', 1),
-(18, '2022_03_09_074727_add_wilayah_to_affiliators', 1),
-(19, '2022_03_09_074752_add_wilayah_to_agents', 1),
-(20, '2022_03_09_074818_add_wilayah_to_vendors', 1),
-(21, '2022_03_09_074839_create_trackings_table', 1),
-(22, '2022_03_09_074855_create_informasis_table', 1),
-(23, '2022_03_09_074912_create_pesanans_table', 1);
+(17, '2022_03_09_074839_create_trackings_table', 1),
+(18, '2022_03_09_074855_create_informasis_table', 1),
+(19, '2022_03_09_074912_create_pesanans_table', 1),
+(20, '2022_03_23_041657_create_data_vendors_table', 1),
+(21, '2022_03_23_041726_create_data_affiliators_table', 1),
+(22, '2022_03_23_061422_create_resis_table', 1);
 
 -- --------------------------------------------------------
 
@@ -7749,7 +7782,7 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `pembayarans` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `endpoint` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenis_pembayaran` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `harga` bigint(20) NOT NULL,
@@ -7766,12 +7799,12 @@ CREATE TABLE `pembayarans` (
 --
 
 INSERT INTO `pembayarans` (`id`, `endpoint`, `jenis_pembayaran`, `harga`, `eksternal_id`, `nama`, `invoice`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'mojokerto', 'BCA', 100, '145', 'kang xendit', '1451241', '2022-03-20 23:51:09', '2022-03-20 23:51:09', NULL),
-(2, 'semarang', 'BNI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-20 23:51:09', '2022-03-20 23:51:09', NULL),
-(3, 'mojokerto', 'BRI', 100, '145', 'kang xendit', '1451241', '2022-03-20 23:51:09', '2022-03-20 23:51:09', NULL),
-(4, 'semarang', 'BSI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-20 23:51:09', '2022-03-20 23:51:09', NULL),
-(5, 'mojokerto', 'CIMB', 100, '145', 'kang xendit', '1451241', '2022-03-20 23:51:09', '2022-03-20 23:51:09', NULL),
-(6, 'semarang', 'MANDIRI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-20 23:51:09', '2022-03-20 23:51:09', NULL);
+('13c86b9e-30eb-48e2-a5e2-6625c3d25196', 'mojokerto', 'BCA', 100, '145', 'kang xendit', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL),
+('31e5f7c2-c610-4bc0-9782-3c71207e938f', 'semarang', 'BSI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL),
+('3237c9b5-39c6-4e83-b0ad-67ef8c820882', 'semarang', 'BNI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL),
+('a22be06a-d265-41d6-a340-3cbc987ec1de', 'semarang', 'MANDIRI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL),
+('d30b7699-b8fe-457b-babe-96c86806a07a', 'mojokerto', 'BRI', 100, '145', 'kang xendit', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL),
+('d8f9cdbf-9857-449c-8951-bcc31f4b3ca2', 'mojokerto', 'CIMB', 100, '145', 'kang xendit', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -7798,24 +7831,24 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 CREATE TABLE `pesanans` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name_id` bigint(20) UNSIGNED NOT NULL,
-  `username_id` bigint(20) UNSIGNED NOT NULL,
-  `origin` bigint(20) UNSIGNED NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `origin` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `penjemputan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `destinasi` bigint(20) UNSIGNED NOT NULL,
+  `destinasi` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pengantaran` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `jenis_barang_id` bigint(20) UNSIGNED NOT NULL,
-  `berat_id` bigint(20) UNSIGNED NOT NULL,
-  `dimensi_id` bigint(20) UNSIGNED NOT NULL,
-  `harga_id` bigint(20) UNSIGNED NOT NULL,
+  `jenis_barang_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `berat_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dimensi_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `harga_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `note` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `packing` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gambar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `voucher_id` bigint(20) UNSIGNED NOT NULL,
-  `jenis_pembayaran_id` bigint(20) UNSIGNED NOT NULL,
-  `invoice_id` bigint(20) UNSIGNED NOT NULL,
-  `nomer_resi_id` bigint(20) UNSIGNED NOT NULL,
+  `voucher_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenis_pembayaran_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `invoice_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nomer_resi_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -7828,7 +7861,7 @@ CREATE TABLE `pesanans` (
 --
 
 CREATE TABLE `pricelists` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `origin` bigint(20) UNSIGNED NOT NULL,
   `destinasi` bigint(20) UNSIGNED NOT NULL,
   `berat` bigint(20) NOT NULL,
@@ -7844,650 +7877,650 @@ CREATE TABLE `pricelists` (
 --
 
 INSERT INTO `pricelists` (`id`, `origin`, `destinasi`, `berat`, `dimensi`, `harga`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 156, 198, 100, 0, 625000, NULL, NULL, NULL),
-(2, 156, 198, 150, 0, 679800, NULL, NULL, NULL),
-(3, 156, 198, 200, 0, 736700, NULL, NULL, NULL),
-(4, 156, 198, 250, 0, 795700, NULL, NULL, NULL),
-(5, 156, 198, 300, 0, 856800, NULL, NULL, NULL),
-(6, 156, 198, 350, 0, 920000, NULL, NULL, NULL),
-(7, 156, 198, 400, 0, 985300, NULL, NULL, NULL),
-(8, 156, 198, 450, 0, 1052700, NULL, NULL, NULL),
-(9, 156, 198, 500, 0, 1122200, NULL, NULL, NULL),
-(10, 156, 198, 550, 0, 1193800, NULL, NULL, NULL),
-(11, 156, 198, 600, 0, 1267500, NULL, NULL, NULL),
-(12, 156, 198, 650, 0, 1343300, NULL, NULL, NULL),
-(13, 156, 198, 700, 0, 1421200, NULL, NULL, NULL),
-(14, 156, 198, 750, 0, 1501200, NULL, NULL, NULL),
-(15, 156, 198, 800, 0, 1583300, NULL, NULL, NULL),
-(16, 156, 198, 850, 0, 1667500, NULL, NULL, NULL),
-(17, 156, 198, 900, 0, 1753800, NULL, NULL, NULL),
-(18, 156, 198, 950, 0, 1842200, NULL, NULL, NULL),
-(19, 156, 198, 1000, 0, 1925000, NULL, NULL, NULL),
-(20, 156, 198, 0, 1, 795700, NULL, NULL, NULL),
-(21, 156, 198, 0, 2, 1122200, NULL, NULL, NULL),
-(22, 156, 198, 0, 3, 1501200, NULL, NULL, NULL),
-(23, 156, 198, 0, 4, 1925000, NULL, NULL, NULL),
-(24, 156, 208, 100, 0, 750000, NULL, NULL, NULL),
-(25, 156, 208, 150, 0, 824000, NULL, NULL, NULL),
-(26, 156, 208, 200, 0, 901000, NULL, NULL, NULL),
-(27, 156, 208, 250, 0, 981000, NULL, NULL, NULL),
-(28, 156, 208, 300, 0, 1064000, NULL, NULL, NULL),
-(29, 156, 208, 350, 0, 1150000, NULL, NULL, NULL),
-(30, 156, 208, 400, 0, 1239000, NULL, NULL, NULL),
-(31, 156, 208, 450, 0, 1331000, NULL, NULL, NULL),
-(32, 156, 208, 500, 0, 1426000, NULL, NULL, NULL),
-(33, 156, 208, 550, 0, 1524000, NULL, NULL, NULL),
-(34, 156, 208, 600, 0, 1625000, NULL, NULL, NULL),
-(35, 156, 208, 650, 0, 1729000, NULL, NULL, NULL),
-(36, 156, 208, 700, 0, 1836000, NULL, NULL, NULL),
-(37, 156, 208, 750, 0, 1946000, NULL, NULL, NULL),
-(38, 156, 208, 800, 0, 2059000, NULL, NULL, NULL),
-(39, 156, 208, 850, 0, 2175000, NULL, NULL, NULL),
-(40, 156, 208, 900, 0, 2294000, NULL, NULL, NULL),
-(41, 156, 208, 950, 0, 2416000, NULL, NULL, NULL),
-(42, 156, 208, 1000, 0, 2541000, NULL, NULL, NULL),
-(43, 156, 208, 0, 1, 981000, NULL, NULL, NULL),
-(44, 156, 208, 0, 2, 1426000, NULL, NULL, NULL),
-(45, 156, 208, 0, 3, 1946000, NULL, NULL, NULL),
-(46, 156, 208, 0, 4, 2541000, NULL, NULL, NULL),
-(47, 156, 212, 100, 0, 750000, NULL, NULL, NULL),
-(48, 156, 212, 150, 0, 824000, NULL, NULL, NULL),
-(49, 156, 212, 200, 0, 901000, NULL, NULL, NULL),
-(50, 156, 212, 250, 0, 981000, NULL, NULL, NULL),
-(51, 156, 212, 300, 0, 1064000, NULL, NULL, NULL),
-(52, 156, 212, 350, 0, 1150000, NULL, NULL, NULL),
-(53, 156, 212, 400, 0, 1239000, NULL, NULL, NULL),
-(54, 156, 212, 450, 0, 1331000, NULL, NULL, NULL),
-(55, 156, 212, 500, 0, 1426000, NULL, NULL, NULL),
-(56, 156, 212, 550, 0, 1524000, NULL, NULL, NULL),
-(57, 156, 212, 600, 0, 1625000, NULL, NULL, NULL),
-(58, 156, 212, 650, 0, 1729000, NULL, NULL, NULL),
-(59, 156, 212, 700, 0, 1836000, NULL, NULL, NULL),
-(60, 156, 212, 750, 0, 1946000, NULL, NULL, NULL),
-(61, 156, 212, 800, 0, 2059000, NULL, NULL, NULL),
-(62, 156, 212, 850, 0, 2175000, NULL, NULL, NULL),
-(63, 156, 212, 900, 0, 2294000, NULL, NULL, NULL),
-(64, 156, 212, 950, 0, 2416000, NULL, NULL, NULL),
-(65, 156, 212, 1000, 0, 2541000, NULL, NULL, NULL),
-(66, 156, 212, 0, 1, 981000, NULL, NULL, NULL),
-(67, 156, 212, 0, 2, 1426000, NULL, NULL, NULL),
-(68, 156, 212, 0, 3, 1946000, NULL, NULL, NULL),
-(69, 156, 212, 0, 4, 2541000, NULL, NULL, NULL),
-(70, 156, 221, 100, 0, 750000, NULL, NULL, NULL),
-(71, 156, 221, 150, 0, 828750, NULL, NULL, NULL),
-(72, 156, 221, 200, 0, 910000, NULL, NULL, NULL),
-(73, 156, 221, 250, 0, 993750, NULL, NULL, NULL),
-(74, 156, 221, 300, 0, 1080000, NULL, NULL, NULL),
-(75, 156, 221, 350, 0, 1168750, NULL, NULL, NULL),
-(76, 156, 221, 400, 0, 1260000, NULL, NULL, NULL),
-(77, 156, 221, 450, 0, 1353750, NULL, NULL, NULL),
-(78, 156, 221, 500, 0, 1450000, NULL, NULL, NULL),
-(79, 156, 221, 550, 0, 1548750, NULL, NULL, NULL),
-(80, 156, 221, 600, 0, 1650000, NULL, NULL, NULL),
-(81, 156, 221, 650, 0, 1753750, NULL, NULL, NULL),
-(82, 156, 221, 700, 0, 1860000, NULL, NULL, NULL),
-(83, 156, 221, 750, 0, 1968750, NULL, NULL, NULL),
-(84, 156, 221, 800, 0, 2080000, NULL, NULL, NULL),
-(85, 156, 221, 850, 0, 2193750, NULL, NULL, NULL),
-(86, 156, 221, 900, 0, 2310000, NULL, NULL, NULL),
-(87, 156, 221, 950, 0, 2428750, NULL, NULL, NULL),
-(88, 156, 221, 1000, 0, 2550000, NULL, NULL, NULL),
-(89, 156, 221, 0, 1, 1467968, NULL, NULL, NULL),
-(90, 156, 221, 0, 2, 1450000, NULL, NULL, NULL),
-(91, 156, 221, 0, 3, 1968750, NULL, NULL, NULL),
-(92, 156, 221, 0, 4, 2550000, NULL, NULL, NULL),
-(93, 156, 260, 100, 0, 1250000, NULL, NULL, NULL),
-(94, 156, 260, 150, 0, 1415250, NULL, NULL, NULL),
-(95, 156, 260, 200, 0, 1586000, NULL, NULL, NULL),
-(96, 156, 260, 250, 0, 1762250, NULL, NULL, NULL),
-(97, 156, 260, 300, 0, 1944000, NULL, NULL, NULL),
-(98, 156, 260, 350, 0, 2131250, NULL, NULL, NULL),
-(99, 156, 260, 400, 0, 2324000, NULL, NULL, NULL),
-(100, 156, 260, 450, 0, 2522250, NULL, NULL, NULL),
-(101, 156, 260, 500, 0, 2726000, NULL, NULL, NULL),
-(102, 156, 260, 550, 0, 2935250, NULL, NULL, NULL),
-(103, 156, 260, 600, 0, 3150000, NULL, NULL, NULL),
-(104, 156, 260, 650, 0, 3370250, NULL, NULL, NULL),
-(105, 156, 260, 700, 0, 3596000, NULL, NULL, NULL),
-(106, 156, 260, 750, 0, 3827250, NULL, NULL, NULL),
-(107, 156, 260, 800, 0, 4064000, NULL, NULL, NULL),
-(108, 156, 260, 850, 0, 4306250, NULL, NULL, NULL),
-(109, 156, 260, 900, 0, 4554000, NULL, NULL, NULL),
-(110, 156, 260, 950, 0, 4807250, NULL, NULL, NULL),
-(111, 156, 260, 1000, 0, 5066000, NULL, NULL, NULL),
-(112, 156, 260, 0, 1, 1762250, NULL, NULL, NULL),
-(113, 156, 260, 0, 2, 2726000, NULL, NULL, NULL),
-(114, 156, 260, 0, 3, 3827250, NULL, NULL, NULL),
-(115, 156, 260, 0, 4, 5066000, NULL, NULL, NULL),
-(116, 198, 156, 100, 0, 625000, NULL, NULL, NULL),
-(117, 198, 156, 150, 0, 679800, NULL, NULL, NULL),
-(118, 198, 156, 200, 0, 736700, NULL, NULL, NULL),
-(119, 198, 156, 250, 0, 795700, NULL, NULL, NULL),
-(120, 198, 156, 300, 0, 856800, NULL, NULL, NULL),
-(121, 198, 156, 350, 0, 920000, NULL, NULL, NULL),
-(122, 198, 156, 400, 0, 985300, NULL, NULL, NULL),
-(123, 198, 156, 450, 0, 1052700, NULL, NULL, NULL),
-(124, 198, 156, 500, 0, 1122200, NULL, NULL, NULL),
-(125, 198, 156, 550, 0, 1193800, NULL, NULL, NULL),
-(126, 198, 156, 600, 0, 1267500, NULL, NULL, NULL),
-(127, 198, 156, 650, 0, 1343300, NULL, NULL, NULL),
-(128, 198, 156, 700, 0, 1421200, NULL, NULL, NULL),
-(129, 198, 156, 750, 0, 1501200, NULL, NULL, NULL),
-(130, 198, 156, 800, 0, 1583300, NULL, NULL, NULL),
-(131, 198, 156, 850, 0, 1667500, NULL, NULL, NULL),
-(132, 198, 156, 900, 0, 1753800, NULL, NULL, NULL),
-(133, 198, 156, 950, 0, 1842200, NULL, NULL, NULL),
-(134, 198, 156, 1000, 0, 1925000, NULL, NULL, NULL),
-(135, 198, 156, 0, 1, 795700, NULL, NULL, NULL),
-(136, 198, 156, 0, 2, 1122200, NULL, NULL, NULL),
-(137, 198, 156, 0, 3, 1501200, NULL, NULL, NULL),
-(138, 198, 156, 0, 4, 1925000, NULL, NULL, NULL),
-(139, 198, 208, 100, 0, 375000, NULL, NULL, NULL),
-(140, 198, 208, 150, 0, 395250, NULL, NULL, NULL),
-(141, 198, 208, 200, 0, 415500, NULL, NULL, NULL),
-(142, 198, 208, 250, 0, 435750, NULL, NULL, NULL),
-(143, 198, 208, 300, 0, 456000, NULL, NULL, NULL),
-(144, 198, 208, 350, 0, 476250, NULL, NULL, NULL),
-(145, 198, 208, 400, 0, 496500, NULL, NULL, NULL),
-(146, 198, 208, 450, 0, 516750, NULL, NULL, NULL),
-(147, 198, 208, 500, 0, 537000, NULL, NULL, NULL),
-(148, 198, 208, 550, 0, 557250, NULL, NULL, NULL),
-(149, 198, 208, 600, 0, 577500, NULL, NULL, NULL),
-(150, 198, 208, 650, 0, 597750, NULL, NULL, NULL),
-(151, 198, 208, 700, 0, 618000, NULL, NULL, NULL),
-(152, 198, 208, 750, 0, 638250, NULL, NULL, NULL),
-(153, 198, 208, 800, 0, 658500, NULL, NULL, NULL),
-(154, 198, 208, 850, 0, 678750, NULL, NULL, NULL),
-(155, 198, 208, 900, 0, 699000, NULL, NULL, NULL),
-(156, 198, 208, 950, 0, 719250, NULL, NULL, NULL),
-(157, 198, 208, 1000, 0, 739500, NULL, NULL, NULL),
-(158, 198, 208, 0, 1, 435750, NULL, NULL, NULL),
-(159, 198, 208, 0, 2, 537000, NULL, NULL, NULL),
-(160, 198, 208, 0, 3, 638250, NULL, NULL, NULL),
-(161, 198, 208, 0, 4, 739500, NULL, NULL, NULL),
-(162, 198, 212, 100, 0, 375, NULL, NULL, NULL),
-(163, 198, 212, 150, 0, 395, NULL, NULL, NULL),
-(164, 198, 212, 200, 0, 416, NULL, NULL, NULL),
-(165, 198, 212, 250, 0, 436, NULL, NULL, NULL),
-(166, 198, 212, 300, 0, 456, NULL, NULL, NULL),
-(167, 198, 212, 350, 0, 476, NULL, NULL, NULL),
-(168, 198, 212, 400, 0, 497, NULL, NULL, NULL),
-(169, 198, 212, 450, 0, 517, NULL, NULL, NULL),
-(170, 198, 212, 500, 0, 537, NULL, NULL, NULL),
-(171, 198, 212, 550, 0, 557, NULL, NULL, NULL),
-(172, 198, 212, 600, 0, 578, NULL, NULL, NULL),
-(173, 198, 212, 650, 0, 598, NULL, NULL, NULL),
-(174, 198, 212, 700, 0, 618, NULL, NULL, NULL),
-(175, 198, 212, 750, 0, 638, NULL, NULL, NULL),
-(176, 198, 212, 800, 0, 659, NULL, NULL, NULL),
-(177, 198, 212, 850, 0, 679, NULL, NULL, NULL),
-(178, 198, 212, 900, 0, 699, NULL, NULL, NULL),
-(179, 198, 212, 950, 0, 719, NULL, NULL, NULL),
-(180, 198, 212, 1000, 0, 740, NULL, NULL, NULL),
-(181, 198, 212, 0, 1, 436, NULL, NULL, NULL),
-(182, 198, 212, 0, 2, 537, NULL, NULL, NULL),
-(183, 198, 212, 0, 3, 638, NULL, NULL, NULL),
-(184, 198, 212, 0, 4, 740, NULL, NULL, NULL),
-(185, 198, 221, 100, 0, 500000, NULL, NULL, NULL),
-(186, 198, 221, 150, 0, 551050, NULL, NULL, NULL),
-(187, 198, 221, 200, 0, 604200, NULL, NULL, NULL),
-(188, 198, 221, 250, 0, 659450, NULL, NULL, NULL),
-(189, 198, 221, 300, 0, 716800, NULL, NULL, NULL),
-(190, 198, 221, 350, 0, 776250, NULL, NULL, NULL),
-(191, 198, 221, 400, 0, 837800, NULL, NULL, NULL),
-(192, 198, 221, 450, 0, 901450, NULL, NULL, NULL),
-(193, 198, 221, 500, 0, 967200, NULL, NULL, NULL),
-(194, 198, 221, 550, 0, 1035050, NULL, NULL, NULL),
-(195, 198, 221, 600, 0, 1105000, NULL, NULL, NULL),
-(196, 198, 221, 650, 0, 1177050, NULL, NULL, NULL),
-(197, 198, 221, 700, 0, 1251200, NULL, NULL, NULL),
-(198, 198, 221, 750, 0, 1327450, NULL, NULL, NULL),
-(199, 198, 221, 800, 0, 1405800, NULL, NULL, NULL),
-(200, 198, 221, 850, 0, 1486250, NULL, NULL, NULL),
-(201, 198, 221, 900, 0, 1568800, NULL, NULL, NULL),
-(202, 198, 221, 950, 0, 1653450, NULL, NULL, NULL),
-(203, 198, 221, 1000, 0, 1740200, NULL, NULL, NULL),
-(204, 198, 221, 0, 1, 1467968, NULL, NULL, NULL),
-(205, 198, 221, 0, 2, 967200, NULL, NULL, NULL),
-(206, 198, 221, 0, 3, 1327450, NULL, NULL, NULL),
-(207, 198, 221, 0, 4, 1740200, NULL, NULL, NULL),
-(208, 198, 260, 100, 0, 750000, NULL, NULL, NULL),
-(209, 198, 260, 150, 0, 892500, NULL, NULL, NULL),
-(210, 198, 260, 200, 0, 1040000, NULL, NULL, NULL),
-(211, 198, 260, 250, 0, 1192500, NULL, NULL, NULL),
-(212, 198, 260, 300, 0, 1350000, NULL, NULL, NULL),
-(213, 198, 260, 350, 0, 1512500, NULL, NULL, NULL),
-(214, 198, 260, 400, 0, 1680000, NULL, NULL, NULL),
-(215, 198, 260, 450, 0, 1852500, NULL, NULL, NULL),
-(216, 198, 260, 500, 0, 2030000, NULL, NULL, NULL),
-(217, 198, 260, 550, 0, 2168250, NULL, NULL, NULL),
-(218, 198, 260, 600, 0, 2310000, NULL, NULL, NULL),
-(219, 198, 260, 650, 0, 2455250, NULL, NULL, NULL),
-(220, 198, 260, 700, 0, 2604000, NULL, NULL, NULL),
-(221, 198, 260, 750, 0, 2756250, NULL, NULL, NULL),
-(222, 198, 260, 800, 0, 2912000, NULL, NULL, NULL),
-(223, 198, 260, 850, 0, 3071250, NULL, NULL, NULL),
-(224, 198, 260, 900, 0, 3234000, NULL, NULL, NULL),
-(225, 198, 260, 950, 0, 3400250, NULL, NULL, NULL),
-(226, 198, 260, 1000, 0, 3570000, NULL, NULL, NULL),
-(227, 198, 260, 0, 1, 1192500, NULL, NULL, NULL),
-(228, 198, 260, 0, 2, 2030000, NULL, NULL, NULL),
-(229, 198, 260, 0, 3, 2756250, NULL, NULL, NULL),
-(230, 198, 260, 0, 4, 3570000, NULL, NULL, NULL),
-(231, 208, 156, 100, 0, 750000, NULL, NULL, NULL),
-(232, 208, 156, 150, 0, 830437, NULL, NULL, NULL),
-(233, 208, 156, 200, 0, 914250, NULL, NULL, NULL),
-(234, 208, 156, 250, 0, 1001437, NULL, NULL, NULL),
-(235, 208, 156, 300, 0, 1092000, NULL, NULL, NULL),
-(236, 208, 156, 350, 0, 1185937, NULL, NULL, NULL),
-(237, 208, 156, 400, 0, 1283250, NULL, NULL, NULL),
-(238, 208, 156, 450, 0, 1383937, NULL, NULL, NULL),
-(239, 208, 156, 500, 0, 1488000, NULL, NULL, NULL),
-(240, 208, 156, 550, 0, 1595437, NULL, NULL, NULL),
-(241, 208, 156, 600, 0, 1706250, NULL, NULL, NULL),
-(242, 208, 156, 650, 0, 1820437, NULL, NULL, NULL),
-(243, 208, 156, 700, 0, 1938000, NULL, NULL, NULL),
-(244, 208, 156, 750, 0, 2058937, NULL, NULL, NULL),
-(245, 208, 156, 800, 0, 2183250, NULL, NULL, NULL),
-(246, 208, 156, 850, 0, 2310937, NULL, NULL, NULL),
-(247, 208, 156, 900, 0, 2442000, NULL, NULL, NULL),
-(248, 208, 156, 950, 0, 2576437, NULL, NULL, NULL),
-(249, 208, 156, 1000, 0, 2714250, NULL, NULL, NULL),
-(250, 208, 156, 0, 1, 1001437, NULL, NULL, NULL),
-(251, 208, 156, 0, 2, 1488000, NULL, NULL, NULL),
-(252, 208, 156, 0, 3, 2058937, NULL, NULL, NULL),
-(253, 208, 156, 0, 4, 2714250, NULL, NULL, NULL),
-(254, 208, 198, 100, 0, 375000, NULL, NULL, NULL),
-(255, 208, 198, 150, 0, 395250, NULL, NULL, NULL),
-(256, 208, 198, 200, 0, 415500, NULL, NULL, NULL),
-(257, 208, 198, 250, 0, 435750, NULL, NULL, NULL),
-(258, 208, 198, 300, 0, 456000, NULL, NULL, NULL),
-(259, 208, 198, 350, 0, 476250, NULL, NULL, NULL),
-(260, 208, 198, 400, 0, 496500, NULL, NULL, NULL),
-(261, 208, 198, 450, 0, 516750, NULL, NULL, NULL),
-(262, 208, 198, 500, 0, 537000, NULL, NULL, NULL),
-(263, 208, 198, 550, 0, 557250, NULL, NULL, NULL),
-(264, 208, 198, 600, 0, 577500, NULL, NULL, NULL),
-(265, 208, 198, 650, 0, 597750, NULL, NULL, NULL),
-(266, 208, 198, 700, 0, 618000, NULL, NULL, NULL),
-(267, 208, 198, 750, 0, 638250, NULL, NULL, NULL),
-(268, 208, 198, 800, 0, 658500, NULL, NULL, NULL),
-(269, 208, 198, 850, 0, 678750, NULL, NULL, NULL),
-(270, 208, 198, 900, 0, 699000, NULL, NULL, NULL),
-(271, 208, 198, 950, 0, 719250, NULL, NULL, NULL),
-(272, 208, 198, 1000, 0, 739500, NULL, NULL, NULL),
-(273, 208, 198, 0, 1, 435750, NULL, NULL, NULL),
-(274, 208, 198, 0, 2, 537000, NULL, NULL, NULL),
-(275, 208, 198, 0, 3, 638250, NULL, NULL, NULL),
-(276, 208, 198, 0, 4, 739500, NULL, NULL, NULL),
-(277, 208, 221, 100, 0, 625000, NULL, NULL, NULL),
-(278, 208, 221, 150, 0, 679800, NULL, NULL, NULL),
-(279, 208, 221, 200, 0, 736700, NULL, NULL, NULL),
-(280, 208, 221, 250, 0, 795700, NULL, NULL, NULL),
-(281, 208, 221, 300, 0, 856800, NULL, NULL, NULL),
-(282, 208, 221, 350, 0, 920000, NULL, NULL, NULL),
-(283, 208, 221, 400, 0, 985300, NULL, NULL, NULL),
-(284, 208, 221, 450, 0, 1052700, NULL, NULL, NULL),
-(285, 208, 221, 500, 0, 1122200, NULL, NULL, NULL),
-(286, 208, 221, 550, 0, 1193800, NULL, NULL, NULL),
-(287, 208, 221, 600, 0, 1267500, NULL, NULL, NULL),
-(288, 208, 221, 650, 0, 1343300, NULL, NULL, NULL),
-(289, 208, 221, 700, 0, 1421200, NULL, NULL, NULL),
-(290, 208, 221, 750, 0, 1501200, NULL, NULL, NULL),
-(291, 208, 221, 800, 0, 1583300, NULL, NULL, NULL),
-(292, 208, 221, 850, 0, 1667500, NULL, NULL, NULL),
-(293, 208, 221, 900, 0, 1753800, NULL, NULL, NULL),
-(294, 208, 221, 950, 0, 1842200, NULL, NULL, NULL),
-(295, 208, 221, 1000, 0, 1932700, NULL, NULL, NULL),
-(296, 208, 221, 0, 1, 1467968, NULL, NULL, NULL),
-(297, 208, 221, 0, 2, 1122200, NULL, NULL, NULL),
-(298, 208, 221, 0, 3, 1501200, NULL, NULL, NULL),
-(299, 208, 221, 0, 4, 1932700, NULL, NULL, NULL),
-(300, 208, 260, 100, 0, 750000, NULL, NULL, NULL),
-(301, 208, 260, 150, 0, 892500, NULL, NULL, NULL),
-(302, 208, 260, 200, 0, 1040000, NULL, NULL, NULL),
-(303, 208, 260, 250, 0, 1192500, NULL, NULL, NULL),
-(304, 208, 260, 300, 0, 1350000, NULL, NULL, NULL),
-(305, 208, 260, 350, 0, 1512500, NULL, NULL, NULL),
-(306, 208, 260, 400, 0, 1680000, NULL, NULL, NULL),
-(307, 208, 260, 450, 0, 1852500, NULL, NULL, NULL),
-(308, 208, 260, 500, 0, 2030000, NULL, NULL, NULL),
-(309, 208, 260, 550, 0, 2168250, NULL, NULL, NULL),
-(310, 208, 260, 600, 0, 2310000, NULL, NULL, NULL),
-(311, 208, 260, 650, 0, 2455250, NULL, NULL, NULL),
-(312, 208, 260, 700, 0, 2604000, NULL, NULL, NULL),
-(313, 208, 260, 750, 0, 2756250, NULL, NULL, NULL),
-(314, 208, 260, 800, 0, 2912000, NULL, NULL, NULL),
-(315, 208, 260, 850, 0, 3071250, NULL, NULL, NULL),
-(316, 208, 260, 900, 0, 3234000, NULL, NULL, NULL),
-(317, 208, 260, 950, 0, 3400250, NULL, NULL, NULL),
-(318, 208, 260, 1000, 0, 3570000, NULL, NULL, NULL),
-(319, 208, 260, 0, 1, 1192500, NULL, NULL, NULL),
-(320, 208, 260, 0, 2, 2030000, NULL, NULL, NULL),
-(321, 208, 260, 0, 3, 2756250, NULL, NULL, NULL),
-(322, 208, 260, 0, 4, 3570000, NULL, NULL, NULL),
-(323, 212, 156, 100, 0, 750000, NULL, NULL, NULL),
-(324, 212, 156, 150, 0, 830437, NULL, NULL, NULL),
-(325, 212, 156, 200, 0, 914250, NULL, NULL, NULL),
-(326, 212, 156, 250, 0, 1001437, NULL, NULL, NULL),
-(327, 212, 156, 300, 0, 1092000, NULL, NULL, NULL),
-(328, 212, 156, 350, 0, 1185937, NULL, NULL, NULL),
-(329, 212, 156, 400, 0, 1283250, NULL, NULL, NULL),
-(330, 212, 156, 450, 0, 1383937, NULL, NULL, NULL),
-(331, 212, 156, 500, 0, 1488000, NULL, NULL, NULL),
-(332, 212, 156, 550, 0, 1595437, NULL, NULL, NULL),
-(333, 212, 156, 600, 0, 1706250, NULL, NULL, NULL),
-(334, 212, 156, 650, 0, 1820437, NULL, NULL, NULL),
-(335, 212, 156, 700, 0, 1938000, NULL, NULL, NULL),
-(336, 212, 156, 750, 0, 2058937, NULL, NULL, NULL),
-(337, 212, 156, 800, 0, 2183250, NULL, NULL, NULL),
-(338, 212, 156, 850, 0, 2310937, NULL, NULL, NULL),
-(339, 212, 156, 900, 0, 2442000, NULL, NULL, NULL),
-(340, 212, 156, 950, 0, 2576437, NULL, NULL, NULL),
-(341, 212, 156, 1000, 0, 2714250, NULL, NULL, NULL),
-(342, 212, 156, 0, 1, 1001437, NULL, NULL, NULL),
-(343, 212, 156, 0, 2, 1488000, NULL, NULL, NULL),
-(344, 212, 156, 0, 3, 2058937, NULL, NULL, NULL),
-(345, 212, 156, 0, 4, 2714250, NULL, NULL, NULL),
-(346, 212, 198, 100, 0, 375000, NULL, NULL, NULL),
-(347, 212, 198, 150, 0, 395250, NULL, NULL, NULL),
-(348, 212, 198, 200, 0, 415500, NULL, NULL, NULL),
-(349, 212, 198, 250, 0, 435750, NULL, NULL, NULL),
-(350, 212, 198, 300, 0, 456000, NULL, NULL, NULL),
-(351, 212, 198, 350, 0, 476250, NULL, NULL, NULL),
-(352, 212, 198, 400, 0, 496500, NULL, NULL, NULL),
-(353, 212, 198, 450, 0, 516750, NULL, NULL, NULL),
-(354, 212, 198, 500, 0, 537000, NULL, NULL, NULL),
-(355, 212, 198, 550, 0, 557250, NULL, NULL, NULL),
-(356, 212, 198, 600, 0, 577500, NULL, NULL, NULL),
-(357, 212, 198, 650, 0, 597750, NULL, NULL, NULL),
-(358, 212, 198, 700, 0, 618000, NULL, NULL, NULL),
-(359, 212, 198, 750, 0, 638250, NULL, NULL, NULL),
-(360, 212, 198, 800, 0, 658500, NULL, NULL, NULL),
-(361, 212, 198, 850, 0, 678750, NULL, NULL, NULL),
-(362, 212, 198, 900, 0, 699000, NULL, NULL, NULL),
-(363, 212, 198, 950, 0, 719250, NULL, NULL, NULL),
-(364, 212, 198, 1000, 0, 739500, NULL, NULL, NULL),
-(365, 212, 198, 0, 1, 435750, NULL, NULL, NULL),
-(366, 212, 198, 0, 2, 537000, NULL, NULL, NULL),
-(367, 212, 198, 0, 3, 638250, NULL, NULL, NULL),
-(368, 212, 198, 0, 4, 739500, NULL, NULL, NULL),
-(369, 212, 221, 100, 0, 625000, NULL, NULL, NULL),
-(370, 212, 221, 150, 0, 679800, NULL, NULL, NULL),
-(371, 212, 221, 200, 0, 736700, NULL, NULL, NULL),
-(372, 212, 221, 250, 0, 795700, NULL, NULL, NULL),
-(373, 212, 221, 300, 0, 856800, NULL, NULL, NULL),
-(374, 212, 221, 350, 0, 920000, NULL, NULL, NULL),
-(375, 212, 221, 400, 0, 985300, NULL, NULL, NULL),
-(376, 212, 221, 450, 0, 1052700, NULL, NULL, NULL),
-(377, 212, 221, 500, 0, 1122200, NULL, NULL, NULL),
-(378, 212, 221, 550, 0, 1193800, NULL, NULL, NULL),
-(379, 212, 221, 600, 0, 1267500, NULL, NULL, NULL),
-(380, 212, 221, 650, 0, 1343300, NULL, NULL, NULL),
-(381, 212, 221, 700, 0, 1421200, NULL, NULL, NULL),
-(382, 212, 221, 750, 0, 1501200, NULL, NULL, NULL),
-(383, 212, 221, 800, 0, 1583300, NULL, NULL, NULL),
-(384, 212, 221, 850, 0, 1667500, NULL, NULL, NULL),
-(385, 212, 221, 900, 0, 1753800, NULL, NULL, NULL),
-(386, 212, 221, 950, 0, 1842200, NULL, NULL, NULL),
-(387, 212, 221, 1000, 0, 1932700, NULL, NULL, NULL),
-(388, 212, 221, 0, 1, 1467968, NULL, NULL, NULL),
-(389, 212, 221, 0, 2, 1122200, NULL, NULL, NULL),
-(390, 212, 221, 0, 3, 1501200, NULL, NULL, NULL),
-(391, 212, 221, 0, 4, 1932700, NULL, NULL, NULL),
-(392, 212, 260, 100, 0, 750000, NULL, NULL, NULL),
-(393, 212, 260, 150, 0, 892500, NULL, NULL, NULL),
-(394, 212, 260, 200, 0, 1040000, NULL, NULL, NULL),
-(395, 212, 260, 250, 0, 1192500, NULL, NULL, NULL),
-(396, 212, 260, 300, 0, 1350000, NULL, NULL, NULL),
-(397, 212, 260, 350, 0, 1512500, NULL, NULL, NULL),
-(398, 212, 260, 400, 0, 1680000, NULL, NULL, NULL),
-(399, 212, 260, 450, 0, 1852500, NULL, NULL, NULL),
-(400, 212, 260, 500, 0, 2030000, NULL, NULL, NULL),
-(401, 212, 260, 550, 0, 2168250, NULL, NULL, NULL),
-(402, 212, 260, 600, 0, 2310000, NULL, NULL, NULL),
-(403, 212, 260, 650, 0, 2455250, NULL, NULL, NULL),
-(404, 212, 260, 700, 0, 2604000, NULL, NULL, NULL),
-(405, 212, 260, 750, 0, 2756250, NULL, NULL, NULL),
-(406, 212, 260, 800, 0, 2912000, NULL, NULL, NULL),
-(407, 212, 260, 850, 0, 3071250, NULL, NULL, NULL),
-(408, 212, 260, 900, 0, 3234000, NULL, NULL, NULL),
-(409, 212, 260, 950, 0, 3400250, NULL, NULL, NULL),
-(410, 212, 260, 1000, 0, 3570000, NULL, NULL, NULL),
-(411, 212, 260, 0, 1, 1192500, NULL, NULL, NULL),
-(412, 212, 260, 0, 2, 2030000, NULL, NULL, NULL),
-(413, 212, 260, 0, 3, 2756250, NULL, NULL, NULL),
-(414, 212, 260, 0, 4, 3570000, NULL, NULL, NULL),
-(415, 221, 156, 100, 0, 750000, NULL, NULL, NULL),
-(416, 221, 156, 150, 0, 828750, NULL, NULL, NULL),
-(417, 221, 156, 200, 0, 910000, NULL, NULL, NULL),
-(418, 221, 156, 250, 0, 993750, NULL, NULL, NULL),
-(419, 221, 156, 300, 0, 1080000, NULL, NULL, NULL),
-(420, 221, 156, 350, 0, 1168750, NULL, NULL, NULL),
-(421, 221, 156, 400, 0, 1260000, NULL, NULL, NULL),
-(422, 221, 156, 450, 0, 1353750, NULL, NULL, NULL),
-(423, 221, 156, 500, 0, 1450000, NULL, NULL, NULL),
-(424, 221, 156, 550, 0, 1548750, NULL, NULL, NULL),
-(425, 221, 156, 600, 0, 1650000, NULL, NULL, NULL),
-(426, 221, 156, 650, 0, 1753750, NULL, NULL, NULL),
-(427, 221, 156, 700, 0, 1860000, NULL, NULL, NULL),
-(428, 221, 156, 750, 0, 1968750, NULL, NULL, NULL),
-(429, 221, 156, 800, 0, 2080000, NULL, NULL, NULL),
-(430, 221, 156, 850, 0, 2193750, NULL, NULL, NULL),
-(431, 221, 156, 900, 0, 2310000, NULL, NULL, NULL),
-(432, 221, 156, 950, 0, 2428750, NULL, NULL, NULL),
-(433, 221, 156, 1000, 0, 2550000, NULL, NULL, NULL),
-(434, 221, 156, 0, 1, 1467968, NULL, NULL, NULL),
-(435, 221, 156, 0, 2, 1450000, NULL, NULL, NULL),
-(436, 221, 156, 0, 3, 1968750, NULL, NULL, NULL),
-(437, 221, 156, 0, 4, 2550000, NULL, NULL, NULL),
-(438, 221, 198, 100, 0, 500000, NULL, NULL, NULL),
-(439, 221, 198, 150, 0, 551050, NULL, NULL, NULL),
-(440, 221, 198, 200, 0, 604200, NULL, NULL, NULL),
-(441, 221, 198, 250, 0, 659450, NULL, NULL, NULL),
-(442, 221, 198, 300, 0, 716800, NULL, NULL, NULL),
-(443, 221, 198, 350, 0, 776250, NULL, NULL, NULL),
-(444, 221, 198, 400, 0, 837800, NULL, NULL, NULL),
-(445, 221, 198, 450, 0, 901450, NULL, NULL, NULL),
-(446, 221, 198, 500, 0, 967200, NULL, NULL, NULL),
-(447, 221, 198, 550, 0, 1035050, NULL, NULL, NULL),
-(448, 221, 198, 600, 0, 1105000, NULL, NULL, NULL),
-(449, 221, 198, 650, 0, 1177050, NULL, NULL, NULL),
-(450, 221, 198, 700, 0, 1251200, NULL, NULL, NULL),
-(451, 221, 198, 750, 0, 1327450, NULL, NULL, NULL),
-(452, 221, 198, 800, 0, 1405800, NULL, NULL, NULL),
-(453, 221, 198, 850, 0, 1486250, NULL, NULL, NULL),
-(454, 221, 198, 900, 0, 1568800, NULL, NULL, NULL),
-(455, 221, 198, 950, 0, 1653450, NULL, NULL, NULL),
-(456, 221, 198, 1000, 0, 1740200, NULL, NULL, NULL),
-(457, 221, 198, 0, 1, 659450, NULL, NULL, NULL),
-(458, 221, 198, 0, 2, 967200, NULL, NULL, NULL),
-(459, 221, 198, 0, 3, 1327450, NULL, NULL, NULL),
-(460, 221, 198, 0, 4, 1740200, NULL, NULL, NULL),
-(461, 221, 208, 100, 0, 625000, NULL, NULL, NULL),
-(462, 221, 208, 150, 0, 679800, NULL, NULL, NULL),
-(463, 221, 208, 200, 0, 736700, NULL, NULL, NULL),
-(464, 221, 208, 250, 0, 795700, NULL, NULL, NULL),
-(465, 221, 208, 300, 0, 856800, NULL, NULL, NULL),
-(466, 221, 208, 350, 0, 920000, NULL, NULL, NULL),
-(467, 221, 208, 400, 0, 985300, NULL, NULL, NULL),
-(468, 221, 208, 450, 0, 1052700, NULL, NULL, NULL),
-(469, 221, 208, 500, 0, 1122200, NULL, NULL, NULL),
-(470, 221, 208, 550, 0, 1193800, NULL, NULL, NULL),
-(471, 221, 208, 600, 0, 1267500, NULL, NULL, NULL),
-(472, 221, 208, 650, 0, 1343300, NULL, NULL, NULL),
-(473, 221, 208, 700, 0, 1421200, NULL, NULL, NULL),
-(474, 221, 208, 750, 0, 1501200, NULL, NULL, NULL),
-(475, 221, 208, 800, 0, 1583300, NULL, NULL, NULL),
-(476, 221, 208, 850, 0, 1667500, NULL, NULL, NULL),
-(477, 221, 208, 900, 0, 1753800, NULL, NULL, NULL),
-(478, 221, 208, 950, 0, 1842200, NULL, NULL, NULL),
-(479, 221, 208, 1000, 0, 1932700, NULL, NULL, NULL),
-(480, 221, 208, 0, 1, 795700, NULL, NULL, NULL),
-(481, 221, 208, 0, 2, 1122200, NULL, NULL, NULL),
-(482, 221, 208, 0, 3, 1501200, NULL, NULL, NULL),
-(483, 221, 208, 0, 4, 1932700, NULL, NULL, NULL),
-(484, 221, 212, 100, 0, 625000, NULL, NULL, NULL),
-(485, 221, 212, 150, 0, 679800, NULL, NULL, NULL),
-(486, 221, 212, 200, 0, 736700, NULL, NULL, NULL),
-(487, 221, 212, 250, 0, 795700, NULL, NULL, NULL),
-(488, 221, 212, 300, 0, 856800, NULL, NULL, NULL),
-(489, 221, 212, 350, 0, 920000, NULL, NULL, NULL),
-(490, 221, 212, 400, 0, 985300, NULL, NULL, NULL),
-(491, 221, 212, 450, 0, 1052700, NULL, NULL, NULL),
-(492, 221, 212, 500, 0, 1122200, NULL, NULL, NULL),
-(493, 221, 212, 550, 0, 1193800, NULL, NULL, NULL),
-(494, 221, 212, 600, 0, 1267500, NULL, NULL, NULL),
-(495, 221, 212, 650, 0, 1343300, NULL, NULL, NULL),
-(496, 221, 212, 700, 0, 1421200, NULL, NULL, NULL),
-(497, 221, 212, 750, 0, 1501200, NULL, NULL, NULL),
-(498, 221, 212, 800, 0, 1583300, NULL, NULL, NULL),
-(499, 221, 212, 850, 0, 1667500, NULL, NULL, NULL),
-(500, 221, 212, 900, 0, 1753800, NULL, NULL, NULL),
-(501, 221, 212, 950, 0, 1842200, NULL, NULL, NULL),
-(502, 221, 212, 1000, 0, 1932700, NULL, NULL, NULL),
-(503, 221, 212, 0, 1, 795700, NULL, NULL, NULL),
-(504, 221, 212, 0, 2, 1122200, NULL, NULL, NULL),
-(505, 221, 212, 0, 3, 1501200, NULL, NULL, NULL),
-(506, 221, 212, 0, 4, 1932700, NULL, NULL, NULL),
-(507, 221, 260, 100, 0, 625000, NULL, NULL, NULL),
-(508, 221, 260, 150, 0, 707625, NULL, NULL, NULL),
-(509, 221, 260, 200, 0, 793000, NULL, NULL, NULL),
-(510, 221, 260, 250, 0, 881125, NULL, NULL, NULL),
-(511, 221, 260, 300, 0, 972000, NULL, NULL, NULL),
-(512, 221, 260, 350, 0, 1065625, NULL, NULL, NULL),
-(513, 221, 260, 400, 0, 1162000, NULL, NULL, NULL),
-(514, 221, 260, 450, 0, 1261125, NULL, NULL, NULL),
-(515, 221, 260, 500, 0, 1363000, NULL, NULL, NULL),
-(516, 221, 260, 550, 0, 1467625, NULL, NULL, NULL),
-(517, 221, 260, 600, 0, 1575000, NULL, NULL, NULL),
-(518, 221, 260, 650, 0, 1685125, NULL, NULL, NULL),
-(519, 221, 260, 700, 0, 1798000, NULL, NULL, NULL),
-(520, 221, 260, 750, 0, 1913625, NULL, NULL, NULL),
-(521, 221, 260, 800, 0, 2032000, NULL, NULL, NULL),
-(522, 221, 260, 850, 0, 2153125, NULL, NULL, NULL),
-(523, 221, 260, 900, 0, 2277000, NULL, NULL, NULL),
-(524, 221, 260, 950, 0, 2403625, NULL, NULL, NULL),
-(525, 221, 260, 1000, 0, 2533000, NULL, NULL, NULL),
-(526, 221, 260, 0, 1, 881125, NULL, NULL, NULL),
-(527, 221, 260, 0, 2, 1363000, NULL, NULL, NULL),
-(528, 221, 260, 0, 3, 1913625, NULL, NULL, NULL),
-(529, 221, 260, 0, 4, 2533000, NULL, NULL, NULL),
-(530, 260, 156, 100, 0, 1250000, NULL, NULL, NULL),
-(531, 260, 156, 150, 0, 1415250, NULL, NULL, NULL),
-(532, 260, 156, 200, 0, 1586000, NULL, NULL, NULL),
-(533, 260, 156, 250, 0, 1762250, NULL, NULL, NULL),
-(534, 260, 156, 300, 0, 1944000, NULL, NULL, NULL),
-(535, 260, 156, 350, 0, 2131250, NULL, NULL, NULL),
-(536, 260, 156, 400, 0, 2324000, NULL, NULL, NULL),
-(537, 260, 156, 450, 0, 2522250, NULL, NULL, NULL),
-(538, 260, 156, 500, 0, 2726000, NULL, NULL, NULL),
-(539, 260, 156, 550, 0, 2935250, NULL, NULL, NULL),
-(540, 260, 156, 600, 0, 3150000, NULL, NULL, NULL),
-(541, 260, 156, 650, 0, 3370250, NULL, NULL, NULL),
-(542, 260, 156, 700, 0, 3596000, NULL, NULL, NULL),
-(543, 260, 156, 750, 0, 3827250, NULL, NULL, NULL),
-(544, 260, 156, 800, 0, 4064000, NULL, NULL, NULL),
-(545, 260, 156, 850, 0, 4306250, NULL, NULL, NULL),
-(546, 260, 156, 900, 0, 4554000, NULL, NULL, NULL),
-(547, 260, 156, 950, 0, 4807250, NULL, NULL, NULL),
-(548, 260, 156, 1000, 0, 5066000, NULL, NULL, NULL),
-(549, 260, 156, 0, 1, 1762250, NULL, NULL, NULL),
-(550, 260, 156, 0, 2, 2726000, NULL, NULL, NULL),
-(551, 260, 156, 0, 3, 3827250, NULL, NULL, NULL),
-(552, 260, 156, 0, 4, 5066000, NULL, NULL, NULL),
-(553, 260, 198, 100, 0, 750000, NULL, NULL, NULL),
-(554, 260, 198, 150, 0, 892500, NULL, NULL, NULL),
-(555, 260, 198, 200, 0, 1040000, NULL, NULL, NULL),
-(556, 260, 198, 250, 0, 1192500, NULL, NULL, NULL),
-(557, 260, 198, 300, 0, 1350000, NULL, NULL, NULL),
-(558, 260, 198, 350, 0, 1512500, NULL, NULL, NULL),
-(559, 260, 198, 400, 0, 1680000, NULL, NULL, NULL),
-(560, 260, 198, 450, 0, 1852500, NULL, NULL, NULL),
-(561, 260, 198, 500, 0, 2030000, NULL, NULL, NULL),
-(562, 260, 198, 550, 0, 2168250, NULL, NULL, NULL),
-(563, 260, 198, 600, 0, 2310000, NULL, NULL, NULL),
-(564, 260, 198, 650, 0, 2455250, NULL, NULL, NULL),
-(565, 260, 198, 700, 0, 2604000, NULL, NULL, NULL),
-(566, 260, 198, 750, 0, 2756250, NULL, NULL, NULL),
-(567, 260, 198, 800, 0, 2912000, NULL, NULL, NULL),
-(568, 260, 198, 850, 0, 3071250, NULL, NULL, NULL),
-(569, 260, 198, 900, 0, 3234000, NULL, NULL, NULL),
-(570, 260, 198, 950, 0, 3400250, NULL, NULL, NULL),
-(571, 260, 198, 1000, 0, 3570000, NULL, NULL, NULL),
-(572, 260, 198, 0, 1, 1192500, NULL, NULL, NULL),
-(573, 260, 198, 0, 2, 2030000, NULL, NULL, NULL),
-(574, 260, 198, 0, 3, 2756250, NULL, NULL, NULL),
-(575, 260, 198, 0, 4, 3570000, NULL, NULL, NULL),
-(576, 260, 208, 100, 0, 750000, NULL, NULL, NULL),
-(577, 260, 208, 150, 0, 892500, NULL, NULL, NULL),
-(578, 260, 208, 200, 0, 1040000, NULL, NULL, NULL),
-(579, 260, 208, 250, 0, 1192500, NULL, NULL, NULL),
-(580, 260, 208, 300, 0, 1350000, NULL, NULL, NULL),
-(581, 260, 208, 350, 0, 1512500, NULL, NULL, NULL),
-(582, 260, 208, 400, 0, 1680000, NULL, NULL, NULL),
-(583, 260, 208, 450, 0, 1852500, NULL, NULL, NULL),
-(584, 260, 208, 500, 0, 2030000, NULL, NULL, NULL),
-(585, 260, 208, 550, 0, 2168250, NULL, NULL, NULL),
-(586, 260, 208, 600, 0, 2310000, NULL, NULL, NULL),
-(587, 260, 208, 650, 0, 2455250, NULL, NULL, NULL),
-(588, 260, 208, 700, 0, 2604000, NULL, NULL, NULL),
-(589, 260, 208, 750, 0, 2756250, NULL, NULL, NULL),
-(590, 260, 208, 800, 0, 2912000, NULL, NULL, NULL),
-(591, 260, 208, 850, 0, 3071250, NULL, NULL, NULL),
-(592, 260, 208, 900, 0, 3234000, NULL, NULL, NULL),
-(593, 260, 208, 950, 0, 3400250, NULL, NULL, NULL),
-(594, 260, 208, 1000, 0, 3570000, NULL, NULL, NULL),
-(595, 260, 208, 0, 1, 1192500, NULL, NULL, NULL),
-(596, 260, 208, 0, 2, 2030000, NULL, NULL, NULL),
-(597, 260, 208, 0, 3, 2756250, NULL, NULL, NULL),
-(598, 260, 208, 0, 4, 3570000, NULL, NULL, NULL),
-(599, 260, 212, 100, 0, 750000, NULL, NULL, NULL),
-(600, 260, 212, 150, 0, 892500, NULL, NULL, NULL),
-(601, 260, 212, 200, 0, 1040000, NULL, NULL, NULL),
-(602, 260, 212, 250, 0, 1192500, NULL, NULL, NULL),
-(603, 260, 212, 300, 0, 1350000, NULL, NULL, NULL),
-(604, 260, 212, 350, 0, 1512500, NULL, NULL, NULL),
-(605, 260, 212, 400, 0, 1680000, NULL, NULL, NULL),
-(606, 260, 212, 450, 0, 1852500, NULL, NULL, NULL),
-(607, 260, 212, 500, 0, 2030000, NULL, NULL, NULL),
-(608, 260, 212, 550, 0, 2168250, NULL, NULL, NULL),
-(609, 260, 212, 600, 0, 2310000, NULL, NULL, NULL),
-(610, 260, 212, 650, 0, 2455250, NULL, NULL, NULL),
-(611, 260, 212, 700, 0, 2604000, NULL, NULL, NULL),
-(612, 260, 212, 750, 0, 2756250, NULL, NULL, NULL),
-(613, 260, 212, 800, 0, 2912000, NULL, NULL, NULL),
-(614, 260, 212, 850, 0, 3071250, NULL, NULL, NULL),
-(615, 260, 212, 900, 0, 3234000, NULL, NULL, NULL),
-(616, 260, 212, 950, 0, 3400250, NULL, NULL, NULL),
-(617, 260, 212, 1000, 0, 3570000, NULL, NULL, NULL),
-(618, 260, 212, 0, 1, 1192500, NULL, NULL, NULL),
-(619, 260, 212, 0, 2, 2030000, NULL, NULL, NULL),
-(620, 260, 212, 0, 3, 2756250, NULL, NULL, NULL),
-(621, 260, 212, 0, 4, 3570000, NULL, NULL, NULL),
-(622, 260, 221, 100, 0, 625000, NULL, NULL, NULL),
-(623, 260, 221, 150, 0, 707625, NULL, NULL, NULL),
-(624, 260, 221, 200, 0, 793000, NULL, NULL, NULL),
-(625, 260, 221, 250, 0, 881125, NULL, NULL, NULL),
-(626, 260, 221, 300, 0, 972000, NULL, NULL, NULL),
-(627, 260, 221, 350, 0, 1065625, NULL, NULL, NULL),
-(628, 260, 221, 400, 0, 1162000, NULL, NULL, NULL),
-(629, 260, 221, 450, 0, 1261125, NULL, NULL, NULL),
-(630, 260, 221, 500, 0, 1363000, NULL, NULL, NULL),
-(631, 260, 221, 550, 0, 1467625, NULL, NULL, NULL),
-(632, 260, 221, 600, 0, 1575000, NULL, NULL, NULL),
-(633, 260, 221, 650, 0, 1685125, NULL, NULL, NULL),
-(634, 260, 221, 700, 0, 1798000, NULL, NULL, NULL),
-(635, 260, 221, 750, 0, 1913625, NULL, NULL, NULL),
-(636, 260, 221, 800, 0, 2032000, NULL, NULL, NULL),
-(637, 260, 221, 850, 0, 2153125, NULL, NULL, NULL),
-(638, 260, 221, 900, 0, 2277000, NULL, NULL, NULL),
-(639, 260, 221, 950, 0, 2403625, NULL, NULL, NULL),
-(640, 260, 221, 1000, 0, 2533000, NULL, NULL, NULL),
-(641, 260, 221, 0, 1, 1467968, NULL, NULL, NULL),
-(642, 260, 221, 0, 2, 1363000, NULL, NULL, NULL),
-(643, 260, 221, 0, 3, 1913625, NULL, NULL, NULL),
-(644, 260, 221, 0, 4, 2533000, NULL, NULL, NULL);
+('1', 156, 198, 100, 0, 625000, NULL, NULL, NULL),
+('10', 156, 198, 550, 0, 1193800, NULL, NULL, NULL),
+('100', 156, 260, 450, 0, 2522250, NULL, NULL, NULL),
+('101', 156, 260, 500, 0, 2726000, NULL, NULL, NULL),
+('102', 156, 260, 550, 0, 2935250, NULL, NULL, NULL),
+('103', 156, 260, 600, 0, 3150000, NULL, NULL, NULL),
+('104', 156, 260, 650, 0, 3370250, NULL, NULL, NULL),
+('105', 156, 260, 700, 0, 3596000, NULL, NULL, NULL),
+('106', 156, 260, 750, 0, 3827250, NULL, NULL, NULL),
+('107', 156, 260, 800, 0, 4064000, NULL, NULL, NULL),
+('108', 156, 260, 850, 0, 4306250, NULL, NULL, NULL),
+('109', 156, 260, 900, 0, 4554000, NULL, NULL, NULL),
+('11', 156, 198, 600, 0, 1267500, NULL, NULL, NULL),
+('110', 156, 260, 950, 0, 4807250, NULL, NULL, NULL),
+('111', 156, 260, 1000, 0, 5066000, NULL, NULL, NULL),
+('112', 156, 260, 0, 1, 1762250, NULL, NULL, NULL),
+('113', 156, 260, 0, 2, 2726000, NULL, NULL, NULL),
+('114', 156, 260, 0, 3, 3827250, NULL, NULL, NULL),
+('115', 156, 260, 0, 4, 5066000, NULL, NULL, NULL),
+('116', 198, 156, 100, 0, 625000, NULL, NULL, NULL),
+('117', 198, 156, 150, 0, 679800, NULL, NULL, NULL),
+('118', 198, 156, 200, 0, 736700, NULL, NULL, NULL),
+('119', 198, 156, 250, 0, 795700, NULL, NULL, NULL),
+('12', 156, 198, 650, 0, 1343300, NULL, NULL, NULL),
+('120', 198, 156, 300, 0, 856800, NULL, NULL, NULL),
+('121', 198, 156, 350, 0, 920000, NULL, NULL, NULL),
+('122', 198, 156, 400, 0, 985300, NULL, NULL, NULL),
+('123', 198, 156, 450, 0, 1052700, NULL, NULL, NULL),
+('124', 198, 156, 500, 0, 1122200, NULL, NULL, NULL),
+('125', 198, 156, 550, 0, 1193800, NULL, NULL, NULL),
+('126', 198, 156, 600, 0, 1267500, NULL, NULL, NULL),
+('127', 198, 156, 650, 0, 1343300, NULL, NULL, NULL),
+('128', 198, 156, 700, 0, 1421200, NULL, NULL, NULL),
+('129', 198, 156, 750, 0, 1501200, NULL, NULL, NULL),
+('13', 156, 198, 700, 0, 1421200, NULL, NULL, NULL),
+('130', 198, 156, 800, 0, 1583300, NULL, NULL, NULL),
+('131', 198, 156, 850, 0, 1667500, NULL, NULL, NULL),
+('132', 198, 156, 900, 0, 1753800, NULL, NULL, NULL),
+('133', 198, 156, 950, 0, 1842200, NULL, NULL, NULL),
+('134', 198, 156, 1000, 0, 1925000, NULL, NULL, NULL),
+('135', 198, 156, 0, 1, 795700, NULL, NULL, NULL),
+('136', 198, 156, 0, 2, 1122200, NULL, NULL, NULL),
+('137', 198, 156, 0, 3, 1501200, NULL, NULL, NULL),
+('138', 198, 156, 0, 4, 1925000, NULL, NULL, NULL),
+('139', 198, 208, 100, 0, 375000, NULL, NULL, NULL),
+('14', 156, 198, 750, 0, 1501200, NULL, NULL, NULL),
+('140', 198, 208, 150, 0, 395250, NULL, NULL, NULL),
+('141', 198, 208, 200, 0, 415500, NULL, NULL, NULL),
+('142', 198, 208, 250, 0, 435750, NULL, NULL, NULL),
+('143', 198, 208, 300, 0, 456000, NULL, NULL, NULL),
+('144', 198, 208, 350, 0, 476250, NULL, NULL, NULL),
+('145', 198, 208, 400, 0, 496500, NULL, NULL, NULL),
+('146', 198, 208, 450, 0, 516750, NULL, NULL, NULL),
+('147', 198, 208, 500, 0, 537000, NULL, NULL, NULL),
+('148', 198, 208, 550, 0, 557250, NULL, NULL, NULL),
+('149', 198, 208, 600, 0, 577500, NULL, NULL, NULL),
+('15', 156, 198, 800, 0, 1583300, NULL, NULL, NULL),
+('150', 198, 208, 650, 0, 597750, NULL, NULL, NULL),
+('151', 198, 208, 700, 0, 618000, NULL, NULL, NULL),
+('152', 198, 208, 750, 0, 638250, NULL, NULL, NULL),
+('153', 198, 208, 800, 0, 658500, NULL, NULL, NULL),
+('154', 198, 208, 850, 0, 678750, NULL, NULL, NULL),
+('155', 198, 208, 900, 0, 699000, NULL, NULL, NULL),
+('156', 198, 208, 950, 0, 719250, NULL, NULL, NULL),
+('157', 198, 208, 1000, 0, 739500, NULL, NULL, NULL),
+('158', 198, 208, 0, 1, 435750, NULL, NULL, NULL),
+('159', 198, 208, 0, 2, 537000, NULL, NULL, NULL),
+('16', 156, 198, 850, 0, 1667500, NULL, NULL, NULL),
+('160', 198, 208, 0, 3, 638250, NULL, NULL, NULL),
+('161', 198, 208, 0, 4, 739500, NULL, NULL, NULL),
+('162', 198, 212, 100, 0, 375, NULL, NULL, NULL),
+('163', 198, 212, 150, 0, 395, NULL, NULL, NULL),
+('164', 198, 212, 200, 0, 416, NULL, NULL, NULL),
+('165', 198, 212, 250, 0, 436, NULL, NULL, NULL),
+('166', 198, 212, 300, 0, 456, NULL, NULL, NULL),
+('167', 198, 212, 350, 0, 476, NULL, NULL, NULL),
+('168', 198, 212, 400, 0, 497, NULL, NULL, NULL),
+('169', 198, 212, 450, 0, 517, NULL, NULL, NULL),
+('17', 156, 198, 900, 0, 1753800, NULL, NULL, NULL),
+('170', 198, 212, 500, 0, 537, NULL, NULL, NULL),
+('171', 198, 212, 550, 0, 557, NULL, NULL, NULL),
+('172', 198, 212, 600, 0, 578, NULL, NULL, NULL),
+('173', 198, 212, 650, 0, 598, NULL, NULL, NULL),
+('174', 198, 212, 700, 0, 618, NULL, NULL, NULL),
+('175', 198, 212, 750, 0, 638, NULL, NULL, NULL),
+('176', 198, 212, 800, 0, 659, NULL, NULL, NULL),
+('177', 198, 212, 850, 0, 679, NULL, NULL, NULL),
+('178', 198, 212, 900, 0, 699, NULL, NULL, NULL),
+('179', 198, 212, 950, 0, 719, NULL, NULL, NULL),
+('18', 156, 198, 950, 0, 1842200, NULL, NULL, NULL),
+('180', 198, 212, 1000, 0, 740, NULL, NULL, NULL),
+('181', 198, 212, 0, 1, 436, NULL, NULL, NULL),
+('182', 198, 212, 0, 2, 537, NULL, NULL, NULL),
+('183', 198, 212, 0, 3, 638, NULL, NULL, NULL),
+('184', 198, 212, 0, 4, 740, NULL, NULL, NULL),
+('185', 198, 221, 100, 0, 500000, NULL, NULL, NULL),
+('186', 198, 221, 150, 0, 551050, NULL, NULL, NULL),
+('187', 198, 221, 200, 0, 604200, NULL, NULL, NULL),
+('188', 198, 221, 250, 0, 659450, NULL, NULL, NULL),
+('189', 198, 221, 300, 0, 716800, NULL, NULL, NULL),
+('19', 156, 198, 1000, 0, 1925000, NULL, NULL, NULL),
+('190', 198, 221, 350, 0, 776250, NULL, NULL, NULL),
+('191', 198, 221, 400, 0, 837800, NULL, NULL, NULL),
+('192', 198, 221, 450, 0, 901450, NULL, NULL, NULL),
+('193', 198, 221, 500, 0, 967200, NULL, NULL, NULL),
+('194', 198, 221, 550, 0, 1035050, NULL, NULL, NULL),
+('195', 198, 221, 600, 0, 1105000, NULL, NULL, NULL),
+('196', 198, 221, 650, 0, 1177050, NULL, NULL, NULL),
+('197', 198, 221, 700, 0, 1251200, NULL, NULL, NULL),
+('198', 198, 221, 750, 0, 1327450, NULL, NULL, NULL),
+('199', 198, 221, 800, 0, 1405800, NULL, NULL, NULL),
+('2', 156, 198, 150, 0, 679800, NULL, NULL, NULL),
+('20', 156, 198, 0, 1, 795700, NULL, NULL, NULL),
+('200', 198, 221, 850, 0, 1486250, NULL, NULL, NULL),
+('201', 198, 221, 900, 0, 1568800, NULL, NULL, NULL),
+('202', 198, 221, 950, 0, 1653450, NULL, NULL, NULL),
+('203', 198, 221, 1000, 0, 1740200, NULL, NULL, NULL),
+('204', 198, 221, 0, 1, 1467968, NULL, NULL, NULL),
+('205', 198, 221, 0, 2, 967200, NULL, NULL, NULL),
+('206', 198, 221, 0, 3, 1327450, NULL, NULL, NULL),
+('207', 198, 221, 0, 4, 1740200, NULL, NULL, NULL),
+('208', 198, 260, 100, 0, 750000, NULL, NULL, NULL),
+('209', 198, 260, 150, 0, 892500, NULL, NULL, NULL),
+('21', 156, 198, 0, 2, 1122200, NULL, NULL, NULL),
+('210', 198, 260, 200, 0, 1040000, NULL, NULL, NULL),
+('211', 198, 260, 250, 0, 1192500, NULL, NULL, NULL),
+('212', 198, 260, 300, 0, 1350000, NULL, NULL, NULL),
+('213', 198, 260, 350, 0, 1512500, NULL, NULL, NULL),
+('214', 198, 260, 400, 0, 1680000, NULL, NULL, NULL),
+('215', 198, 260, 450, 0, 1852500, NULL, NULL, NULL),
+('216', 198, 260, 500, 0, 2030000, NULL, NULL, NULL),
+('217', 198, 260, 550, 0, 2168250, NULL, NULL, NULL),
+('218', 198, 260, 600, 0, 2310000, NULL, NULL, NULL),
+('219', 198, 260, 650, 0, 2455250, NULL, NULL, NULL),
+('22', 156, 198, 0, 3, 1501200, NULL, NULL, NULL),
+('220', 198, 260, 700, 0, 2604000, NULL, NULL, NULL),
+('221', 198, 260, 750, 0, 2756250, NULL, NULL, NULL),
+('222', 198, 260, 800, 0, 2912000, NULL, NULL, NULL),
+('223', 198, 260, 850, 0, 3071250, NULL, NULL, NULL),
+('224', 198, 260, 900, 0, 3234000, NULL, NULL, NULL),
+('225', 198, 260, 950, 0, 3400250, NULL, NULL, NULL),
+('226', 198, 260, 1000, 0, 3570000, NULL, NULL, NULL),
+('227', 198, 260, 0, 1, 1192500, NULL, NULL, NULL),
+('228', 198, 260, 0, 2, 2030000, NULL, NULL, NULL),
+('229', 198, 260, 0, 3, 2756250, NULL, NULL, NULL),
+('23', 156, 198, 0, 4, 1925000, NULL, NULL, NULL),
+('230', 198, 260, 0, 4, 3570000, NULL, NULL, NULL),
+('231', 208, 156, 100, 0, 750000, NULL, NULL, NULL),
+('232', 208, 156, 150, 0, 830437, NULL, NULL, NULL),
+('233', 208, 156, 200, 0, 914250, NULL, NULL, NULL),
+('234', 208, 156, 250, 0, 1001437, NULL, NULL, NULL),
+('235', 208, 156, 300, 0, 1092000, NULL, NULL, NULL),
+('236', 208, 156, 350, 0, 1185937, NULL, NULL, NULL),
+('237', 208, 156, 400, 0, 1283250, NULL, NULL, NULL),
+('238', 208, 156, 450, 0, 1383937, NULL, NULL, NULL),
+('239', 208, 156, 500, 0, 1488000, NULL, NULL, NULL),
+('24', 156, 208, 100, 0, 750000, NULL, NULL, NULL),
+('240', 208, 156, 550, 0, 1595437, NULL, NULL, NULL),
+('241', 208, 156, 600, 0, 1706250, NULL, NULL, NULL),
+('242', 208, 156, 650, 0, 1820437, NULL, NULL, NULL),
+('243', 208, 156, 700, 0, 1938000, NULL, NULL, NULL),
+('244', 208, 156, 750, 0, 2058937, NULL, NULL, NULL),
+('245', 208, 156, 800, 0, 2183250, NULL, NULL, NULL),
+('246', 208, 156, 850, 0, 2310937, NULL, NULL, NULL),
+('247', 208, 156, 900, 0, 2442000, NULL, NULL, NULL),
+('248', 208, 156, 950, 0, 2576437, NULL, NULL, NULL),
+('249', 208, 156, 1000, 0, 2714250, NULL, NULL, NULL),
+('25', 156, 208, 150, 0, 824000, NULL, NULL, NULL),
+('250', 208, 156, 0, 1, 1001437, NULL, NULL, NULL),
+('251', 208, 156, 0, 2, 1488000, NULL, NULL, NULL),
+('252', 208, 156, 0, 3, 2058937, NULL, NULL, NULL),
+('253', 208, 156, 0, 4, 2714250, NULL, NULL, NULL),
+('254', 208, 198, 100, 0, 375000, NULL, NULL, NULL),
+('255', 208, 198, 150, 0, 395250, NULL, NULL, NULL),
+('256', 208, 198, 200, 0, 415500, NULL, NULL, NULL),
+('257', 208, 198, 250, 0, 435750, NULL, NULL, NULL),
+('258', 208, 198, 300, 0, 456000, NULL, NULL, NULL),
+('259', 208, 198, 350, 0, 476250, NULL, NULL, NULL),
+('26', 156, 208, 200, 0, 901000, NULL, NULL, NULL),
+('260', 208, 198, 400, 0, 496500, NULL, NULL, NULL),
+('261', 208, 198, 450, 0, 516750, NULL, NULL, NULL),
+('262', 208, 198, 500, 0, 537000, NULL, NULL, NULL),
+('263', 208, 198, 550, 0, 557250, NULL, NULL, NULL),
+('264', 208, 198, 600, 0, 577500, NULL, NULL, NULL),
+('265', 208, 198, 650, 0, 597750, NULL, NULL, NULL),
+('266', 208, 198, 700, 0, 618000, NULL, NULL, NULL),
+('267', 208, 198, 750, 0, 638250, NULL, NULL, NULL),
+('268', 208, 198, 800, 0, 658500, NULL, NULL, NULL),
+('269', 208, 198, 850, 0, 678750, NULL, NULL, NULL),
+('27', 156, 208, 250, 0, 981000, NULL, NULL, NULL),
+('270', 208, 198, 900, 0, 699000, NULL, NULL, NULL),
+('271', 208, 198, 950, 0, 719250, NULL, NULL, NULL),
+('272', 208, 198, 1000, 0, 739500, NULL, NULL, NULL),
+('273', 208, 198, 0, 1, 435750, NULL, NULL, NULL),
+('274', 208, 198, 0, 2, 537000, NULL, NULL, NULL),
+('275', 208, 198, 0, 3, 638250, NULL, NULL, NULL),
+('276', 208, 198, 0, 4, 739500, NULL, NULL, NULL),
+('277', 208, 221, 100, 0, 625000, NULL, NULL, NULL),
+('278', 208, 221, 150, 0, 679800, NULL, NULL, NULL),
+('279', 208, 221, 200, 0, 736700, NULL, NULL, NULL),
+('28', 156, 208, 300, 0, 1064000, NULL, NULL, NULL),
+('280', 208, 221, 250, 0, 795700, NULL, NULL, NULL),
+('281', 208, 221, 300, 0, 856800, NULL, NULL, NULL),
+('282', 208, 221, 350, 0, 920000, NULL, NULL, NULL),
+('283', 208, 221, 400, 0, 985300, NULL, NULL, NULL),
+('284', 208, 221, 450, 0, 1052700, NULL, NULL, NULL),
+('285', 208, 221, 500, 0, 1122200, NULL, NULL, NULL),
+('286', 208, 221, 550, 0, 1193800, NULL, NULL, NULL),
+('287', 208, 221, 600, 0, 1267500, NULL, NULL, NULL),
+('288', 208, 221, 650, 0, 1343300, NULL, NULL, NULL),
+('289', 208, 221, 700, 0, 1421200, NULL, NULL, NULL),
+('29', 156, 208, 350, 0, 1150000, NULL, NULL, NULL),
+('290', 208, 221, 750, 0, 1501200, NULL, NULL, NULL),
+('291', 208, 221, 800, 0, 1583300, NULL, NULL, NULL),
+('292', 208, 221, 850, 0, 1667500, NULL, NULL, NULL),
+('293', 208, 221, 900, 0, 1753800, NULL, NULL, NULL),
+('294', 208, 221, 950, 0, 1842200, NULL, NULL, NULL),
+('295', 208, 221, 1000, 0, 1932700, NULL, NULL, NULL),
+('296', 208, 221, 0, 1, 1467968, NULL, NULL, NULL),
+('297', 208, 221, 0, 2, 1122200, NULL, NULL, NULL),
+('298', 208, 221, 0, 3, 1501200, NULL, NULL, NULL),
+('299', 208, 221, 0, 4, 1932700, NULL, NULL, NULL),
+('3', 156, 198, 200, 0, 736700, NULL, NULL, NULL),
+('30', 156, 208, 400, 0, 1239000, NULL, NULL, NULL),
+('300', 208, 260, 100, 0, 750000, NULL, NULL, NULL),
+('301', 208, 260, 150, 0, 892500, NULL, NULL, NULL),
+('302', 208, 260, 200, 0, 1040000, NULL, NULL, NULL),
+('303', 208, 260, 250, 0, 1192500, NULL, NULL, NULL),
+('304', 208, 260, 300, 0, 1350000, NULL, NULL, NULL),
+('305', 208, 260, 350, 0, 1512500, NULL, NULL, NULL),
+('306', 208, 260, 400, 0, 1680000, NULL, NULL, NULL),
+('307', 208, 260, 450, 0, 1852500, NULL, NULL, NULL),
+('308', 208, 260, 500, 0, 2030000, NULL, NULL, NULL),
+('309', 208, 260, 550, 0, 2168250, NULL, NULL, NULL),
+('31', 156, 208, 450, 0, 1331000, NULL, NULL, NULL),
+('310', 208, 260, 600, 0, 2310000, NULL, NULL, NULL),
+('311', 208, 260, 650, 0, 2455250, NULL, NULL, NULL),
+('312', 208, 260, 700, 0, 2604000, NULL, NULL, NULL),
+('313', 208, 260, 750, 0, 2756250, NULL, NULL, NULL),
+('314', 208, 260, 800, 0, 2912000, NULL, NULL, NULL),
+('315', 208, 260, 850, 0, 3071250, NULL, NULL, NULL),
+('316', 208, 260, 900, 0, 3234000, NULL, NULL, NULL),
+('317', 208, 260, 950, 0, 3400250, NULL, NULL, NULL),
+('318', 208, 260, 1000, 0, 3570000, NULL, NULL, NULL),
+('319', 208, 260, 0, 1, 1192500, NULL, NULL, NULL),
+('32', 156, 208, 500, 0, 1426000, NULL, NULL, NULL),
+('320', 208, 260, 0, 2, 2030000, NULL, NULL, NULL),
+('321', 208, 260, 0, 3, 2756250, NULL, NULL, NULL),
+('322', 208, 260, 0, 4, 3570000, NULL, NULL, NULL),
+('323', 212, 156, 100, 0, 750000, NULL, NULL, NULL),
+('324', 212, 156, 150, 0, 830437, NULL, NULL, NULL),
+('325', 212, 156, 200, 0, 914250, NULL, NULL, NULL),
+('326', 212, 156, 250, 0, 1001437, NULL, NULL, NULL),
+('327', 212, 156, 300, 0, 1092000, NULL, NULL, NULL),
+('328', 212, 156, 350, 0, 1185937, NULL, NULL, NULL),
+('329', 212, 156, 400, 0, 1283250, NULL, NULL, NULL),
+('33', 156, 208, 550, 0, 1524000, NULL, NULL, NULL),
+('330', 212, 156, 450, 0, 1383937, NULL, NULL, NULL),
+('331', 212, 156, 500, 0, 1488000, NULL, NULL, NULL),
+('332', 212, 156, 550, 0, 1595437, NULL, NULL, NULL),
+('333', 212, 156, 600, 0, 1706250, NULL, NULL, NULL),
+('334', 212, 156, 650, 0, 1820437, NULL, NULL, NULL),
+('335', 212, 156, 700, 0, 1938000, NULL, NULL, NULL),
+('336', 212, 156, 750, 0, 2058937, NULL, NULL, NULL),
+('337', 212, 156, 800, 0, 2183250, NULL, NULL, NULL),
+('338', 212, 156, 850, 0, 2310937, NULL, NULL, NULL),
+('339', 212, 156, 900, 0, 2442000, NULL, NULL, NULL),
+('34', 156, 208, 600, 0, 1625000, NULL, NULL, NULL),
+('340', 212, 156, 950, 0, 2576437, NULL, NULL, NULL),
+('341', 212, 156, 1000, 0, 2714250, NULL, NULL, NULL),
+('342', 212, 156, 0, 1, 1001437, NULL, NULL, NULL),
+('343', 212, 156, 0, 2, 1488000, NULL, NULL, NULL),
+('344', 212, 156, 0, 3, 2058937, NULL, NULL, NULL),
+('345', 212, 156, 0, 4, 2714250, NULL, NULL, NULL),
+('346', 212, 198, 100, 0, 375000, NULL, NULL, NULL),
+('347', 212, 198, 150, 0, 395250, NULL, NULL, NULL),
+('348', 212, 198, 200, 0, 415500, NULL, NULL, NULL),
+('349', 212, 198, 250, 0, 435750, NULL, NULL, NULL),
+('35', 156, 208, 650, 0, 1729000, NULL, NULL, NULL),
+('350', 212, 198, 300, 0, 456000, NULL, NULL, NULL),
+('351', 212, 198, 350, 0, 476250, NULL, NULL, NULL),
+('352', 212, 198, 400, 0, 496500, NULL, NULL, NULL),
+('353', 212, 198, 450, 0, 516750, NULL, NULL, NULL),
+('354', 212, 198, 500, 0, 537000, NULL, NULL, NULL),
+('355', 212, 198, 550, 0, 557250, NULL, NULL, NULL),
+('356', 212, 198, 600, 0, 577500, NULL, NULL, NULL),
+('357', 212, 198, 650, 0, 597750, NULL, NULL, NULL),
+('358', 212, 198, 700, 0, 618000, NULL, NULL, NULL),
+('359', 212, 198, 750, 0, 638250, NULL, NULL, NULL),
+('36', 156, 208, 700, 0, 1836000, NULL, NULL, NULL),
+('360', 212, 198, 800, 0, 658500, NULL, NULL, NULL),
+('361', 212, 198, 850, 0, 678750, NULL, NULL, NULL),
+('362', 212, 198, 900, 0, 699000, NULL, NULL, NULL),
+('363', 212, 198, 950, 0, 719250, NULL, NULL, NULL),
+('364', 212, 198, 1000, 0, 739500, NULL, NULL, NULL),
+('365', 212, 198, 0, 1, 435750, NULL, NULL, NULL),
+('366', 212, 198, 0, 2, 537000, NULL, NULL, NULL),
+('367', 212, 198, 0, 3, 638250, NULL, NULL, NULL),
+('368', 212, 198, 0, 4, 739500, NULL, NULL, NULL),
+('369', 212, 221, 100, 0, 625000, NULL, NULL, NULL),
+('37', 156, 208, 750, 0, 1946000, NULL, NULL, NULL),
+('370', 212, 221, 150, 0, 679800, NULL, NULL, NULL),
+('371', 212, 221, 200, 0, 736700, NULL, NULL, NULL),
+('372', 212, 221, 250, 0, 795700, NULL, NULL, NULL),
+('373', 212, 221, 300, 0, 856800, NULL, NULL, NULL),
+('374', 212, 221, 350, 0, 920000, NULL, NULL, NULL),
+('375', 212, 221, 400, 0, 985300, NULL, NULL, NULL),
+('376', 212, 221, 450, 0, 1052700, NULL, NULL, NULL),
+('377', 212, 221, 500, 0, 1122200, NULL, NULL, NULL),
+('378', 212, 221, 550, 0, 1193800, NULL, NULL, NULL),
+('379', 212, 221, 600, 0, 1267500, NULL, NULL, NULL),
+('38', 156, 208, 800, 0, 2059000, NULL, NULL, NULL),
+('380', 212, 221, 650, 0, 1343300, NULL, NULL, NULL),
+('381', 212, 221, 700, 0, 1421200, NULL, NULL, NULL),
+('382', 212, 221, 750, 0, 1501200, NULL, NULL, NULL),
+('383', 212, 221, 800, 0, 1583300, NULL, NULL, NULL),
+('384', 212, 221, 850, 0, 1667500, NULL, NULL, NULL),
+('385', 212, 221, 900, 0, 1753800, NULL, NULL, NULL),
+('386', 212, 221, 950, 0, 1842200, NULL, NULL, NULL),
+('387', 212, 221, 1000, 0, 1932700, NULL, NULL, NULL),
+('388', 212, 221, 0, 1, 1467968, NULL, NULL, NULL),
+('389', 212, 221, 0, 2, 1122200, NULL, NULL, NULL),
+('39', 156, 208, 850, 0, 2175000, NULL, NULL, NULL),
+('390', 212, 221, 0, 3, 1501200, NULL, NULL, NULL),
+('391', 212, 221, 0, 4, 1932700, NULL, NULL, NULL),
+('392', 212, 260, 100, 0, 750000, NULL, NULL, NULL),
+('393', 212, 260, 150, 0, 892500, NULL, NULL, NULL),
+('394', 212, 260, 200, 0, 1040000, NULL, NULL, NULL),
+('395', 212, 260, 250, 0, 1192500, NULL, NULL, NULL),
+('396', 212, 260, 300, 0, 1350000, NULL, NULL, NULL),
+('397', 212, 260, 350, 0, 1512500, NULL, NULL, NULL),
+('398', 212, 260, 400, 0, 1680000, NULL, NULL, NULL),
+('399', 212, 260, 450, 0, 1852500, NULL, NULL, NULL),
+('4', 156, 198, 250, 0, 795700, NULL, NULL, NULL),
+('40', 156, 208, 900, 0, 2294000, NULL, NULL, NULL),
+('400', 212, 260, 500, 0, 2030000, NULL, NULL, NULL),
+('401', 212, 260, 550, 0, 2168250, NULL, NULL, NULL),
+('402', 212, 260, 600, 0, 2310000, NULL, NULL, NULL),
+('403', 212, 260, 650, 0, 2455250, NULL, NULL, NULL),
+('404', 212, 260, 700, 0, 2604000, NULL, NULL, NULL),
+('405', 212, 260, 750, 0, 2756250, NULL, NULL, NULL),
+('406', 212, 260, 800, 0, 2912000, NULL, NULL, NULL),
+('407', 212, 260, 850, 0, 3071250, NULL, NULL, NULL),
+('408', 212, 260, 900, 0, 3234000, NULL, NULL, NULL),
+('409', 212, 260, 950, 0, 3400250, NULL, NULL, NULL),
+('41', 156, 208, 950, 0, 2416000, NULL, NULL, NULL),
+('410', 212, 260, 1000, 0, 3570000, NULL, NULL, NULL),
+('411', 212, 260, 0, 1, 1192500, NULL, NULL, NULL),
+('412', 212, 260, 0, 2, 2030000, NULL, NULL, NULL),
+('413', 212, 260, 0, 3, 2756250, NULL, NULL, NULL),
+('414', 212, 260, 0, 4, 3570000, NULL, NULL, NULL),
+('415', 221, 156, 100, 0, 750000, NULL, NULL, NULL),
+('416', 221, 156, 150, 0, 828750, NULL, NULL, NULL),
+('417', 221, 156, 200, 0, 910000, NULL, NULL, NULL),
+('418', 221, 156, 250, 0, 993750, NULL, NULL, NULL),
+('419', 221, 156, 300, 0, 1080000, NULL, NULL, NULL),
+('42', 156, 208, 1000, 0, 2541000, NULL, NULL, NULL),
+('420', 221, 156, 350, 0, 1168750, NULL, NULL, NULL),
+('421', 221, 156, 400, 0, 1260000, NULL, NULL, NULL),
+('422', 221, 156, 450, 0, 1353750, NULL, NULL, NULL),
+('423', 221, 156, 500, 0, 1450000, NULL, NULL, NULL),
+('424', 221, 156, 550, 0, 1548750, NULL, NULL, NULL),
+('425', 221, 156, 600, 0, 1650000, NULL, NULL, NULL),
+('426', 221, 156, 650, 0, 1753750, NULL, NULL, NULL),
+('427', 221, 156, 700, 0, 1860000, NULL, NULL, NULL),
+('428', 221, 156, 750, 0, 1968750, NULL, NULL, NULL),
+('429', 221, 156, 800, 0, 2080000, NULL, NULL, NULL),
+('43', 156, 208, 0, 1, 981000, NULL, NULL, NULL),
+('430', 221, 156, 850, 0, 2193750, NULL, NULL, NULL),
+('431', 221, 156, 900, 0, 2310000, NULL, NULL, NULL),
+('432', 221, 156, 950, 0, 2428750, NULL, NULL, NULL),
+('433', 221, 156, 1000, 0, 2550000, NULL, NULL, NULL),
+('434', 221, 156, 0, 1, 1467968, NULL, NULL, NULL),
+('435', 221, 156, 0, 2, 1450000, NULL, NULL, NULL),
+('436', 221, 156, 0, 3, 1968750, NULL, NULL, NULL),
+('437', 221, 156, 0, 4, 2550000, NULL, NULL, NULL),
+('438', 221, 198, 100, 0, 500000, NULL, NULL, NULL),
+('439', 221, 198, 150, 0, 551050, NULL, NULL, NULL),
+('44', 156, 208, 0, 2, 1426000, NULL, NULL, NULL),
+('440', 221, 198, 200, 0, 604200, NULL, NULL, NULL),
+('441', 221, 198, 250, 0, 659450, NULL, NULL, NULL),
+('442', 221, 198, 300, 0, 716800, NULL, NULL, NULL),
+('443', 221, 198, 350, 0, 776250, NULL, NULL, NULL),
+('444', 221, 198, 400, 0, 837800, NULL, NULL, NULL),
+('445', 221, 198, 450, 0, 901450, NULL, NULL, NULL),
+('446', 221, 198, 500, 0, 967200, NULL, NULL, NULL),
+('447', 221, 198, 550, 0, 1035050, NULL, NULL, NULL),
+('448', 221, 198, 600, 0, 1105000, NULL, NULL, NULL),
+('449', 221, 198, 650, 0, 1177050, NULL, NULL, NULL),
+('45', 156, 208, 0, 3, 1946000, NULL, NULL, NULL),
+('450', 221, 198, 700, 0, 1251200, NULL, NULL, NULL),
+('451', 221, 198, 750, 0, 1327450, NULL, NULL, NULL),
+('452', 221, 198, 800, 0, 1405800, NULL, NULL, NULL),
+('453', 221, 198, 850, 0, 1486250, NULL, NULL, NULL),
+('454', 221, 198, 900, 0, 1568800, NULL, NULL, NULL),
+('455', 221, 198, 950, 0, 1653450, NULL, NULL, NULL),
+('456', 221, 198, 1000, 0, 1740200, NULL, NULL, NULL),
+('457', 221, 198, 0, 1, 659450, NULL, NULL, NULL),
+('458', 221, 198, 0, 2, 967200, NULL, NULL, NULL),
+('459', 221, 198, 0, 3, 1327450, NULL, NULL, NULL),
+('46', 156, 208, 0, 4, 2541000, NULL, NULL, NULL),
+('460', 221, 198, 0, 4, 1740200, NULL, NULL, NULL),
+('461', 221, 208, 100, 0, 625000, NULL, NULL, NULL),
+('462', 221, 208, 150, 0, 679800, NULL, NULL, NULL),
+('463', 221, 208, 200, 0, 736700, NULL, NULL, NULL),
+('464', 221, 208, 250, 0, 795700, NULL, NULL, NULL),
+('465', 221, 208, 300, 0, 856800, NULL, NULL, NULL),
+('466', 221, 208, 350, 0, 920000, NULL, NULL, NULL),
+('467', 221, 208, 400, 0, 985300, NULL, NULL, NULL),
+('468', 221, 208, 450, 0, 1052700, NULL, NULL, NULL),
+('469', 221, 208, 500, 0, 1122200, NULL, NULL, NULL),
+('47', 156, 212, 100, 0, 750000, NULL, NULL, NULL),
+('470', 221, 208, 550, 0, 1193800, NULL, NULL, NULL),
+('471', 221, 208, 600, 0, 1267500, NULL, NULL, NULL),
+('472', 221, 208, 650, 0, 1343300, NULL, NULL, NULL),
+('473', 221, 208, 700, 0, 1421200, NULL, NULL, NULL),
+('474', 221, 208, 750, 0, 1501200, NULL, NULL, NULL),
+('475', 221, 208, 800, 0, 1583300, NULL, NULL, NULL),
+('476', 221, 208, 850, 0, 1667500, NULL, NULL, NULL),
+('477', 221, 208, 900, 0, 1753800, NULL, NULL, NULL),
+('478', 221, 208, 950, 0, 1842200, NULL, NULL, NULL),
+('479', 221, 208, 1000, 0, 1932700, NULL, NULL, NULL),
+('48', 156, 212, 150, 0, 824000, NULL, NULL, NULL),
+('480', 221, 208, 0, 1, 795700, NULL, NULL, NULL),
+('481', 221, 208, 0, 2, 1122200, NULL, NULL, NULL),
+('482', 221, 208, 0, 3, 1501200, NULL, NULL, NULL),
+('483', 221, 208, 0, 4, 1932700, NULL, NULL, NULL),
+('484', 221, 212, 100, 0, 625000, NULL, NULL, NULL),
+('485', 221, 212, 150, 0, 679800, NULL, NULL, NULL),
+('486', 221, 212, 200, 0, 736700, NULL, NULL, NULL),
+('487', 221, 212, 250, 0, 795700, NULL, NULL, NULL),
+('488', 221, 212, 300, 0, 856800, NULL, NULL, NULL),
+('489', 221, 212, 350, 0, 920000, NULL, NULL, NULL),
+('49', 156, 212, 200, 0, 901000, NULL, NULL, NULL),
+('490', 221, 212, 400, 0, 985300, NULL, NULL, NULL),
+('491', 221, 212, 450, 0, 1052700, NULL, NULL, NULL),
+('492', 221, 212, 500, 0, 1122200, NULL, NULL, NULL),
+('493', 221, 212, 550, 0, 1193800, NULL, NULL, NULL),
+('494', 221, 212, 600, 0, 1267500, NULL, NULL, NULL),
+('495', 221, 212, 650, 0, 1343300, NULL, NULL, NULL),
+('496', 221, 212, 700, 0, 1421200, NULL, NULL, NULL),
+('497', 221, 212, 750, 0, 1501200, NULL, NULL, NULL),
+('498', 221, 212, 800, 0, 1583300, NULL, NULL, NULL),
+('499', 221, 212, 850, 0, 1667500, NULL, NULL, NULL),
+('5', 156, 198, 300, 0, 856800, NULL, NULL, NULL),
+('50', 156, 212, 250, 0, 981000, NULL, NULL, NULL),
+('500', 221, 212, 900, 0, 1753800, NULL, NULL, NULL),
+('501', 221, 212, 950, 0, 1842200, NULL, NULL, NULL),
+('502', 221, 212, 1000, 0, 1932700, NULL, NULL, NULL),
+('503', 221, 212, 0, 1, 795700, NULL, NULL, NULL),
+('504', 221, 212, 0, 2, 1122200, NULL, NULL, NULL),
+('505', 221, 212, 0, 3, 1501200, NULL, NULL, NULL),
+('506', 221, 212, 0, 4, 1932700, NULL, NULL, NULL),
+('507', 221, 260, 100, 0, 625000, NULL, NULL, NULL),
+('508', 221, 260, 150, 0, 707625, NULL, NULL, NULL),
+('509', 221, 260, 200, 0, 793000, NULL, NULL, NULL),
+('51', 156, 212, 300, 0, 1064000, NULL, NULL, NULL),
+('510', 221, 260, 250, 0, 881125, NULL, NULL, NULL),
+('511', 221, 260, 300, 0, 972000, NULL, NULL, NULL),
+('512', 221, 260, 350, 0, 1065625, NULL, NULL, NULL),
+('513', 221, 260, 400, 0, 1162000, NULL, NULL, NULL),
+('514', 221, 260, 450, 0, 1261125, NULL, NULL, NULL),
+('515', 221, 260, 500, 0, 1363000, NULL, NULL, NULL),
+('516', 221, 260, 550, 0, 1467625, NULL, NULL, NULL),
+('517', 221, 260, 600, 0, 1575000, NULL, NULL, NULL),
+('518', 221, 260, 650, 0, 1685125, NULL, NULL, NULL),
+('519', 221, 260, 700, 0, 1798000, NULL, NULL, NULL),
+('52', 156, 212, 350, 0, 1150000, NULL, NULL, NULL),
+('520', 221, 260, 750, 0, 1913625, NULL, NULL, NULL),
+('521', 221, 260, 800, 0, 2032000, NULL, NULL, NULL),
+('522', 221, 260, 850, 0, 2153125, NULL, NULL, NULL),
+('523', 221, 260, 900, 0, 2277000, NULL, NULL, NULL),
+('524', 221, 260, 950, 0, 2403625, NULL, NULL, NULL),
+('525', 221, 260, 1000, 0, 2533000, NULL, NULL, NULL),
+('526', 221, 260, 0, 1, 881125, NULL, NULL, NULL),
+('527', 221, 260, 0, 2, 1363000, NULL, NULL, NULL),
+('528', 221, 260, 0, 3, 1913625, NULL, NULL, NULL),
+('529', 221, 260, 0, 4, 2533000, NULL, NULL, NULL),
+('53', 156, 212, 400, 0, 1239000, NULL, NULL, NULL),
+('530', 260, 156, 100, 0, 1250000, NULL, NULL, NULL),
+('531', 260, 156, 150, 0, 1415250, NULL, NULL, NULL),
+('532', 260, 156, 200, 0, 1586000, NULL, NULL, NULL),
+('533', 260, 156, 250, 0, 1762250, NULL, NULL, NULL),
+('534', 260, 156, 300, 0, 1944000, NULL, NULL, NULL),
+('535', 260, 156, 350, 0, 2131250, NULL, NULL, NULL),
+('536', 260, 156, 400, 0, 2324000, NULL, NULL, NULL),
+('537', 260, 156, 450, 0, 2522250, NULL, NULL, NULL),
+('538', 260, 156, 500, 0, 2726000, NULL, NULL, NULL),
+('539', 260, 156, 550, 0, 2935250, NULL, NULL, NULL),
+('54', 156, 212, 450, 0, 1331000, NULL, NULL, NULL),
+('540', 260, 156, 600, 0, 3150000, NULL, NULL, NULL),
+('541', 260, 156, 650, 0, 3370250, NULL, NULL, NULL),
+('542', 260, 156, 700, 0, 3596000, NULL, NULL, NULL),
+('543', 260, 156, 750, 0, 3827250, NULL, NULL, NULL),
+('544', 260, 156, 800, 0, 4064000, NULL, NULL, NULL),
+('545', 260, 156, 850, 0, 4306250, NULL, NULL, NULL),
+('546', 260, 156, 900, 0, 4554000, NULL, NULL, NULL),
+('547', 260, 156, 950, 0, 4807250, NULL, NULL, NULL),
+('548', 260, 156, 1000, 0, 5066000, NULL, NULL, NULL),
+('549', 260, 156, 0, 1, 1762250, NULL, NULL, NULL),
+('55', 156, 212, 500, 0, 1426000, NULL, NULL, NULL),
+('550', 260, 156, 0, 2, 2726000, NULL, NULL, NULL),
+('551', 260, 156, 0, 3, 3827250, NULL, NULL, NULL),
+('552', 260, 156, 0, 4, 5066000, NULL, NULL, NULL),
+('553', 260, 198, 100, 0, 750000, NULL, NULL, NULL),
+('554', 260, 198, 150, 0, 892500, NULL, NULL, NULL),
+('555', 260, 198, 200, 0, 1040000, NULL, NULL, NULL),
+('556', 260, 198, 250, 0, 1192500, NULL, NULL, NULL),
+('557', 260, 198, 300, 0, 1350000, NULL, NULL, NULL),
+('558', 260, 198, 350, 0, 1512500, NULL, NULL, NULL),
+('559', 260, 198, 400, 0, 1680000, NULL, NULL, NULL),
+('56', 156, 212, 550, 0, 1524000, NULL, NULL, NULL),
+('560', 260, 198, 450, 0, 1852500, NULL, NULL, NULL),
+('561', 260, 198, 500, 0, 2030000, NULL, NULL, NULL),
+('562', 260, 198, 550, 0, 2168250, NULL, NULL, NULL),
+('563', 260, 198, 600, 0, 2310000, NULL, NULL, NULL),
+('564', 260, 198, 650, 0, 2455250, NULL, NULL, NULL),
+('565', 260, 198, 700, 0, 2604000, NULL, NULL, NULL),
+('566', 260, 198, 750, 0, 2756250, NULL, NULL, NULL),
+('567', 260, 198, 800, 0, 2912000, NULL, NULL, NULL),
+('568', 260, 198, 850, 0, 3071250, NULL, NULL, NULL),
+('569', 260, 198, 900, 0, 3234000, NULL, NULL, NULL),
+('57', 156, 212, 600, 0, 1625000, NULL, NULL, NULL),
+('570', 260, 198, 950, 0, 3400250, NULL, NULL, NULL),
+('571', 260, 198, 1000, 0, 3570000, NULL, NULL, NULL),
+('572', 260, 198, 0, 1, 1192500, NULL, NULL, NULL),
+('573', 260, 198, 0, 2, 2030000, NULL, NULL, NULL),
+('574', 260, 198, 0, 3, 2756250, NULL, NULL, NULL),
+('575', 260, 198, 0, 4, 3570000, NULL, NULL, NULL),
+('576', 260, 208, 100, 0, 750000, NULL, NULL, NULL),
+('577', 260, 208, 150, 0, 892500, NULL, NULL, NULL),
+('578', 260, 208, 200, 0, 1040000, NULL, NULL, NULL),
+('579', 260, 208, 250, 0, 1192500, NULL, NULL, NULL),
+('58', 156, 212, 650, 0, 1729000, NULL, NULL, NULL),
+('580', 260, 208, 300, 0, 1350000, NULL, NULL, NULL),
+('581', 260, 208, 350, 0, 1512500, NULL, NULL, NULL),
+('582', 260, 208, 400, 0, 1680000, NULL, NULL, NULL),
+('583', 260, 208, 450, 0, 1852500, NULL, NULL, NULL),
+('584', 260, 208, 500, 0, 2030000, NULL, NULL, NULL),
+('585', 260, 208, 550, 0, 2168250, NULL, NULL, NULL),
+('586', 260, 208, 600, 0, 2310000, NULL, NULL, NULL),
+('587', 260, 208, 650, 0, 2455250, NULL, NULL, NULL),
+('588', 260, 208, 700, 0, 2604000, NULL, NULL, NULL),
+('589', 260, 208, 750, 0, 2756250, NULL, NULL, NULL),
+('59', 156, 212, 700, 0, 1836000, NULL, NULL, NULL),
+('590', 260, 208, 800, 0, 2912000, NULL, NULL, NULL),
+('591', 260, 208, 850, 0, 3071250, NULL, NULL, NULL),
+('592', 260, 208, 900, 0, 3234000, NULL, NULL, NULL),
+('593', 260, 208, 950, 0, 3400250, NULL, NULL, NULL),
+('594', 260, 208, 1000, 0, 3570000, NULL, NULL, NULL),
+('595', 260, 208, 0, 1, 1192500, NULL, NULL, NULL),
+('596', 260, 208, 0, 2, 2030000, NULL, NULL, NULL),
+('597', 260, 208, 0, 3, 2756250, NULL, NULL, NULL),
+('598', 260, 208, 0, 4, 3570000, NULL, NULL, NULL),
+('599', 260, 212, 100, 0, 750000, NULL, NULL, NULL),
+('6', 156, 198, 350, 0, 920000, NULL, NULL, NULL),
+('60', 156, 212, 750, 0, 1946000, NULL, NULL, NULL),
+('600', 260, 212, 150, 0, 892500, NULL, NULL, NULL),
+('601', 260, 212, 200, 0, 1040000, NULL, NULL, NULL),
+('602', 260, 212, 250, 0, 1192500, NULL, NULL, NULL),
+('603', 260, 212, 300, 0, 1350000, NULL, NULL, NULL),
+('604', 260, 212, 350, 0, 1512500, NULL, NULL, NULL),
+('605', 260, 212, 400, 0, 1680000, NULL, NULL, NULL),
+('606', 260, 212, 450, 0, 1852500, NULL, NULL, NULL),
+('607', 260, 212, 500, 0, 2030000, NULL, NULL, NULL),
+('608', 260, 212, 550, 0, 2168250, NULL, NULL, NULL),
+('609', 260, 212, 600, 0, 2310000, NULL, NULL, NULL),
+('61', 156, 212, 800, 0, 2059000, NULL, NULL, NULL),
+('610', 260, 212, 650, 0, 2455250, NULL, NULL, NULL),
+('611', 260, 212, 700, 0, 2604000, NULL, NULL, NULL),
+('612', 260, 212, 750, 0, 2756250, NULL, NULL, NULL),
+('613', 260, 212, 800, 0, 2912000, NULL, NULL, NULL),
+('614', 260, 212, 850, 0, 3071250, NULL, NULL, NULL),
+('615', 260, 212, 900, 0, 3234000, NULL, NULL, NULL),
+('616', 260, 212, 950, 0, 3400250, NULL, NULL, NULL),
+('617', 260, 212, 1000, 0, 3570000, NULL, NULL, NULL),
+('618', 260, 212, 0, 1, 1192500, NULL, NULL, NULL),
+('619', 260, 212, 0, 2, 2030000, NULL, NULL, NULL),
+('62', 156, 212, 850, 0, 2175000, NULL, NULL, NULL),
+('620', 260, 212, 0, 3, 2756250, NULL, NULL, NULL),
+('621', 260, 212, 0, 4, 3570000, NULL, NULL, NULL),
+('622', 260, 221, 100, 0, 625000, NULL, NULL, NULL),
+('623', 260, 221, 150, 0, 707625, NULL, NULL, NULL),
+('624', 260, 221, 200, 0, 793000, NULL, NULL, NULL),
+('625', 260, 221, 250, 0, 881125, NULL, NULL, NULL),
+('626', 260, 221, 300, 0, 972000, NULL, NULL, NULL),
+('627', 260, 221, 350, 0, 1065625, NULL, NULL, NULL),
+('628', 260, 221, 400, 0, 1162000, NULL, NULL, NULL),
+('629', 260, 221, 450, 0, 1261125, NULL, NULL, NULL),
+('63', 156, 212, 900, 0, 2294000, NULL, NULL, NULL),
+('630', 260, 221, 500, 0, 1363000, NULL, NULL, NULL),
+('631', 260, 221, 550, 0, 1467625, NULL, NULL, NULL),
+('632', 260, 221, 600, 0, 1575000, NULL, NULL, NULL),
+('633', 260, 221, 650, 0, 1685125, NULL, NULL, NULL),
+('634', 260, 221, 700, 0, 1798000, NULL, NULL, NULL),
+('635', 260, 221, 750, 0, 1913625, NULL, NULL, NULL),
+('636', 260, 221, 800, 0, 2032000, NULL, NULL, NULL),
+('637', 260, 221, 850, 0, 2153125, NULL, NULL, NULL),
+('638', 260, 221, 900, 0, 2277000, NULL, NULL, NULL),
+('639', 260, 221, 950, 0, 2403625, NULL, NULL, NULL),
+('64', 156, 212, 950, 0, 2416000, NULL, NULL, NULL),
+('640', 260, 221, 1000, 0, 2533000, NULL, NULL, NULL),
+('641', 260, 221, 0, 1, 1467968, NULL, NULL, NULL),
+('642', 260, 221, 0, 2, 1363000, NULL, NULL, NULL),
+('643', 260, 221, 0, 3, 1913625, NULL, NULL, NULL),
+('644', 260, 221, 0, 4, 2533000, NULL, NULL, NULL),
+('65', 156, 212, 1000, 0, 2541000, NULL, NULL, NULL),
+('66', 156, 212, 0, 1, 981000, NULL, NULL, NULL),
+('67', 156, 212, 0, 2, 1426000, NULL, NULL, NULL),
+('68', 156, 212, 0, 3, 1946000, NULL, NULL, NULL),
+('69', 156, 212, 0, 4, 2541000, NULL, NULL, NULL),
+('7', 156, 198, 400, 0, 985300, NULL, NULL, NULL),
+('70', 156, 221, 100, 0, 750000, NULL, NULL, NULL),
+('71', 156, 221, 150, 0, 828750, NULL, NULL, NULL),
+('72', 156, 221, 200, 0, 910000, NULL, NULL, NULL),
+('73', 156, 221, 250, 0, 993750, NULL, NULL, NULL),
+('74', 156, 221, 300, 0, 1080000, NULL, NULL, NULL),
+('75', 156, 221, 350, 0, 1168750, NULL, NULL, NULL),
+('76', 156, 221, 400, 0, 1260000, NULL, NULL, NULL),
+('77', 156, 221, 450, 0, 1353750, NULL, NULL, NULL),
+('78', 156, 221, 500, 0, 1450000, NULL, NULL, NULL),
+('79', 156, 221, 550, 0, 1548750, NULL, NULL, NULL),
+('8', 156, 198, 450, 0, 1052700, NULL, NULL, NULL),
+('80', 156, 221, 600, 0, 1650000, NULL, NULL, NULL),
+('81', 156, 221, 650, 0, 1753750, NULL, NULL, NULL),
+('82', 156, 221, 700, 0, 1860000, NULL, NULL, NULL),
+('83', 156, 221, 750, 0, 1968750, NULL, NULL, NULL),
+('84', 156, 221, 800, 0, 2080000, NULL, NULL, NULL),
+('85', 156, 221, 850, 0, 2193750, NULL, NULL, NULL),
+('86', 156, 221, 900, 0, 2310000, NULL, NULL, NULL),
+('87', 156, 221, 950, 0, 2428750, NULL, NULL, NULL),
+('88', 156, 221, 1000, 0, 2550000, NULL, NULL, NULL),
+('89', 156, 221, 0, 1, 1467968, NULL, NULL, NULL),
+('9', 156, 198, 500, 0, 1122200, NULL, NULL, NULL),
+('90', 156, 221, 0, 2, 1450000, NULL, NULL, NULL),
+('91', 156, 221, 0, 3, 1968750, NULL, NULL, NULL),
+('92', 156, 221, 0, 4, 2550000, NULL, NULL, NULL),
+('93', 156, 260, 100, 0, 1250000, NULL, NULL, NULL),
+('94', 156, 260, 150, 0, 1415250, NULL, NULL, NULL),
+('95', 156, 260, 200, 0, 1586000, NULL, NULL, NULL),
+('96', 156, 260, 250, 0, 1762250, NULL, NULL, NULL),
+('97', 156, 260, 300, 0, 1944000, NULL, NULL, NULL),
+('98', 156, 260, 350, 0, 2131250, NULL, NULL, NULL),
+('99', 156, 260, 400, 0, 2324000, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -8503,46 +8536,31 @@ CREATE TABLE `provinces` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Error reading data for table transindo_trooking.provinces: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `transindo_trooking`.`provinces`' at line 1
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `provinces`
+-- Table structure for table `resis`
 --
 
-INSERT INTO `provinces` (`id`, `name`, `locationid`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'ACEH', 1, 1, NULL, NULL),
-(2, 'SUMATERA UTARA', 1, 1, NULL, NULL),
-(3, 'SUMATERA BARAT', 1, 1, NULL, NULL),
-(4, 'RIAU', 1, 1, NULL, NULL),
-(5, 'JAMBI', 1, 1, NULL, NULL),
-(6, 'SUMATERA SELATAN', 1, 1, NULL, NULL),
-(7, 'BENGKULU', 1, 1, NULL, NULL),
-(8, 'LAMPUNG', 1, 1, NULL, NULL),
-(9, 'KEPULAUAN BANGKA BELITUNG', 1, 1, NULL, NULL),
-(10, 'KEPULAUAN RIAU', 1, 1, NULL, NULL),
-(11, 'DKI JAKARTA', 1, 1, NULL, NULL),
-(12, 'JAWA BARAT', 1, 1, NULL, NULL),
-(13, 'JAWA TENGAH', 1, 1, NULL, NULL),
-(14, 'DI YOGYAKARTA', 1, 1, NULL, NULL),
-(15, 'JAWA TIMUR', 1, 1, NULL, NULL),
-(16, 'BANTEN', 1, 1, NULL, NULL),
-(17, 'BALI', 1, 1, NULL, NULL),
-(18, 'NUSA TENGGARA BARAT', 1, 1, NULL, NULL),
-(19, 'NUSA TENGGARA TIMUR', 1, 1, NULL, NULL),
-(20, 'KALIMANTAN BARAT', 1, 1, NULL, NULL),
-(21, 'KALIMANTAN TENGAH', 1, 1, NULL, NULL),
-(22, 'KALIMANTAN SELATAN', 1, 1, NULL, NULL),
-(23, 'KALIMANTAN TIMUR', 1, 1, NULL, NULL),
-(24, 'KALIMANTAN UTARA', 1, 1, NULL, NULL),
-(25, 'SULAWESI UTARA', 1, 1, NULL, NULL),
-(26, 'SULAWESI TENGAH', 1, 1, NULL, NULL),
-(27, 'SULAWESI SELATAN', 1, 1, NULL, NULL),
-(28, 'SULAWESI TENGGARA', 1, 1, NULL, NULL),
-(29, 'GORONTALO', 1, 1, NULL, NULL),
-(30, 'SULAWESI BARAT', 1, 1, NULL, NULL),
-(31, 'MALUKU', 1, 1, NULL, NULL),
-(32, 'MALUKU UTARA', 1, 1, NULL, NULL),
-(33, 'PAPUA', 1, 1, NULL, NULL),
-(34, 'PAPUA BARAT', 1, 1, NULL, NULL);
+CREATE TABLE `resis` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pesanan_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `on_booking` datetime NOT NULL,
+  `on_pickup` datetime DEFAULT NULL,
+  `on_process` datetime DEFAULT NULL,
+  `on_transit` datetime DEFAULT NULL,
+  `on_packing` datetime DEFAULT NULL,
+  `on_survey` datetime DEFAULT NULL,
+  `on_hold` datetime DEFAULT NULL,
+  `canceled` datetime DEFAULT NULL,
+  `delivered` datetime DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -89858,7 +89876,7 @@ INSERT INTO `subdistricts` (`id`, `dis_id`, `name`, `created_at`, `updated_at`) 
 --
 
 CREATE TABLE `trackings` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nomer_resi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -89871,8 +89889,8 @@ CREATE TABLE `trackings` (
 --
 
 INSERT INTO `trackings` (`id`, `nomer_resi`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '123', 'sukses', '2022-03-20 23:51:08', '2022-03-20 23:51:08', NULL),
-(2, '456', 'gagal', '2022-03-20 23:51:09', '2022-03-20 23:51:09', NULL);
+('c7e8cbaa-0f2d-47f1-bc46-74fdd115b679', '123', 'sukses', '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL),
+('eed8d80c-f88e-4d0a-b30b-7a2e576032b7', '456', 'gagal', '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -89881,39 +89899,30 @@ INSERT INTO `trackings` (`id`, `nomer_resi`, `status`, `created_at`, `updated_at
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `social_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nomer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `kode_pos` int(11) DEFAULT NULL,
-  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `social_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_login_at` datetime DEFAULT NULL,
   `last_login_ip` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `browser` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  `prov_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `city_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `dis_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `subdis_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `voucher_id` bigint(20) UNSIGNED DEFAULT NULL
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `token`, `social_id`, `nomer`, `kode_pos`, `alamat`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `foto_ktp`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `prov_id`, `city_id`, `dis_id`, `subdis_id`, `voucher_id`) VALUES
-(1, 'user', 'username', 'user@gmail.com', '2022-03-20 23:51:07', '$2y$10$d8aM4oEjXP6zFVDnZXX/..uXJ/8lr2uIE.cWP.1YF2iaXM1zoyhiO', NULL, NULL, '081235578685', 61384, 'semarang utara', NULL, NULL, NULL, NULL, 'default.jpg', NULL, '2022-03-20 23:51:07', '2022-03-20 23:51:07', NULL, 1, 2, 3, 4, 1);
+INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `token`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('79214955-b965-4ad9-b0c8-eb8a25f26ac1', 'user', 'username', 'user@gmail.com', '2022-03-23 19:28:50', '$2y$10$DXmjkD1a23.GlN0dwc2DYu.SKXnVD0rlKd8QKWbQjIMrXpM/jN8q.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -89922,11 +89931,12 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `pa
 --
 
 CREATE TABLE `vendors` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `social_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `social_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_login_at` datetime DEFAULT NULL,
@@ -89935,20 +89945,15 @@ CREATE TABLE `vendors` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  `prov_id` bigint(20) UNSIGNED NOT NULL,
-  `city_id` bigint(20) UNSIGNED NOT NULL,
-  `dis_id` bigint(20) UNSIGNED NOT NULL,
-  `subdis_id` bigint(20) UNSIGNED NOT NULL,
-  `voucher_id` bigint(20) UNSIGNED NOT NULL
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `vendors`
 --
 
-INSERT INTO `vendors` (`id`, `name`, `email`, `email_verified_at`, `password`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`, `prov_id`, `city_id`, `dis_id`, `subdis_id`, `voucher_id`) VALUES
-(1, 'vendor', 'vendor@gmail.com', '2022-03-20 23:51:08', '$2y$10$x2SycC3KZViOZtkGWnkqzOvvyzkhonKtPl6El5Dhycytk2HKUlCky', NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-20 23:51:08', '2022-03-20 23:51:08', NULL, 1, 2, 3, 4, 1);
+INSERT INTO `vendors` (`id`, `name`, `email`, `email_verified_at`, `password`, `token`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('91c1847c-cdd0-46da-a066-1b9a91d981cc', 'vendor', 'vendor@gmail.com', '2022-03-23 19:28:50', '$2y$10$rEl1Yt1ghjew6PtLO6o/fOz7.bXJlzyUI/oee/.Hjj99mCE3IXgnO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
 
 -- --------------------------------------------------------
 
@@ -89957,7 +89962,7 @@ INSERT INTO `vendors` (`id`, `name`, `email`, `email_verified_at`, `password`, `
 --
 
 CREATE TABLE `vouchers` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `voucher` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -89969,7 +89974,7 @@ CREATE TABLE `vouchers` (
 --
 
 INSERT INTO `vouchers` (`id`, `voucher`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'free ongkir', '2022-03-20 23:51:07', '2022-03-20 23:51:07', NULL);
+('10688851-bad6-4050-a629-4acffc85f240', 'free ongkir', '2022-03-23 19:28:49', '2022-03-23 19:28:49', NULL);
 
 --
 -- Indexes for dumped tables
@@ -89987,24 +89992,14 @@ ALTER TABLE `admins`
 --
 ALTER TABLE `affiliators`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `affiliators_email_unique` (`email`),
-  ADD KEY `affiliators_prov_id_foreign` (`prov_id`),
-  ADD KEY `affiliators_city_id_foreign` (`city_id`),
-  ADD KEY `affiliators_dis_id_foreign` (`dis_id`),
-  ADD KEY `affiliators_subdis_id_foreign` (`subdis_id`),
-  ADD KEY `affiliators_voucher_id_foreign` (`voucher_id`);
+  ADD UNIQUE KEY `affiliators_email_unique` (`email`);
 
 --
 -- Indexes for table `agents`
 --
 ALTER TABLE `agents`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `agents_email_unique` (`email`),
-  ADD KEY `agents_prov_id_foreign` (`prov_id`),
-  ADD KEY `agents_city_id_foreign` (`city_id`),
-  ADD KEY `agents_dis_id_foreign` (`dis_id`),
-  ADD KEY `agents_subdis_id_foreign` (`subdis_id`),
-  ADD KEY `agents_voucher_id_foreign` (`voucher_id`);
+  ADD UNIQUE KEY `agents_email_unique` (`email`);
 
 --
 -- Indexes for table `barangs`
@@ -90018,6 +90013,21 @@ ALTER TABLE `barangs`
 ALTER TABLE `cities`
   ADD PRIMARY KEY (`id`),
   ADD KEY `cities_prov_id_foreign` (`prov_id`);
+
+--
+-- Indexes for table `data_affiliators`
+--
+ALTER TABLE `data_affiliators`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `data_affiliators_affiliator_id_foreign` (`affiliator_id`);
+
+--
+-- Indexes for table `data_vendors`
+--
+ALTER TABLE `data_vendors`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `data_vendors_vendor_id_foreign` (`vendor_id`),
+  ADD KEY `data_vendors_coverage_area_foreign` (`coverage_area`);
 
 --
 -- Indexes for table `districts`
@@ -90098,6 +90108,14 @@ ALTER TABLE `provinces`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `resis`
+--
+ALTER TABLE `resis`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `resis_admin_id_foreign` (`admin_id`),
+  ADD KEY `resis_pesanan_id_foreign` (`pesanan_id`);
+
+--
 -- Indexes for table `subdistricts`
 --
 ALTER TABLE `subdistricts`
@@ -90115,24 +90133,14 @@ ALTER TABLE `trackings`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`),
-  ADD KEY `users_prov_id_foreign` (`prov_id`),
-  ADD KEY `users_city_id_foreign` (`city_id`),
-  ADD KEY `users_dis_id_foreign` (`dis_id`),
-  ADD KEY `users_subdis_id_foreign` (`subdis_id`),
-  ADD KEY `users_voucher_id_foreign` (`voucher_id`);
+  ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
 -- Indexes for table `vendors`
 --
 ALTER TABLE `vendors`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `vendors_email_unique` (`email`),
-  ADD KEY `vendors_prov_id_foreign` (`prov_id`),
-  ADD KEY `vendors_city_id_foreign` (`city_id`),
-  ADD KEY `vendors_dis_id_foreign` (`dis_id`),
-  ADD KEY `vendors_subdis_id_foreign` (`subdis_id`),
-  ADD KEY `vendors_voucher_id_foreign` (`voucher_id`);
+  ADD UNIQUE KEY `vendors_email_unique` (`email`);
 
 --
 -- Indexes for table `vouchers`
@@ -90143,30 +90151,6 @@ ALTER TABLE `vouchers`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `admins`
---
-ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `affiliators`
---
-ALTER TABLE `affiliators`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `agents`
---
-ALTER TABLE `agents`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `barangs`
---
-ALTER TABLE `barangs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `cities`
@@ -90187,40 +90171,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `informasis`
---
-ALTER TABLE `informasis`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- AUTO_INCREMENT for table `pembayarans`
---
-ALTER TABLE `pembayarans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pesanans`
---
-ALTER TABLE `pesanans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `pricelists`
---
-ALTER TABLE `pricelists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=645;
 
 --
 -- AUTO_INCREMENT for table `provinces`
@@ -90235,58 +90195,27 @@ ALTER TABLE `subdistricts`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81226;
 
 --
--- AUTO_INCREMENT for table `trackings`
---
-ALTER TABLE `trackings`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `vendors`
---
-ALTER TABLE `vendors`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `vouchers`
---
-ALTER TABLE `vouchers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `affiliators`
---
-ALTER TABLE `affiliators`
-  ADD CONSTRAINT `affiliators_city_id_foreign` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`),
-  ADD CONSTRAINT `affiliators_dis_id_foreign` FOREIGN KEY (`dis_id`) REFERENCES `districts` (`id`),
-  ADD CONSTRAINT `affiliators_prov_id_foreign` FOREIGN KEY (`prov_id`) REFERENCES `provinces` (`id`),
-  ADD CONSTRAINT `affiliators_subdis_id_foreign` FOREIGN KEY (`subdis_id`) REFERENCES `subdistricts` (`id`),
-  ADD CONSTRAINT `affiliators_voucher_id_foreign` FOREIGN KEY (`voucher_id`) REFERENCES `vouchers` (`id`);
-
---
--- Constraints for table `agents`
---
-ALTER TABLE `agents`
-  ADD CONSTRAINT `agents_city_id_foreign` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`),
-  ADD CONSTRAINT `agents_dis_id_foreign` FOREIGN KEY (`dis_id`) REFERENCES `districts` (`id`),
-  ADD CONSTRAINT `agents_prov_id_foreign` FOREIGN KEY (`prov_id`) REFERENCES `provinces` (`id`),
-  ADD CONSTRAINT `agents_subdis_id_foreign` FOREIGN KEY (`subdis_id`) REFERENCES `subdistricts` (`id`),
-  ADD CONSTRAINT `agents_voucher_id_foreign` FOREIGN KEY (`voucher_id`) REFERENCES `vouchers` (`id`);
 
 --
 -- Constraints for table `cities`
 --
 ALTER TABLE `cities`
   ADD CONSTRAINT `cities_prov_id_foreign` FOREIGN KEY (`prov_id`) REFERENCES `provinces` (`id`);
+
+--
+-- Constraints for table `data_affiliators`
+--
+ALTER TABLE `data_affiliators`
+  ADD CONSTRAINT `data_affiliators_affiliator_id_foreign` FOREIGN KEY (`affiliator_id`) REFERENCES `affiliators` (`id`);
+
+--
+-- Constraints for table `data_vendors`
+--
+ALTER TABLE `data_vendors`
+  ADD CONSTRAINT `data_vendors_coverage_area_foreign` FOREIGN KEY (`coverage_area`) REFERENCES `cities` (`id`),
+  ADD CONSTRAINT `data_vendors_vendor_id_foreign` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`);
 
 --
 -- Constraints for table `districts`
@@ -90319,30 +90248,17 @@ ALTER TABLE `pricelists`
   ADD CONSTRAINT `pricelists_origin_foreign` FOREIGN KEY (`origin`) REFERENCES `cities` (`id`);
 
 --
+-- Constraints for table `resis`
+--
+ALTER TABLE `resis`
+  ADD CONSTRAINT `resis_admin_id_foreign` FOREIGN KEY (`admin_id`) REFERENCES `admins` (`id`),
+  ADD CONSTRAINT `resis_pesanan_id_foreign` FOREIGN KEY (`pesanan_id`) REFERENCES `pesanans` (`id`);
+
+--
 -- Constraints for table `subdistricts`
 --
 ALTER TABLE `subdistricts`
   ADD CONSTRAINT `subdistricts_dis_id_foreign` FOREIGN KEY (`dis_id`) REFERENCES `districts` (`id`);
-
---
--- Constraints for table `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_city_id_foreign` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`),
-  ADD CONSTRAINT `users_dis_id_foreign` FOREIGN KEY (`dis_id`) REFERENCES `districts` (`id`),
-  ADD CONSTRAINT `users_prov_id_foreign` FOREIGN KEY (`prov_id`) REFERENCES `provinces` (`id`),
-  ADD CONSTRAINT `users_subdis_id_foreign` FOREIGN KEY (`subdis_id`) REFERENCES `subdistricts` (`id`),
-  ADD CONSTRAINT `users_voucher_id_foreign` FOREIGN KEY (`voucher_id`) REFERENCES `vouchers` (`id`);
-
---
--- Constraints for table `vendors`
---
-ALTER TABLE `vendors`
-  ADD CONSTRAINT `vendors_city_id_foreign` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`),
-  ADD CONSTRAINT `vendors_dis_id_foreign` FOREIGN KEY (`dis_id`) REFERENCES `districts` (`id`),
-  ADD CONSTRAINT `vendors_prov_id_foreign` FOREIGN KEY (`prov_id`) REFERENCES `provinces` (`id`),
-  ADD CONSTRAINT `vendors_subdis_id_foreign` FOREIGN KEY (`subdis_id`) REFERENCES `subdistricts` (`id`),
-  ADD CONSTRAINT `vendors_voucher_id_foreign` FOREIGN KEY (`voucher_id`) REFERENCES `vouchers` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

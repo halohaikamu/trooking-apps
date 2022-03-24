@@ -9,16 +9,13 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use App\Traits\UsesUuid;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, UsesUuid;
     protected $guard_name = 'user';
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
         'name',
         'username',
@@ -29,61 +26,33 @@ class User extends Authenticatable implements MustVerifyEmail
         'last_login_at',
         'last_login_ip',
         'browser',
-        'prov_id',
-        'city_id',
-        'dis_id',
-        'subdis_id',
-        'voucher_id',
-        // 'created_by',
-        // 'updated_by'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function prov_id()
+    protected static function boot()
     {
-        return $this->belongsTo(Province::class, 'prov_id');
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->{$user->getKeyName()} = (string) Str::uuid();
+        });
     }
 
-    public function city_id()
+    public function getIncrementing()
     {
-        return $this->belongsTo(Citie::class, 'city_id');
+        return false;
     }
 
-    public function dis_id()
+    public function getKeyType()
     {
-        return $this->belongsTo(District::class, 'dis_id');
-    }
-
-    public function subdis_id()
-    {
-        return $this->belongsTo(Subdistrict::class, 'subdis_id');
-    }
-
-    public function pesanan()
-    {
-        return $this->hasMany(Pesanan::class, 'pesanan_id');
-    }
-
-    public function voucher()
-    {
-        return $this->belongsTo(Voucher::class, 'voucher_id');
+        return 'string';
     }
 }

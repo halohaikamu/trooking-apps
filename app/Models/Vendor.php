@@ -9,16 +9,13 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
+use App\Traits\UsesUuid;
 
 class Vendor extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, UsesUuid;
     protected $guard_name = 'vendor';
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+
     protected $fillable = [
         'name',
         'email',
@@ -28,36 +25,33 @@ class Vendor extends Authenticatable
         'last_login_at',
         'last_login_ip',
         'browser',
-        'prov_id',
-        'city_id',
-        'dis_id',
-        'subdis_id',
-        'voucher_id',
-        // 'created_by',
-        // 'updated_by'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function voucher()
+    protected static function boot()
     {
-        return $this->belongsTo(Voucher::class, 'voucher_id');
+        parent::boot();
+
+        static::creating(function ($vendor) {
+            $vendor->{$vendor->getKeyName()} = (string) Str::uuid();
+        });
+    }
+
+    public function getIncrementing()
+    {
+        return false;
+    }
+
+    public function getKeyType()
+    {
+        return 'string';
     }
 }
