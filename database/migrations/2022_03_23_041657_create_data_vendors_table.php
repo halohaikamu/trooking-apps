@@ -11,7 +11,7 @@ class CreateDataVendorsTable extends Migration
         Schema::create('data_vendors', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('vendor_id')->references('id')->on('vendors');
-            $table->integer('whatsapp');
+            $table->bigInteger('whatsapp');
             $table->string('nama_driver');
             $table->integer('nopol_driver');
             $table->foreignId('coverage_area')->references('id')->on('cities');

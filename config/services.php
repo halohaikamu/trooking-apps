@@ -34,7 +34,21 @@ return [
 
         'client_id' => '202149532650-kch45gf6it5t2rjiga3j5arqme6rs26u.apps.googleusercontent.com',
         'client_secret' => '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',
-        'redirect' => 'http://127.0.0.1:8000/callback/google',
+        'redirect' => 'http://127.0.0.1:8000/user/callback/google',
+    ],
+
+    'googleuser' => [
+
+        'client_id' => '202149532650-kch45gf6it5t2rjiga3j5arqme6rs26u.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://127.0.0.1:8000/user/callback/google',
+    ],
+
+    'googlevendor' => [
+
+        'client_id' => '202149532650-kch45gf6it5t2rjiga3j5arqme6rs26u.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://127.0.0.1:8000/vendor/callback/google',
     ],
 
 ];

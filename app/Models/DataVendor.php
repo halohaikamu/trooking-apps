@@ -28,7 +28,7 @@ class DataVendor extends Model
         return $this->belongsTo(Vendor::class, 'vendor_id');
     }
 
-    public function coverage_area()
+    public function coverage()
     {
         return $this->belongsTo(City::class, 'coverage_area');
     }

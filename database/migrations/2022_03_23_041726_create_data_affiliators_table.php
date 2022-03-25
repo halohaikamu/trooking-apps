@@ -11,7 +11,7 @@ class CreateDataAffiliatorsTable extends Migration
         Schema::create('data_affiliators', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('affiliator_id')->references('id')->on('affiliators');
-            $table->integer('whatsapp');
+            $table->bigInteger('whatsapp');
             $table->string('foto_ktp');
             $table->string('foto_npwp')->nullable();
             $table->timestamps();

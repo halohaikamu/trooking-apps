@@ -24,12 +24,14 @@ use App\Http\Controllers\User\CekOngkirController;
 use App\Http\Controllers\User\LandingPageController;
 use App\Http\Controllers\User\PesananUserController;
 use App\Http\Controllers\User\DashboardUserController;
+use App\Http\Controllers\User\GoogleUserController;
 use App\Http\Controllers\Affiliator\RegisterAffiliatorController;
 use App\Http\Controllers\Affiliator\DashboardAffiliatorController;
 use App\Http\Controllers\Affiliator\LoginAffiliatorController;
 use App\Http\Controllers\Agent\LoginAgentController;
 use App\Http\Controllers\Vendor\LoginVendorController;
-
+use App\Http\Controllers\Vendor\DataVendorController;
+use App\Http\Controllers\Vendor\GoogleVendorController;
 
 Auth::routes(['verify' => true]);
 
@@ -92,6 +94,8 @@ Route::post('/store/user', [RegisterUserController::class, 'store'])->name('regi
 Route::get('/landing-page', function () {
     return view('user.landingPage');
 });
+Route::get('user/auth/google', [GoogleUserController::class, 'redirectToGoogle']);
+Route::get('user/callback/google', [GoogleUserController::class, 'handleCallback']);
 Route::group(['prefix' => 'user', 'middleware' => 'auth:user', 'verified'], function(){
     Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
     Route::get('forgot-password', [ChangePasswordController::class, 'forgotPassword'])->name('user.dashboard.forgot-password');
@@ -111,15 +115,18 @@ Route::put('reset-email', [ChangeEmailController::class, 'updateEmail'])->name('
 Route::get('/login/vendor', function () {
     return view('vendor.login');
 });
+Route::get('vendor/auth/google', [GoogleVendorController::class, 'redirectToGoogle']);
+Route::get('vendor/callback/google', [GoogleVendorController::class, 'handleCallback']);
 Route::post('/create/vendor', [LoginVendorController::class, 'create'])->name('login.create.vendor');
 Route::get('/logout/vendor', [LoginVendorController::class, 'logout'])->name('logout.vendor');
 Route::group(['prefix' => 'vendor', 'middleware' => 'auth:vendor'], function(){
     Route::get('/dashboard', [DashboardController::class, 'vendor'])->name('vendor.dashboard');
+    Route::resource('data-diri', DataVendorController::class);
 });
 
 //auth google
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
-Route::get('callback/google', [GoogleController::class, 'handleCallback']);
+// Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+// Route::get('callback/google', [GoogleController::class, 'handleCallback']);
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
