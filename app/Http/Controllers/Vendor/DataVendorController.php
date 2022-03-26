@@ -7,6 +7,7 @@ use App\Models\Vendor;
 use App\Models\City;
 use App\Models\DataVendor;
 use Illuminate\Http\Request;
+use Auth;
 use Str;
 
 class DataVendorController extends Controller
@@ -54,28 +55,13 @@ class DataVendorController extends Controller
             $profilektp = date('YmdHis') . "." . $foto_ktp->getClientOriginalExtension();
             $foto_ktp->move($destinationPath, $profilektp);
             $input['foto_ktp'] = "$profilektp";
-        }elseif($foto_unit = $request->file('foto_unit')){
-            $destinationPath = 'gambar/vendor/foto-unit';
-            $profileunit = date('YmdHis') . "." . $foto_unit->getClientOriginalExtension();
-            $foto_unit->move($destinationPath, $profileunit);
-            $input['foto_unit'] = "$profileunit";
-        }elseif($foto_sim = $request->file('foto_sim')){
-            $destinationPath = 'gambar/vendor/foto-sim';
-            $profilesim = date('YmdHis') . "." . $foto_sim->getClientOriginalExtension();
-            $foto_sim->move($destinationPath, $profilesim);
-            $input['foto_sim'] = "$profilesim";
-        }elseif($foto_stnk = $request->file('foto_stnk')){
-            $destinationPath = 'gambar/vendor/foto-stnk';
-            $profilestnk = date('YmdHis') . "." . $foto_stnk->getClientOriginalExtension();
-            $foto_stnk->move($destinationPath, $profilestnk);
-            $input['foto_stnk'] = "$profilestnk";
         }
         DataVendor::create($input);
         return redirect()->route('data-diri.index')
             ->withSuccess(__('Data Vendor created successfully.'));
     }
 
-    public function edit(DataVendor $dataVendor)
+    public function edit()
     {
         return view('vendor.data-diri.edit', compact('dataVendor'));
     }
