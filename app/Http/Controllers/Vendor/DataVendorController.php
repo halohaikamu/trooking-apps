@@ -30,7 +30,7 @@ class DataVendorController extends Controller
     {
         $dataVendor = DataVendor::all();
         $Vendor = Vendor::all();
-        return view('vendor.data-diri.index', compact('dataVendor','Vendor'));
+        return view('vendor.data-diri.index', compact('dataVendor', 'Vendor'));
     }
 
     public function create()
@@ -50,22 +50,22 @@ class DataVendorController extends Controller
         $data = $this->validate($request, $this->rules());
         $input = $request->all();
         if ($foto_ktp = $request->file('foto_ktp')) {
-            $destinationPath = 'gambar/vendor/foto-ktp';
+            $destinationPath = 'gambar/vendor/foto_ktp';
             $profilektp = date('YmdHis') . "." . $foto_ktp->getClientOriginalExtension();
             $foto_ktp->move($destinationPath, $profilektp);
             $input['foto_ktp'] = "$profilektp";
-        }elseif($foto_unit = $request->file('foto_unit')){
-            $destinationPath = 'gambar/vendor/foto-unit';
+        } elseif ($foto_unit = $request->file('foto_unit')) {
+            $destinationPath = 'gambar/vendor/foto_unit';
             $profileunit = date('YmdHis') . "." . $foto_unit->getClientOriginalExtension();
             $foto_unit->move($destinationPath, $profileunit);
             $input['foto_unit'] = "$profileunit";
-        }elseif($foto_sim = $request->file('foto_sim')){
-            $destinationPath = 'gambar/vendor/foto-sim';
+        } elseif ($foto_sim = $request->file('foto_sim')) {
+            $destinationPath = 'gambar/vendor/foto_sim';
             $profilesim = date('YmdHis') . "." . $foto_sim->getClientOriginalExtension();
             $foto_sim->move($destinationPath, $profilesim);
             $input['foto_sim'] = "$profilesim";
-        }elseif($foto_stnk = $request->file('foto_stnk')){
-            $destinationPath = 'gambar/vendor/foto-stnk';
+        } elseif ($foto_stnk = $request->file('foto_stnk')) {
+            $destinationPath = 'gambar/vendor/foto_stnk';
             $profilestnk = date('YmdHis') . "." . $foto_stnk->getClientOriginalExtension();
             $foto_stnk->move($destinationPath, $profilestnk);
             $input['foto_stnk'] = "$profilestnk";
@@ -90,7 +90,7 @@ class DataVendorController extends Controller
             $profileImage = date('YmdHis') . "." . $gambar->getClientOriginalExtension();
             $gambar->move($destinationPath, $profileImage);
             $input['gambar'] = "$profileImage";
-        }else{
+        } else {
             unset($input['gambar']);
         }
         $dataVendor->update($input);

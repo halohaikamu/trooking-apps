@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Affiliator;
 use App\Http\Controllers\Controller;
 use App\Models\Affiliator;
 use App\Models\DataAffiliator;
+use Illuminate\Http\Request;
 
 class DatadiriAffiliatorController extends Controller
 {
@@ -15,7 +16,7 @@ class DatadiriAffiliatorController extends Controller
     public function rules($id = false)
     {
         return  [
-            'affliator_id' => 'required',
+            'affiliator_id' => 'required',
             'whatsapp' => 'required',
             'foto_ktp' => 'required',
             'foto_npwp' => 'nullable',
@@ -26,14 +27,14 @@ class DatadiriAffiliatorController extends Controller
     {
         $dataAffiliator = DataAffiliator::all();
         $Affiliator = Affiliator::all();
-        return view('affiliator.datadiri.datadiri', compact('affiliator'));
+        return view('affiliator.datadiri.datadiri', compact('dataAffiliator', 'Affiliator'));
     }
     public function create()
     {
         $getaffiliator = Affiliator::select('id', 'name')->get();
         $getdata = DataAffiliator::first();
-        return view('vendor.data-diri.create', compact(
-            'getvendor',
+        return view('affiliator.datadiri.create', compact(
+            'getaffiliator',
             'getdata'
         ));
         return view('affiliator.datadiri.create');
@@ -44,13 +45,47 @@ class DatadiriAffiliatorController extends Controller
         $data = $this->validate($request, $this->rules());
         $input = $request->all();
         if ($foto_ktp = $request->file('foto_ktp')) {
-            $destinationPath = 'gambar/vendor/foto-ktp';
-            $profilektp = date('YmdHis') . "." . $foto_ktp->getClientOriginalExtension();
-            $foto_ktp->move($destinationPath, $profilektp);
-            $input['foto_ktp'] = "$profilektp";
+            $destinationPath = 'gambar/affiliator/foto_ktp';
+            $profileImage = date('YmdHis') . "." . $foto_ktp->getClientOriginalExtension();
+            $foto_ktp->move($destinationPath, $profileImage);
+            $input['foto_ktp'] = "$profileImage";
+        } elseif ($foto_npwp = $request->file('foto_npwp')) {
+            $destinationPath = 'gambar/affiliator/foto_npwp';
+            $profilenpwp = date('YmdHis') . "." . $foto_npwp->getClientOriginalExtension();
+            $foto_npwp->move($destinationPath, $profilenpwp);
+            $input['foto_npwp'] = "$profilenpwp";
         }
         DataAffiliator::create($input);
         return redirect()->route('datadiri.index')
-            ->withSuccess(__('Pesanan created successfully.'));
+            ->withSuccess(__('Affiliator created successfully.'));
+    }
+
+    public function edit(DataAffiliator $dataAffiliator)
+    {
+        return view('affiliator.datadiri.edit', compact('dataAffiliator'));
+    }
+
+    public function update(Request $request, DataAffiliator $dataAffiliator)
+    {
+        $data = $this->validate($request, $this->rules($dataAffiliator));
+
+        $input = $request->all();
+        if ($foto_ktp = $request->file('foto_ktp')) {
+            $destinationPath = 'gambar/affiliator/foto_ktp';
+            $profileImage = date('YmdHis') . "." . $foto_ktp->getClientOriginalExtension();
+            $foto_ktp->move($destinationPath, $profileImage);
+            $input['foto_ktp'] = "$profileImage";
+        } else {
+            unset($input['foto_ktp']);
+        }
+        $dataAffiliator->update($input);
+        return redirect()->route('datadiri.index', compact('dataAffiliator'))
+            ->withSuccess(__('Data Vendor updated successfully.'));
+    }
+
+    public function destroy(DataAffiliator $dataAffiliator)
+    {
+        $dataAffiliator->delete();
+        return redirect()->route('datadiri.index', $dataAffiliator)->with('success', 'Data Vendor deleted successfully');
     }
 }
