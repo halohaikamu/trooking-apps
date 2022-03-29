@@ -13,12 +13,12 @@ class CreateDataVendorsTable extends Migration
             $table->foreignUuid('vendor_id')->references('id')->on('vendors');
             $table->bigInteger('whatsapp');
             $table->string('nama_driver');
-            $table->integer('nopol_driver');
+            $table->string('nopol_driver');
             $table->foreignId('coverage_area')->references('id')->on('cities');
             $table->string('foto_ktp');
-            $table->string('foto_unit')->nullable();
-            $table->string('foto_sim')->nullable();
-            $table->string('foto_stnk')->nullable();
+            $table->string('foto_unit');
+            $table->string('foto_sim');
+            $table->string('foto_stnk');
             $table->timestamps();
             $table->softDeletes();
         });

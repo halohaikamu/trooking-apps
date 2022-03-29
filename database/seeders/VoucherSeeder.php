@@ -16,8 +16,6 @@ class VoucherSeeder extends Seeder
     {
         Voucher::create([
             'voucher' => 'free ongkir',
-            // 'created_by' => '1',
-            // 'updated_by' => '1'
         ]);
     }
 }
