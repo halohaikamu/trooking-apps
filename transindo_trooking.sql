@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2022 at 03:41 AM
+-- Generation Time: Mar 29, 2022 at 07:51 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -51,9 +51,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `email`, `email_verified_at`, `password`, `token`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('11a22f09-db5a-4b46-abc9-7af73e14022c', 'admin', 'admin@gmail.com', NULL, '$2y$10$vm7VQSOjtyJIIAWnJjgEuejSKqo6VqThPnALyBIT4vR2V6vEUY.Q.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:28:49', '2022-03-23 19:28:49', NULL),
-('7269d3ee-3b8b-4ecb-ae87-a2b3c602d4e2', 'felix', 'felix@gmail.com', NULL, '$2y$10$4vpsDDu0OjSj1gerbNtNVe6MflmAeq.kykHwXlt0HWSXBnKcki5Yi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:33:51', '2022-03-23 19:33:51', NULL),
-('910acb51-4f13-4885-9fe6-813f499dc8fa', 'admin2', 'admin2@gmail.com', NULL, '$2y$10$ZMn4lhvgU21.hq7hOYxA1.xPrpyvrAPnABXT9M3haFNChuvOWlL3y', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:31:15', '2022-03-23 19:31:15', NULL);
+('445e4733-f1dd-443b-9a78-c812b1b37110', 'admin', 'admin@gmail.com', NULL, '$2y$10$GWEDfnx4JHSb5STTx0R/puNreY1j.9XHG0ejf9Af2TKDvSqz7ghhu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-28 21:28:44', '2022-03-28 21:28:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -84,7 +82,7 @@ CREATE TABLE `affiliators` (
 --
 
 INSERT INTO `affiliators` (`id`, `name`, `email`, `email_verified_at`, `password`, `token`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('28206722-3fc6-420e-a535-b15e04e888c6', 'affiliator', 'affiliator@gmail.com', '2022-03-23 19:28:50', '$2y$10$zf4h2fWjyZDWGu7Xub97R.zTWjP7j66dGG.GYqyycmYrnFZMNtoCm', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
+('a1d2fcef-9d06-4553-9ebb-ae4dc483d963', 'affiliator', 'affiliator@gmail.com', '2022-03-28 21:28:45', '$2y$10$NJ.OFomCrccsgXgM0hk0FeEkzfa6Vgi6M5NcwenKyXCln44t3cNCK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-28 21:28:45', '2022-03-28 21:28:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -115,7 +113,7 @@ CREATE TABLE `agents` (
 --
 
 INSERT INTO `agents` (`id`, `name`, `email`, `email_verified_at`, `password`, `token`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('c47ed158-3f08-4f77-8a62-79fc13506bd0', 'agent', 'agent@gmail.com', '2022-03-23 19:28:50', '$2y$10$4MBsPscP9Vc/l3Iho68U2u/DZlH7Dw97fklsl/Toy6yoALj.9W3x6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
+('2060b6d5-6cf1-4859-a191-9c4560006ff8', 'agent', 'agent@gmail.com', '2022-03-28 21:28:45', '$2y$10$Yj7ftUQNj3szMgFPk9WwPuhFAN4mJW6jqy7wy/zmvMMT/A5oPrYcS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-28 21:28:45', '2022-03-28 21:28:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -136,8 +134,8 @@ CREATE TABLE `barangs` (
 --
 
 INSERT INTO `barangs` (`id`, `jenis_barang`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('3c57553a-8954-43cd-836b-b5a000fa4162', 'cair', '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL),
-('e4709fec-91b7-4665-a842-67da35e2515a', 'padat', '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
+('8c74b199-3dce-4b04-9ab8-2019b2e216b9', 'cair', '2022-03-28 21:28:45', '2022-03-28 21:28:45', NULL),
+('919c8088-aff8-4884-a44d-6aa529f24e42', 'padat', '2022-03-28 21:28:45', '2022-03-28 21:28:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -643,9 +641,9 @@ INSERT INTO `cities` (`id`, `prov_id`, `name`, `created_at`, `updated_at`) VALUE
 CREATE TABLE `data_affiliators` (
   `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `affiliator_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `whatsapp` int(11) NOT NULL,
+  `whatsapp` bigint(20) NOT NULL,
   `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto_npwp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `foto_npwp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -660,14 +658,14 @@ CREATE TABLE `data_affiliators` (
 CREATE TABLE `data_vendors` (
   `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `vendor_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `whatsapp` int(11) NOT NULL,
+  `whatsapp` bigint(20) NOT NULL,
   `nama_driver` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `nopol_driver` int(11) NOT NULL,
+  `nopol_driver` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `coverage_area` bigint(20) UNSIGNED NOT NULL,
   `foto_ktp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `foto_unit` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `foto_sim` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `foto_stnk` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `foto_unit` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto_sim` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `foto_stnk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
@@ -7799,12 +7797,12 @@ CREATE TABLE `pembayarans` (
 --
 
 INSERT INTO `pembayarans` (`id`, `endpoint`, `jenis_pembayaran`, `harga`, `eksternal_id`, `nama`, `invoice`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('13c86b9e-30eb-48e2-a5e2-6625c3d25196', 'mojokerto', 'BCA', 100, '145', 'kang xendit', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL),
-('31e5f7c2-c610-4bc0-9782-3c71207e938f', 'semarang', 'BSI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL),
-('3237c9b5-39c6-4e83-b0ad-67ef8c820882', 'semarang', 'BNI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL),
-('a22be06a-d265-41d6-a340-3cbc987ec1de', 'semarang', 'MANDIRI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL),
-('d30b7699-b8fe-457b-babe-96c86806a07a', 'mojokerto', 'BRI', 100, '145', 'kang xendit', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL),
-('d8f9cdbf-9857-449c-8951-bcc31f4b3ca2', 'mojokerto', 'CIMB', 100, '145', 'kang xendit', '1451241', '2022-03-23 19:28:51', '2022-03-23 19:28:51', NULL);
+('43638dc4-1bd2-4603-b7de-947b8d98594c', 'semarang', 'MANDIRI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-28 21:28:46', '2022-03-28 21:28:46', NULL),
+('80d49391-7194-4d0a-ba12-a774feabce0f', 'semarang', 'BNI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-28 21:28:46', '2022-03-28 21:28:46', NULL),
+('881f89f1-7c9b-4276-aab9-b73892995c2f', 'mojokerto', 'BRI', 100, '145', 'kang xendit', '1451241', '2022-03-28 21:28:46', '2022-03-28 21:28:46', NULL),
+('89f26639-09c7-44be-8b1c-c480a6dd9369', 'semarang', 'BSI', 400, '145', 'kang xenditsemiring', '1451241', '2022-03-28 21:28:46', '2022-03-28 21:28:46', NULL),
+('a0d98ccc-1baa-41e0-9434-3280115b9448', 'mojokerto', 'BCA', 100, '145', 'kang xendit', '1451241', '2022-03-28 21:28:46', '2022-03-28 21:28:46', NULL),
+('f42654e1-e58e-4634-a97e-b97a4557cef8', 'mojokerto', 'CIMB', 100, '145', 'kang xendit', '1451241', '2022-03-28 21:28:46', '2022-03-28 21:28:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -8536,7 +8534,46 @@ CREATE TABLE `provinces` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
--- Error reading data for table transindo_trooking.provinces: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `transindo_trooking`.`provinces`' at line 1
+
+--
+-- Dumping data for table `provinces`
+--
+
+INSERT INTO `provinces` (`id`, `name`, `locationid`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'ACEH', 1, 1, NULL, NULL),
+(2, 'SUMATERA UTARA', 1, 1, NULL, NULL),
+(3, 'SUMATERA BARAT', 1, 1, NULL, NULL),
+(4, 'RIAU', 1, 1, NULL, NULL),
+(5, 'JAMBI', 1, 1, NULL, NULL),
+(6, 'SUMATERA SELATAN', 1, 1, NULL, NULL),
+(7, 'BENGKULU', 1, 1, NULL, NULL),
+(8, 'LAMPUNG', 1, 1, NULL, NULL),
+(9, 'KEPULAUAN BANGKA BELITUNG', 1, 1, NULL, NULL),
+(10, 'KEPULAUAN RIAU', 1, 1, NULL, NULL),
+(11, 'DKI JAKARTA', 1, 1, NULL, NULL),
+(12, 'JAWA BARAT', 1, 1, NULL, NULL),
+(13, 'JAWA TENGAH', 1, 1, NULL, NULL),
+(14, 'DI YOGYAKARTA', 1, 1, NULL, NULL),
+(15, 'JAWA TIMUR', 1, 1, NULL, NULL),
+(16, 'BANTEN', 1, 1, NULL, NULL),
+(17, 'BALI', 1, 1, NULL, NULL),
+(18, 'NUSA TENGGARA BARAT', 1, 1, NULL, NULL),
+(19, 'NUSA TENGGARA TIMUR', 1, 1, NULL, NULL),
+(20, 'KALIMANTAN BARAT', 1, 1, NULL, NULL),
+(21, 'KALIMANTAN TENGAH', 1, 1, NULL, NULL),
+(22, 'KALIMANTAN SELATAN', 1, 1, NULL, NULL),
+(23, 'KALIMANTAN TIMUR', 1, 1, NULL, NULL),
+(24, 'KALIMANTAN UTARA', 1, 1, NULL, NULL),
+(25, 'SULAWESI UTARA', 1, 1, NULL, NULL),
+(26, 'SULAWESI TENGAH', 1, 1, NULL, NULL),
+(27, 'SULAWESI SELATAN', 1, 1, NULL, NULL),
+(28, 'SULAWESI TENGGARA', 1, 1, NULL, NULL),
+(29, 'GORONTALO', 1, 1, NULL, NULL),
+(30, 'SULAWESI BARAT', 1, 1, NULL, NULL),
+(31, 'MALUKU', 1, 1, NULL, NULL),
+(32, 'MALUKU UTARA', 1, 1, NULL, NULL),
+(33, 'PAPUA', 1, 1, NULL, NULL),
+(34, 'PAPUA BARAT', 1, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -89889,8 +89926,8 @@ CREATE TABLE `trackings` (
 --
 
 INSERT INTO `trackings` (`id`, `nomer_resi`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('c7e8cbaa-0f2d-47f1-bc46-74fdd115b679', '123', 'sukses', '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL),
-('eed8d80c-f88e-4d0a-b30b-7a2e576032b7', '456', 'gagal', '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
+('c9c2b284-4ce8-402b-a49f-252b946e0631', '123', 'sukses', '2022-03-28 21:28:45', '2022-03-28 21:28:45', NULL),
+('dedf5195-fb5e-4416-bba0-89ffa7f10dee', '456', 'gagal', '2022-03-28 21:28:46', '2022-03-28 21:28:46', NULL);
 
 -- --------------------------------------------------------
 
@@ -89922,7 +89959,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `token`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('79214955-b965-4ad9-b0c8-eb8a25f26ac1', 'user', 'username', 'user@gmail.com', '2022-03-23 19:28:50', '$2y$10$DXmjkD1a23.GlN0dwc2DYu.SKXnVD0rlKd8QKWbQjIMrXpM/jN8q.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
+('b7f15136-69ce-479b-8932-1fa461b778dc', 'user', 'username', 'user@gmail.com', '2022-03-28 21:28:45', '$2y$10$cUSDkIiszZ3K8Rt9qXtn2.MFcvGY9XrxJcljKWc8UVKVS05lrYnD.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-28 21:28:45', '2022-03-28 21:28:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -89953,7 +89990,7 @@ CREATE TABLE `vendors` (
 --
 
 INSERT INTO `vendors` (`id`, `name`, `email`, `email_verified_at`, `password`, `token`, `social_id`, `social_type`, `last_login_at`, `last_login_ip`, `browser`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('91c1847c-cdd0-46da-a066-1b9a91d981cc', 'vendor', 'vendor@gmail.com', '2022-03-23 19:28:50', '$2y$10$rEl1Yt1ghjew6PtLO6o/fOz7.bXJlzyUI/oee/.Hjj99mCE3IXgnO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-23 19:28:50', '2022-03-23 19:28:50', NULL);
+('fb753f1e-e767-4d45-a196-58bc0de8ddc9', 'vendor', 'vendor@gmail.com', '2022-03-28 21:28:45', '$2y$10$WYgxir/0IResFBCb6qTOAuYPQLs3Q97R7FdCR3EE3SDxbFVRZ0NX6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-03-28 21:28:45', '2022-03-28 21:28:45', NULL);
 
 -- --------------------------------------------------------
 
@@ -89974,7 +90011,7 @@ CREATE TABLE `vouchers` (
 --
 
 INSERT INTO `vouchers` (`id`, `voucher`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('10688851-bad6-4050-a629-4acffc85f240', 'free ongkir', '2022-03-23 19:28:49', '2022-03-23 19:28:49', NULL);
+('e7171459-f771-4757-98d9-2221f6de6999', 'free ongkir', '2022-03-28 21:28:44', '2022-03-28 21:28:44', NULL);
 
 --
 -- Indexes for dumped tables
