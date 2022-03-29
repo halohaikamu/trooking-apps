@@ -49,10 +49,10 @@ class DatadiriAffiliatorController extends Controller
             $profileImage = date('YmdHis') . "." . $foto_ktp->getClientOriginalExtension();
             $foto_ktp->move($destinationPath, $profileImage);
             $input['foto_ktp'] = "$profileImage";
-        } elseif ($foto_npwp = $request->file('foto_npwp')) {
-            $destinationPath = 'gambar/affiliator/foto_npwp';
-            $profilenpwp = date('YmdHis') . "." . $foto_npwp->getClientOriginalExtension();
-            $foto_npwp->move($destinationPath, $profilenpwp);
+        }
+        if ($foto_npwp = $request->file('foto_npwp')) {
+            $profilenpwp = date('Y') . "." . $foto_npwp->getClientOriginalExtension();
+            $foto_npwp->storeAs('gambar/affiliator/foto_npwp', $profilenpwp);
             $input['foto_npwp'] = "$profilenpwp";
         }
         DataAffiliator::create($input);
@@ -80,7 +80,7 @@ class DatadiriAffiliatorController extends Controller
         }
         $dataAffiliator->update($input);
         return redirect()->route('datadiri.index', compact('dataAffiliator'))
-            ->withSuccess(__('Data Vendor updated successfully.'));
+            ->withSuccess(__('Data Affiliator updated successfully.'));
     }
 
     public function destroy(DataAffiliator $dataAffiliator)

@@ -47,7 +47,7 @@
                         <div class="sm:col-span-1">
                             <dt class="text-sm font-medium text-gray-500">Foto NPWP</dt>
                             <dd class="mt-1 text-sm text-gray-900">{{ $item->foto_npwp }}
-                                <img src="{{url('/gambar/affiliator/foto_npwp/'.$item->foto_npwp)}}" width="300">
+                                <img src="{{url('/app/gambar/affiliator/foto_npwp/'.$item->foto_npwp)}}" width="300">
                             </dd>
                         </div>
                     </dl>
@@ -66,7 +66,7 @@
                                         <span class="ml-2 flex-1 w-0 truncate">Edit Data Diri</span>
                                     </div>
                                     <div class="ml-4 flex-shrink-0">
-                                        <a href="{{route('datadiri.index')}}" class="font-medium text-indigo-600 hover:text-indigo-500"> Edit </a>
+                                        <a href="{{route('datadiri.create')}}" class="font-medium text-indigo-600 hover:text-indigo-500"> Edit </a>
                                     </div>
                                 </li>
                             </ul>

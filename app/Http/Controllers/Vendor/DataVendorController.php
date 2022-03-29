@@ -54,17 +54,20 @@ class DataVendorController extends Controller
             $profilektp = date('YmdHis') . "." . $foto_ktp->getClientOriginalExtension();
             $foto_ktp->move($destinationPath, $profilektp);
             $input['foto_ktp'] = "$profilektp";
-        } elseif ($foto_unit = $request->file('foto_unit')) {
+        }
+        if ($foto_unit = $request->file('foto_unit')) {
             $destinationPath = 'gambar/vendor/foto_unit';
             $profileunit = date('YmdHis') . "." . $foto_unit->getClientOriginalExtension();
             $foto_unit->move($destinationPath, $profileunit);
             $input['foto_unit'] = "$profileunit";
-        } elseif ($foto_sim = $request->file('foto_sim')) {
+        }
+        if ($foto_sim = $request->file('foto_sim')) {
             $destinationPath = 'gambar/vendor/foto_sim';
             $profilesim = date('YmdHis') . "." . $foto_sim->getClientOriginalExtension();
             $foto_sim->move($destinationPath, $profilesim);
             $input['foto_sim'] = "$profilesim";
-        } elseif ($foto_stnk = $request->file('foto_stnk')) {
+        }
+        if ($foto_stnk = $request->file('foto_stnk')) {
             $destinationPath = 'gambar/vendor/foto_stnk';
             $profilestnk = date('YmdHis') . "." . $foto_stnk->getClientOriginalExtension();
             $foto_stnk->move($destinationPath, $profilestnk);

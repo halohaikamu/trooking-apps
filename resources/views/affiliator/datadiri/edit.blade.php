@@ -8,14 +8,14 @@
         @csrf
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div>
-                <label for="vendor" class="block text-sm font-medium text-gray-700">Nama</label>
+                <label for="affiliator" class="block text-sm font-medium text-gray-700">Nama</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <select id="vendor_id" name="vendor_id" autocomplete="vendor_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
-                        @foreach ($getvendor as $item)
+                    <select id="affiliator_id" name="affiliator_id" autocomplete="affiliator_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
+                        @foreach ($getaffiliator as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
                     </select>
-                    @error('vendor_id')
+                    @error('affiliator_id')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
