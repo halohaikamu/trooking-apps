@@ -4,15 +4,18 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <h1 class="text-2xl font-semibold text-gray-900">Data Diri</h1>
     </div>
-    <form class="space-y-8 divide-y divide-gray-200" action="{{ route('data-diri.store') }}" method="POST">
+    <form class="space-y-8 divide-y divide-gray-200" action="{{ route('data-diri.update',$getdata->id) }}" method="POST" enctype="multipart/form-data">
         @csrf  
+        @method('PUT')
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <div>
                 <label for="vendor" class="block text-sm font-medium text-gray-700">Nama</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <select id="vendor_id" name="vendor_id" autocomplete="vendor_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
                         @foreach ($getvendor as $item)
-                        <option value="{{$item->id}}">{{$item->name}}</option>
+                        @if ($item->id == Auth::user()->id)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
+                        @endif
                         @endforeach
                     </select>
                     @error('vendor_id')
@@ -24,13 +27,16 @@
             </div>
             <br>
             <div>
-                <label for="vendor" class="block text-sm font-medium text-gray-700">Coverage Area</label>
+                <label for="coverage_area" class="block text-sm font-medium text-gray-700">Coverage Area</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <select id="coverage_area" name="coverage_area" autocomplete="coverage_area" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
                         @foreach ($getcoverage as $item)
-                         
-                        <option value="{{ old('coverage_area') ?? $getdata->coverage_area ?? null}}">{{$item->name}}</option>
-                        <option value="{{$item->id}}">{{$item->name}}</option>
+                        @if ($item->id == $getdata->coverage_area)
+                             <option value="{{$item->id}}">{{$item->name}}</option>
+                        @endif
+                        @endforeach
+                        @foreach ($getcoverage as $item)
+                             <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
                     </select>
                     @error('coverage_area')
@@ -44,7 +50,7 @@
             <div>
                 <label for="whatsapp" class="block text-sm font-medium text-gray-700">Nomor Whatsapp</label>
                 <div class="mt-1">
-                    <input type="text" name="whatsapp" value="{{ old('whatsapp') ?? $getdata->whatsapp ?? null}}" id="whatsapp" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Nomor Whatsapp" required>
+                    <input type="text" name="whatsapp" value="{{ $getdata->whatsapp }}" id="whatsapp" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" required>
                     @error('whatsapp')
                     <div class="invalid-feedback">
                         {{$message}}
