@@ -30,6 +30,7 @@ use App\Http\Controllers\Affiliator\DashboardAffiliatorController;
 use App\Http\Controllers\Affiliator\LoginAffiliatorController;
 use App\Http\Controllers\Agent\LoginAgentController;
 use App\Http\Controllers\Vendor\LoginVendorController;
+use App\Http\Controllers\Vendor\RegisterVendorController;
 use App\Http\Controllers\Vendor\DataVendorController;
 use App\Http\Controllers\Vendor\GoogleVendorController;
 use App\Http\Controllers\Affiliator\DatadiriAffiliatorController;
@@ -121,6 +122,10 @@ Route::get('vendor/auth/google', [GoogleVendorController::class, 'redirectToGoog
 Route::get('vendor/callback/google', [GoogleVendorController::class, 'handleCallback']);
 Route::post('/create/vendor', [LoginVendorController::class, 'create'])->name('login.create.vendor');
 Route::get('/logout/vendor', [LoginVendorController::class, 'logout'])->name('logout.vendor');
+Route::get('/register/vendor', function () {
+    return view('vendor.register');
+});
+Route::post('/store/vendor', [RegisterVendorController::class, 'store'])->name('register.create.vendor');
 Route::group(['prefix' => 'vendor', 'middleware' => 'auth:vendor'], function () {
     Route::get('/dashboard', [DashboardController::class, 'vendor'])->name('vendor.dashboard');
     Route::resource('data-diri', DataVendorController::class);

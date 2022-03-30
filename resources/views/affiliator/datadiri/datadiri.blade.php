@@ -10,7 +10,7 @@
             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">Profile Affiliator</h3>
-                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details.</p>{{Auth::user()->id}}
+                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details.</p>{{Auth::user()->name}}
                 </div>
                 @foreach ($Affiliator as $aff)
                 {{-- {{$aff->id}}
@@ -32,9 +32,14 @@
                             <dd class="mt-1 text-sm text-gray-900">{{ $aff->email }}</dd>
                         </div>
                         <!-- Nomer Whatapps -->
-                        <div class="sm:col-span-2">
+                        <div class="sm:col-span-1">
                             <dt class="text-sm font-medium text-gray-500">Nomor Whatsapp</dt>
                             <dd class="mt-1 text-sm text-gray-900">{{ $item->whatsapp }}</dd>
+                        </div>
+                        <!-- Nyoba Barcode -->
+                        <div class="sm:col-span-1">
+                            <dt class="text-sm font-medium text-gray-500">Barcode</dt>
+                            {!! DNS1D::getBarcodeHTML($item->whatsapp, 'C39+', true) !!}
                         </div>
                         <!-- KTP -->
                         <div class="sm:col-span-1">

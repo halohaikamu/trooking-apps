@@ -136,6 +136,12 @@
                                 <span class="ml-3">Login</span>
                             </a>
                         </div>
+                        <div class="-ml-px w-0 flex-1 flex">
+                            <a href="/register/vendor" class="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500">
+                                <i class="fa-solid fa-registered"></i>
+                                <span class="ml-3">Register</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </li>
