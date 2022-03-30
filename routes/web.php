@@ -33,6 +33,7 @@ use App\Http\Controllers\Agent\LoginAgentController;
 use App\Http\Controllers\Vendor\LoginVendorController;
 use App\Http\Controllers\Vendor\DataVendorController;
 use App\Http\Controllers\Vendor\GoogleVendorController;
+use App\Http\Controllers\Affiliator\DatadiriAffiliatorController;
 
 Auth::routes(['verify' => true]);
 
@@ -63,7 +64,7 @@ Route::get('/login/agent', function () {
 });
 Route::post('/create/agent', [LoginAgentController::class, 'create'])->name('login.create.agent');
 Route::get('/logout/agent', [LoginAgentController::class, 'logout'])->name('logout.agent');
-Route::group(['prefix' => 'agent', 'middleware' => 'auth:agent', 'verified'], function(){
+Route::group(['prefix' => 'agent', 'middleware' => 'auth:agent', 'verified'], function () {
     Route::get('/dashboard', [DashboardController::class, 'agent'])->name('agent.dashboard');
 });
 
@@ -77,9 +78,13 @@ Route::get('/register/affiliator', function () {
     return view('affiliator.register');
 });
 Route::post('/store/affiliator', [RegisterAffiliatorController::class, 'store'])->name('register.create.affiliator');
-Route::group(['prefix' => 'affiliator', 'middleware' => 'auth:affiliator', 'verified'], function(){
+Route::group(['prefix' => 'affiliator', 'middleware' => 'auth:affiliator', 'verified'], function () {
     Route::get('/dashboard', [DashboardAffiliatorController::class, 'index'])->name('affiliator.dashboard');
+<<<<<<< HEAD
     Route::resource('affiliator-data-diri', DataAffiliatorController::class);
+=======
+    Route::resource('datadiri', DatadiriAffiliatorController::class);
+>>>>>>> 43f9a4851b5564829bcc10a5e3b9044fa73c80bb
 });
 
 //menu user
@@ -97,7 +102,7 @@ Route::get('/landing-page', function () {
 });
 Route::get('user/auth/google', [GoogleUserController::class, 'redirectToGoogle']);
 Route::get('user/callback/google', [GoogleUserController::class, 'handleCallback']);
-Route::group(['prefix' => 'user', 'middleware' => 'auth:user', 'verified'], function(){
+Route::group(['prefix' => 'user', 'middleware' => 'auth:user', 'verified'], function () {
     Route::get('/dashboard', [DashboardUserController::class, 'index'])->name('user.dashboard');
     Route::get('forgot-password', [ChangePasswordController::class, 'forgotPassword'])->name('user.dashboard.forgot-password');
     Route::post('forgot-password', [ChangePasswordController::class, 'resetPassword'])->name('user.dashboard.forgot-password');
@@ -120,7 +125,7 @@ Route::get('vendor/auth/google', [GoogleVendorController::class, 'redirectToGoog
 Route::get('vendor/callback/google', [GoogleVendorController::class, 'handleCallback']);
 Route::post('/create/vendor', [LoginVendorController::class, 'create'])->name('login.create.vendor');
 Route::get('/logout/vendor', [LoginVendorController::class, 'logout'])->name('logout.vendor');
-Route::group(['prefix' => 'vendor', 'middleware' => 'auth:vendor'], function(){
+Route::group(['prefix' => 'vendor', 'middleware' => 'auth:vendor'], function () {
     Route::get('/dashboard', [DashboardController::class, 'vendor'])->name('vendor.dashboard');
     Route::resource('data-diri', DataVendorController::class);
 });
@@ -129,7 +134,7 @@ Route::group(['prefix' => 'vendor', 'middleware' => 'auth:vendor'], function(){
 // Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
 // Route::get('callback/google', [GoogleController::class, 'handleCallback']);
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware(['signed']);
     Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
