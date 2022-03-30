@@ -9,7 +9,6 @@ use App\Models\Barang;
 use App\Models\Pricelist;
 use App\Models\Voucher;
 use App\Models\Pembayaran;
-use App\Models\Tracking;
 use Illuminate\Http\Request;
 use Str;
 
@@ -32,7 +31,7 @@ class PesananController extends Controller
             'voucher_id' => 'nullable',
             'jenis_pembayaran_id' => 'required',
             'invoice_id' => 'nullable',
-            'nomer_resi_id' => 'nullable',
+            'nomer_resi' => 'nullable',
             'penjemputan' => 'nullable',
             'pengantaran' => 'nullable',
         ];
@@ -44,7 +43,6 @@ class PesananController extends Controller
             $pesanan = $pesanan->where('name', 'like', '%' . request()->search . '%');
             $pesanan = $pesanan->where('username', 'like', '%' . request()->search . '%');
         })->paginate(10);
-
         return view('admin.pesanan.index', compact('pesanan'));
     }
 
@@ -61,7 +59,6 @@ class PesananController extends Controller
         $getvoucher = Voucher::select('id', 'voucher')->get();
         $getjenispembayaran = Pembayaran::select('id', 'jenis_pembayaran')->get();
         $getinvoice = Pembayaran::select('id', 'invoice')->get();
-        $getnomerresi = Tracking::select('id', 'nomer_resi')->get();
         $getpricelist = Pricelist::all();
         return view('admin.pesanan.create', compact(
             'getname',
@@ -74,9 +71,8 @@ class PesananController extends Controller
             'getharga',
             'getvoucher',
             'getjenispembayaran',
-            'getnomerresi',
             'getinvoice',
-            'getpricelist'
+            'getpricelist',
         ));
 
     }
@@ -84,15 +80,35 @@ class PesananController extends Controller
     public function store(Request $request)
     {
         $data = $this->validate($request, $this->rules());
-        $input = $request->all();
+        
+        $random_number = 'TRK' . random_int(100000000000, 999999999999);
         if ($gambar = $request->file('gambar')) {
             $destinationPath = 'gambar/pesanan';
-            $profileImage = date('YmdHis') . "." . $gambar->getClientOriginalExtension();
+            $profileImage = $gambar->getClientOriginalName();
             $gambar->move($destinationPath, $profileImage);
             $input['gambar'] = "$profileImage";
         }
-        Pesanan::create($input);
-        return redirect()->route('pesanan.index')
+       
+        Pesanan::create([
+            'name_id' => $request->name_id,
+            'username_id' => $request->username_id,
+            'origin' => $request->origin,
+            'destinasi' => $request->destinasi,
+            'jenis_barang_id' => $request->jenis_barang_id,
+            'berat_id' => $request->berat_id,
+            'dimensi_id' => $request->dimensi_id,
+            'harga_id' => $request->harga_id,
+            'note' => $request->note,
+            'packing' => $request->packing,
+            'gambar' => $profileImage,
+            'voucher_id' => $request->voucher_id,
+            'jenis_pembayaran_id' => $request->jenis_pembayaran_id,
+            'penjemputan' => $request->penjemputan,
+            'pengantaran' => $request->pengantaran,
+            'invoice_id' => $request->invoice_id,
+            'nomer_resi' => $random_number,
+        ]);
+        return redirect()->route('admin-pesanan.index')
             ->withSuccess(__('Pesanan created successfully.'));
     }
 
@@ -120,13 +136,13 @@ class PesananController extends Controller
             unset($input['gambar']);
         }
         $pesanan->update($input);
-        return redirect()->route('pesanan.index', compact('pesanan'))
+        return redirect()->route('admin-pesanan.index', compact('pesanan'))
             ->withSuccess(__('Pesanan updated successfully.'));
     }
 
     public function destroy(Pesanan $pesanan)
     {
         $pesanan->delete();
-        return redirect()->route('pesanan.index', $pesanan)->with('success', 'Pesanan deleted successfully');
+        return redirect()->route('admin-pesanan.index', $pesanan)->with('success', 'Pesanan deleted successfully');
     }
 }

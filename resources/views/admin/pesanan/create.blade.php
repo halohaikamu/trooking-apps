@@ -4,7 +4,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <h1 class="text-2xl font-semibold text-gray-900">Pesanan</h1>
     </div>
-    <form class="space-y-8 divide-y divide-gray-200" action="{{ route('pesanan.store') }}" method="POST" enctype="multipart/form-data">
+    <form class="space-y-8 divide-y divide-gray-200" action="{{ route('admin-pesanan.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <!-- Replace with your content -->
@@ -61,7 +61,7 @@
             <div>
                 <label for="penjemputan" class="block text-sm font-medium text-gray-700">Alamat Penjemputan</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                   <textarea rows="2" name="penjemputan" id="penjemputan" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" required></textarea>
+                   <textarea rows="2" name="penjemputan" id="penjemputan" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
                     @error('penjemputan')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -89,7 +89,7 @@
             <div>
                 <label for="pengantaran" class="block text-sm font-medium text-gray-700">Alamat Pengantaran</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-				<textarea rows="2" name="pengantaran" id="pengantaran" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" required></textarea>
+				<textarea rows="2" name="pengantaran" id="pengantaran" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
                     @error('pengantaran')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -134,7 +134,12 @@
             <div>
                 <label for="harga" class="block text-sm font-medium text-gray-700">Harga</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <input type="text" id="harga_id" name="harga_id" autocomplete="harga_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required readonly/>
+                    {{-- <input type="text" id="harga_id" name="harga_id" autocomplete="harga_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required readonly/> --}}
+                    <select id="harga_id" name="harga_id" autocomplete="harga_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
+                        @foreach ($getharga as $item)
+                        <option value="{{$item->id}}">{{$item->harga}}</option>
+                        @endforeach
+                    </select>
                     @error('harga_id')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -219,13 +224,9 @@
                 <label for="jenis_pembayaran_id" class="block text-sm font-medium text-gray-700">Jenis Pembayaran</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <select id="jenis_pembayaran_id" name="jenis_pembayaran_id" autocomplete="jenis_pembayaran_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
-                        <option value="">Pilih Pembayaran</option>
-                        <option value="1">Bank BCA</option>
-                        <option value="2">Bank BNI</option>
-                        <option value="3">Bank BRI</option>
-                        <option value="4">Bank BSI</option>
-                        <option value="5">Bank CIMB</option>
-                        <option value="6">Bank Mandiri</option>
+                        @foreach ($getjenispembayaran as $item)
+                        <option value="{{$item->id}}">{{$item->jenis_pembayaran}}</option>
+                        @endforeach
                     </select>
                     @error('jenis_pembayaran_id')
                     <div class="invalid-feedback">
@@ -235,7 +236,7 @@
                 </div>
             </div>
             <!-- Invoice -->
-            {{-- <div>
+            <div>
                 <label for="invoice_id" class="block text-sm font-medium text-gray-700">Invoice</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <select id="invoice_id" name="invoice_id" autocomplete="invoice_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
@@ -249,17 +250,13 @@
                     </div>
                     @enderror
                 </div>
-            </div> --}}
+            </div>
             <!--  Nomor resi  -->
             {{-- <div>
-                <label for="nomer_resi_id" class="block text-sm font-medium text-gray-700">Nomor Resi</label>
+                <label for="nomer_resi" class="block text-sm font-medium text-gray-700">Nomor Resi</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <select id="nomer_resi_id" name="nomer_resi_id" autocomplete="nomer_resi_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
-                        @foreach ($getnomerresi as $item)
-                        <option value="{{$item->id}}">{{$item->nomer_resi}}</option>
-                        @endforeach
-                    </select>
-                    @error('nomer_resi_id')
+                    <input type="text" name="nomer_resi" class="form-control bg-light @error('nomer_resi') is-invalid @enderror" required>
+                    @error('nomer_resi')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
@@ -267,7 +264,7 @@
                 </div>
             </div> --}}
             </br>
-            <a href="{{ route('pesanan.index') }}" class="mt-12 w-full px-8 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+            <a href="{{ route('admin-pesanan.index') }}" class="mt-12 w-full px-8 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                 Cancel
             </a>
             <button type="submit" class="mt-12 w-full px-8 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Pembayaran</button>
@@ -282,29 +279,29 @@
         });
     console.log("TEST")
     
-    $pricelist = [
-        @foreach ($getpricelist as $item)
-            {
-                "origin": {{$item->origin}},
-                "destinasi": {{$item->destinasi}},
-                    @if(is_null($item->berat))
-                    "berat": 0,
-                    @else 
-                    "berat": {{$item->berat}},
-                    @endif
-                "harga": {{$item->harga}}
-            },
-        @endforeach
-    ]
-    function fillPrice(){
-        var origin =+ document.getElementById("origin").value
-        var destinasi =+ document.getElementById("destinasi").value
-        var berat_id =+ document.getElementById("berat_id").value
+    // $pricelist = [
+    //     @foreach ($getpricelist as $item)
+    //         {
+    //             "origin": {{$item->origin}},
+    //             "destinasi": {{$item->destinasi}},
+    //                 @if(is_null($item->berat))
+    //                 "berat": 0,
+    //                 @else 
+    //                 "berat": {{$item->berat}},
+    //                 @endif
+    //             "harga": {{$item->harga}}
+    //         },
+    //     @endforeach
+    // ]
+    // function fillPrice(){
+    //     var origin =+ document.getElementById("origin").value
+    //     var destinasi =+ document.getElementById("destinasi").value
+    //     var berat_id =+ document.getElementById("berat_id").value
 
-        let price = $pricelist.find(price => price.origin === origin && price.destinasi === destinasi && price.berat === berat_id);
+    //     let price = $pricelist.find(price => price.origin === origin && price.destinasi === destinasi && price.berat === berat_id);
         
-        document.getElementById("harga_id").value = price.harga
-    }
+    //     document.getElementById("harga_id").value = price.harga
+    // }
     
     
 </script>

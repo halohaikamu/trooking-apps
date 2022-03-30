@@ -28,6 +28,7 @@ use App\Http\Controllers\User\GoogleUserController;
 use App\Http\Controllers\Affiliator\RegisterAffiliatorController;
 use App\Http\Controllers\Affiliator\DashboardAffiliatorController;
 use App\Http\Controllers\Affiliator\LoginAffiliatorController;
+use App\Http\Controllers\Affiliator\DataAffiliatorController;
 use App\Http\Controllers\Agent\LoginAgentController;
 use App\Http\Controllers\Vendor\LoginVendorController;
 use App\Http\Controllers\Vendor\DataVendorController;
@@ -48,13 +49,12 @@ Route::post('/create/admin', [LoginAdminController::class, 'create'])->name('log
 Route::get('/logout/admin', [LoginAdminController::class, 'logout'])->name('logout.admin');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::get('/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
-    Route::resource('pesanan', PesananController::class);
-    Route::resource('informasi', InformasiController::class);
+    Route::resource('admin-pesanan', PesananController::class);
+    Route::resource('admin-informasi', InformasiController::class);
     Route::resource('user', UserAdminController::class);
-    Route::resource('pricelist', PricelistController::class);
-    Route::resource('payments', PaymentsController::class);
-    Route::resource('tracking', TrackingController::class);
-    Route::resource('history-order', HistoryOrderController::class);
+    Route::resource('admin-pricelist', PricelistController::class);
+    Route::resource('admin-payments', PaymentsController::class);
+    Route::resource('admin-history-order', HistoryOrderController::class);
 });
 
 //menu agent
@@ -79,6 +79,7 @@ Route::get('/register/affiliator', function () {
 Route::post('/store/affiliator', [RegisterAffiliatorController::class, 'store'])->name('register.create.affiliator');
 Route::group(['prefix' => 'affiliator', 'middleware' => 'auth:affiliator', 'verified'], function(){
     Route::get('/dashboard', [DashboardAffiliatorController::class, 'index'])->name('affiliator.dashboard');
+    Route::resource('affiliator-data-diri', DataAffiliatorController::class);
 });
 
 //menu user

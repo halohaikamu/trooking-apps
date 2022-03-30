@@ -12,6 +12,7 @@ class CreateResisTable extends Migration
             $table->uuid('id')->primary();
             $table->foreignUuid('admin_id')->references('id')->on('admins');
             $table->foreignUuid('pesanan_id')->references('id')->on('pesanans');
+            $table->foreignUuid('nomer_resi_id')->references('id')->on('pesanans');
             $table->dateTime('on_booking');
             $table->dateTime('on_pickup')->nullable();
             $table->dateTime('on_process')->nullable();

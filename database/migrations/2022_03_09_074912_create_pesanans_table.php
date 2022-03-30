@@ -26,7 +26,7 @@ class CreatePesanansTable extends Migration
             $table->foreignUuid('voucher_id')->references('id')->on('vouchers')->nullable();
             $table->foreignUuid('jenis_pembayaran_id')->references('id')->on('pembayarans');
             $table->foreignUuid('invoice_id')->references('id')->on('pembayarans')->nullable();
-            $table->foreignUuid('nomer_resi_id')->references('id')->on('trackings')->nullable();
+            $table->string('nomer_resi')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

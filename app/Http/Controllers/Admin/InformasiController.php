@@ -30,7 +30,7 @@ class InformasiController extends Controller
         ]);
         Informasi::create($request->all());
 
-        return redirect()->route('informasi.index')
+        return redirect()->route('admin-informasi.index')
             ->withSuccess(__('Information created successfully.'));
     }
 
@@ -51,7 +51,7 @@ class InformasiController extends Controller
         ]);
         $informasi = Informasi::findOrFail($informasi->id);
         $informasi->update($request->all());
-        return redirect()->route('informasi.index',compact('informasi'))
+        return redirect()->route('admin-informasi.index',compact('informasi'))
             ->withSuccess(__('Information updated successfully.'));
     }
 
@@ -59,6 +59,6 @@ class InformasiController extends Controller
     {
         $informasi = Informasi::findOrFail($informasi->id);
         $informasi->delete();
-        return redirect()->route('informasi.index',$informasi)->with('success','Information deleted successfully');
+        return redirect()->route('admin-informasi.index',$informasi)->with('success','Information deleted successfully');
     }
 }
