@@ -81,11 +81,7 @@ Route::get('/register/affiliator', function () {
 Route::post('/store/affiliator', [RegisterAffiliatorController::class, 'store'])->name('register.create.affiliator');
 Route::group(['prefix' => 'affiliator', 'middleware' => 'auth:affiliator', 'verified'], function () {
     Route::get('/dashboard', [DashboardAffiliatorController::class, 'index'])->name('affiliator.dashboard');
-<<<<<<< HEAD
     Route::resource('affiliator-data-diri', DataAffiliatorController::class);
-=======
-    Route::resource('datadiri', DatadiriAffiliatorController::class);
->>>>>>> 43f9a4851b5564829bcc10a5e3b9044fa73c80bb
 });
 
 //menu user

@@ -7,10 +7,10 @@
     <form class="space-y-8 divide-y divide-gray-200" action="{{ route('affiliator-data-diri.store') }}" method="POST">
         @csrf
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <div>
+            <div class="col-span-6 sm:col-span-3">
                 <label for="affiliator" class="block text-sm font-medium text-gray-700">Nama</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <select id="affiliator_id" name="affiliator_id" autocomplete="affiliator_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
+                    <select id="affiliator_id" name="affiliator_id" autocomplete="affiliator_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                         @foreach ($getaffiliator as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
@@ -23,10 +23,10 @@
                 </div>
             </div>
             <br>
-            <div>
+            <div class="col-span-6 sm:col-span-3">
                 <label for="whatsapp" class="block text-sm font-medium text-gray-700">Nomor Whatsapp</label>
                 <div class="mt-1">
-                    <input type="text" name="whatsapp" value="{{ old('whatsapp') ?? $getdata->whatsapp ?? null}}" id="whatsapp" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Nomor Whatsapp" required>
+                    <input type="text" name="whatsapp" value="{{ old('whatsapp') ?? $getdata->whatsapp ?? null}}" id="whatsapp" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Nomor Whatsapp" required>
                     @error('whatsapp')
                     <div class="invalid-feedback">
                         {{$message}}

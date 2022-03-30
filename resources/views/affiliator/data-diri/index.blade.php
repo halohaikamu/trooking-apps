@@ -10,7 +10,7 @@
             <div class="bg-white shadow overflow-hidden sm:rounded-lg">
                 <div class="px-4 py-5 sm:px-6">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">Profile Affiliator</h3>
-                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Personal details.</p>
+                    <p class="mt-1 max-w-2xl text-sm text-gray-500">Selamat datang {{Auth::user()->name}}</p>
                 </div>
                 @foreach ($Affiliator as $aff)
                 @if ($aff->id == Auth::user()->id)
@@ -29,7 +29,7 @@
                             <dd class="mt-1 text-sm text-gray-900">{{ $aff->email }}</dd>
                         </div>
                         <!-- Nomer Whatapps -->
-                        <div class="sm:col-span-1">
+                        <div class="sm:col-span-2">
                             <dt class="text-sm font-medium text-gray-500">Nomor Whatsapp</dt>
                             <dd class="mt-1 text-sm text-gray-900">{{ $item->whatsapp }}</dd>
                         </div>

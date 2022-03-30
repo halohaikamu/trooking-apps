@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 </head>
 
 <body class="h-full">
@@ -79,7 +79,7 @@
             <!-- Sidebar component, swap this element with another sidebar if you like -->
             <div class="flex flex-col flex-grow pt-5 bg-indigo-700 overflow-y-auto">
                 <div class="flex items-center flex-shrink-0 px-4">
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-300-mark-white-text.svg" alt="Workflow">
+                    <img class="h-8 w-auto" src="{{ asset('img/Trooking.png') }}" alt="Trooking.id">
                 </div>
                 <div class="mt-5 flex-1 flex flex-col">
                     @include('vendor.layouts.sidebar')
@@ -100,4 +100,5 @@
     <script src="{{ asset('js/select2.min.js') }}"></script>
     @stack('scripts')
 </body>
+
 </html>

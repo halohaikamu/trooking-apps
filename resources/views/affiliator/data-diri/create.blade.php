@@ -8,10 +8,10 @@
         @csrf
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             <!-- Replace with your content -->
-            <div>
+            <div class="col-span-6 sm:col-span-3">
                 <label for="vendor" class="block text-sm font-medium text-gray-700">Nama</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <select id="affiliator_id" name="affiliator_id" autocomplete="affiliator_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
+                    <select id="affiliator_id" name="affiliator_id" autocomplete="affiliator_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                         @foreach ($getaffiliator as $item)
                         @if($item->id == Auth::user()->id)
                         <option value="{{$item->id}}">{{$item->name}}</option>
@@ -26,10 +26,10 @@
                 </div>
             </div>
             <!-- Whatapps -->
-            <div>
+            <div class="col-span-6 sm:col-span-3">
                 <label for="whatsapp" class="block text-sm font-medium text-gray-700">Whatapps</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <input type="text" id="whatsapp" name="whatsapp" autocomplete="whatsapp" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" placeholder="Masukan nomer whatapps Anda" required />
+                    <input type="text" id="whatsapp" name="whatsapp" autocomplete="whatsapp" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Masukan nomer whatapps Anda" required />
                     @error('whatapp')
                     <div class="invalid-feedback">
                         {{$message}}

@@ -94,7 +94,7 @@
             </div>
           </div>
           <div class="text-sm">
-            <p>Don't have an account?<a href="/register/affiliator" class="font-medium text-indigo-600 hover:text-indigo-500"> Sign Up </a></p>
+            <p>Don't have an account?</p><a href="/register/affiliator" class="font-medium text-indigo-600 hover:text-indigo-500"> Sign Up </a>
           </div>
         </div>
       </div>

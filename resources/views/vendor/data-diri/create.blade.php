@@ -5,16 +5,17 @@
         <h1 class="text-2xl font-semibold text-gray-900">Data Diri</h1>
     </div>
     <form class="space-y-8 divide-y divide-gray-200" action="{{ route('data-diri.store') }}" method="POST">
-        @csrf  
+        @csrf
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <div>
+            <!-- Nama -->
+            <div class="col-span-6 sm:col-span-3">
                 <label for="vendor" class="block text-sm font-medium text-gray-700">Nama</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <select id="vendor_id" name="vendor_id" autocomplete="vendor_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
+                    <select id="vendor_id" name="vendor_id" autocomplete="vendor_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                         @foreach ($getvendor as $item)
-                            @if ($item->id == Auth::user()->id)
-                            <option value="{{$item->id}}">{{$item->name}}</option>
-                            @endif
+                        @if ($item->id == Auth::user()->id)
+                        <option value="{{$item->id}}">{{$item->name}}</option>
+                        @endif
                         @endforeach
                     </select>
                     @error('vendor_id')
@@ -25,10 +26,11 @@
                 </div>
             </div>
             <br>
-            <div>
+            <!-- Coverage Area -->
+            <div class="col-span-6 sm:col-span-3">
                 <label for="vendor" class="block text-sm font-medium text-gray-700">Coverage Area</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <select id="coverage_area" name="coverage_area" autocomplete="coverage_area" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required>
+                    <select id="coverage_area" name="coverage_area" autocomplete="coverage_area" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
                         @foreach ($getcoverage as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
@@ -41,10 +43,12 @@
                 </div>
             </div>
             <br>
-            <div>
+
+            <!-- Nomor Whatsapp -->
+            <div class="col-span-6 sm:col-span-3">
                 <label for="whatsapp" class="block text-sm font-medium text-gray-700">Nomor Whatsapp</label>
                 <div class="mt-1">
-                    <input type="text" name="whatsapp" id="whatsapp" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Nomor Whatsapp" required>
+                    <input type="text" name="whatsapp" id="whatsapp" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Nomor Whatsapp" required>
                     @error('whatsapp')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -53,10 +57,12 @@
                 </div>
             </div>
             <br>
-            <div>
+
+            <!-- Nama Driver -->
+            <div class="col-span-6 sm:col-span-3">
                 <label for="nama_driver" class="block text-sm font-medium text-gray-700">Nama Driver</label>
                 <div class="mt-1">
-                    <input type="text" name="nama_driver" id="nama_driver" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Nama Driver" required>
+                    <input type="text" name="nama_driver" id="nama_driver" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Nama Driver" required>
                     @error('nama_driver')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -65,10 +71,12 @@
                 </div>
             </div>
             <br>
-            <div>
+
+            <!-- Nopol Driver -->
+            <div class="col-span-6 sm:col-span-3">
                 <label for="nopol_driver" class="block text-sm font-medium text-gray-700">Nopol Driver</label>
                 <div class="mt-1">
-                    <input type="text" name="nopol_driver" id="nopol_driver" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="Nopol Driver" required>
+                    <input type="text" name="nopol_driver" id="nopol_driver" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Nopol Driver" required>
                     @error('nopol_driver')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -77,6 +85,7 @@
                 </div>
             </div>
             <br>
+            <!-- Foto KTP -->
             <div>
                 <div>
                     <div class="form-group">
@@ -91,6 +100,8 @@
                 </div>
             </div>
             <br>
+
+            <!-- Foto Unit -->
             <div>
                 <div>
                     <div class="form-group">
@@ -105,6 +116,8 @@
                 </div>
             </div>
             <br>
+
+            <!-- Foto SIM -->
             <div>
                 <div>
                     <div class="form-group">
@@ -119,6 +132,8 @@
                 </div>
             </div>
             <br>
+
+            <!-- Foto STNK -->
             <div>
                 <div>
                     <div class="form-group">

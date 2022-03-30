@@ -29,6 +29,7 @@ class Pesanan extends Model
         'nomer_resi',
         'penjemputan',
         'pengantaran',
+        'nomer_resi',
     ];
 
     public function nameId()

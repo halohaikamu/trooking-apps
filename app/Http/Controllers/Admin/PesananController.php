@@ -74,13 +74,12 @@ class PesananController extends Controller
             'getinvoice',
             'getpricelist',
         ));
-
     }
 
     public function store(Request $request)
     {
         $data = $this->validate($request, $this->rules());
-        
+
         $random_number = 'TRK' . random_int(100000000000, 999999999999);
         if ($gambar = $request->file('gambar')) {
             $destinationPath = 'gambar/pesanan';
@@ -88,7 +87,7 @@ class PesananController extends Controller
             $gambar->move($destinationPath, $profileImage);
             $input['gambar'] = "$profileImage";
         }
-       
+
         Pesanan::create([
             'name_id' => $request->name_id,
             'username_id' => $request->username_id,
@@ -132,7 +131,7 @@ class PesananController extends Controller
             $profileImage = date('YmdHis') . "." . $gambar->getClientOriginalExtension();
             $gambar->move($destinationPath, $profileImage);
             $input['gambar'] = "$profileImage";
-        }else{
+        } else {
             unset($input['gambar']);
         }
         $pesanan->update($input);
