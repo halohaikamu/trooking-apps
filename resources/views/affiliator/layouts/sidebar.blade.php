@@ -8,6 +8,12 @@
         Dashboard
     </a>
 
+<<<<<<< HEAD
+    <a href="{{route('affiliator-data-diri.index')}}" class="bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md nav-link {{ request()->routeIs('dashboard') ? 'active' : null}}">
+        <!-- Heroicon name: outline/home -->
+        <svg class="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+=======
     <a href="{{route('datadiri.index')}}" class="bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md nav-link {{ request()->routeIs('dashboard') ? 'active' : null}}">
         <!-- Heroicon name: outline/home -->
         <svg class="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -60,42 +66,46 @@
         <!-- Heroicon name: outline/folder -->
         <svg class="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+>>>>>>> 43f9a4851b5564829bcc10a5e3b9044fa73c80bb
         </svg>
-        Tracking
+        Data Diri
     </a>
 
-    <a href="{{route('pricelist.index')}}" class="text-indigo-100 hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md nav-link {{ request()->routeIs('pesanan') ? 'active' : null}}">
-        <!-- Heroicon name: outline/folder -->
+    <a href="#" class="bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md nav-link {{ request()->routeIs('dashboard') ? 'active' : null}}">
+        <!-- Heroicon name: outline/home  -->
         <svg class="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
         </svg>
-        Pricelist
+        Kode Affiliator
     </a>
 
-    <a href="{{route('pesanan.index')}}" class="text-indigo-100 hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md nav-link {{ request()->routeIs('pesanan') ? 'active' : null}}">
-        <!-- Heroicon name: outline/folder -->
+    <a href="#" class="bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md nav-link {{ request()->routeIs('dashboard') ? 'active' : null}}">
+        <!-- Heroicon name: outline/home -->
         <svg class="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.707 9.293a1 1 0 010 1.414l-7 7a1 1 0 01-1.414 0l-7-7A.997.997 0 012 10V5a3 3 0 013-3h5c.256 0 .512.098.707.293l7 7zM5 6a1 1 0 100-2 1 1 0 000 2z" />
         </svg>
-        Pesanan
+        History
     </a>
 
-    <a href="{{route('history-order.index')}}" class="text-indigo-100 hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md nav-link {{ request()->routeIs('history-order') ? 'active' : null}}">
-        <!-- Heroicon name: outline/folder -->
+    <a href="#" class="bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md nav-link {{ request()->routeIs('dashboard') ? 'active' : null}}">
+        <!--  Heroicon name: outline/home -->
         <svg class="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
         </svg>
-        History Order
+        Penghasilan
     </a>
 
-    <a href="{{route('user.index')}}" class="text-indigo-100 hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md nav-link {{ request()->routeIs('user') ? 'active' : null}}">
-        <!-- Heroicon name: outline/folder -->
+    <a href="/logout/affiliator" class="bg-indigo-800 text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md nav-link {{ request()->routeIs('dashboard') ? 'active' : null}}">
+        <!-- Heroicon name: outline/home -->
         <svg class="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
         </svg>
-        Manajemen User
+        Logout
     </a>
 
+<<<<<<< HEAD
+</nav>
+=======
     <a href="{{route('payments.create')}}" class="text-indigo-100 hover:bg-indigo-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md nav-link {{ request()->routeIs('user') ? 'active' : null}}">
         <!-- Heroicon name: outline/folder -->
         <svg class="mr-3 flex-shrink-0 h-6 w-6 text-indigo-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -105,3 +115,4 @@
     </a> --}}
 
 </nav>
+>>>>>>> 43f9a4851b5564829bcc10a5e3b9044fa73c80bb

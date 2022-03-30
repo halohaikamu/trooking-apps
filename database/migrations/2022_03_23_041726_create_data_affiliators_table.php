@@ -13,7 +13,7 @@ class CreateDataAffiliatorsTable extends Migration
             $table->foreignUuid('affiliator_id')->references('id')->on('affiliators');
             $table->bigInteger('whatsapp');
             $table->string('foto_ktp');
-            $table->string('foto_npwp')->nullable();
+            $table->string('foto_npwp');
             $table->timestamps();
             $table->softDeletes();
         });

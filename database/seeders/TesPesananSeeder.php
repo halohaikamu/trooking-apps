@@ -23,16 +23,6 @@ class TesPesananSeeder extends Seeder
         Barang::create([
             'jenis_barang' => 'cair',
         ]);
-
-        Tracking::create([
-            'nomer_resi' => '123',
-            'status' => 'sukses',
-        ]);
-
-        Tracking::create([
-            'nomer_resi' => '456',
-            'status' => 'gagal',
-        ]);
         //xendit
         Pembayaran::create([
             'endpoint' => 'mojokerto',

@@ -14,7 +14,7 @@
             </ul>
         </div>
     @endif
-    <form class="space-y-8 divide-y divide-gray-200" action="{{ route('informasi.update',$informasi->id) }}" method="POST" enctype="multipart/form-data">
+    <form class="space-y-8 divide-y divide-gray-200" action="{{ route('admin-informasi.update',$informasi->id) }}" method="POST" enctype="multipart/form-data">
         @csrf  
         @method('PUT')
         <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -40,7 +40,7 @@
                     @enderror
                 </div>
             </div>
-            <a href="{{ route('informasi.index') }}" class="mt-12 w-full px-8 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+            <a href="{{ route('admin-informasi.index') }}" class="mt-12 w-full px-8 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
                 Cancel
             </a>
             <button type="submit" class="mt-12 w-full px-8 py-2 border border-transparent shadow-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">Submit</button>

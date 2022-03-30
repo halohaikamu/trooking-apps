@@ -46,7 +46,7 @@
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $item->dimensi }}</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $item->harga}}</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <button class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"><a href="{{ route('pricelist.show',$item->id) }}">SHOW</a></button>
+                <button class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"><a href="{{ route('admin-pricelist.show',$item->id) }}">SHOW</a></button>
                 {{-- <form onsubmit="return confirm('Apakah anda yakin ingin menghapus ?');" action="{{ route('pesanan.destroy',$item->id) }}" method="POST">
                   <button class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"><a href="{{ route('pesanan.edit',$item->id) }}">EDIT</a></button>
                   @csrf

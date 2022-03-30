@@ -26,7 +26,7 @@ class Pesanan extends Model
         'voucher_id',
         'jenis_pembayaran_id',
         'invoice_id',
-        'nomer_resi_id',
+        'nomer_resi',
         'penjemputan',
         'pengantaran',
     ];
@@ -84,10 +84,5 @@ class Pesanan extends Model
     public function invoiceId()
     {
         return $this->belongsTo(Pembayaran::class, 'invoice_id');
-    }
-
-    public function nomerResiId()
-    {
-        return $this->belongsTo(Tracking::class, 'nomer_resi_id');
     }
 }

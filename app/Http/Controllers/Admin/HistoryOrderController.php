@@ -25,6 +25,6 @@ class HistoryOrderController extends Controller
     public function destroy(Pesanan $pesanan)
     {
         $pesanan->delete();
-        return redirect()->route('history-order.index', $pesanan)->with('success', 'History order deleted successfully');
+        return redirect()->route('admin-history-order.index', $pesanan)->with('success', 'History order deleted successfully');
     }
 }

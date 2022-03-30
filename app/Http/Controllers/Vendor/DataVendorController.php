@@ -55,20 +55,32 @@ class DataVendorController extends Controller
             $profilektp = $foto_ktp->getClientOriginalName();
             $foto_ktp->move($destinationPath, $profilektp);
             $input['foto_ktp'] = "$profilektp";
+<<<<<<< HEAD
+        }if ($foto_unit = $request->file('foto_unit')) {
+=======
         }
         if ($foto_unit = $request->file('foto_unit')) {
+>>>>>>> 43f9a4851b5564829bcc10a5e3b9044fa73c80bb
             $destinationPath = 'gambar/vendor/foto_unit';
             $profileunit = $foto_unit->getClientOriginalName();
             $foto_unit->move($destinationPath, $profileunit);
             $input['foto_unit'] = "$profileunit";
+<<<<<<< HEAD
+        }if ($foto_sim = $request->file('foto_sim')) {
+=======
         }
         if ($foto_sim = $request->file('foto_sim')) {
+>>>>>>> 43f9a4851b5564829bcc10a5e3b9044fa73c80bb
             $destinationPath = 'gambar/vendor/foto_sim';
             $profilesim = $foto_sim->getClientOriginalName();
             $foto_sim->move($destinationPath, $profilesim);
             $input['foto_sim'] = "$profilesim";
+<<<<<<< HEAD
+        }if ($foto_stnk = $request->file('foto_stnk')) {
+=======
         }
         if ($foto_stnk = $request->file('foto_stnk')) {
+>>>>>>> 43f9a4851b5564829bcc10a5e3b9044fa73c80bb
             $destinationPath = 'gambar/vendor/foto_stnk';
             $profilestnk = $foto_stnk->getClientOriginalName();
             $foto_stnk->move($destinationPath, $profilestnk);
@@ -101,25 +113,41 @@ class DataVendorController extends Controller
             $profilektp = $foto_ktp->getClientOriginalName();
             $foto_ktp->move($destinationPath, $profilektp);
             $input['foto_ktp'] = "$profilektp";
+<<<<<<< HEAD
+        }if ($foto_unit = $request->file('foto_unit')) {
+=======
         }
         if ($foto_unit = $request->file('foto_unit')) {
+>>>>>>> 43f9a4851b5564829bcc10a5e3b9044fa73c80bb
             $destinationPath = 'gambar/vendor/foto_unit';
             $profileunit = $foto_unit->getClientOriginalName();
             $foto_unit->move($destinationPath, $profileunit);
             $input['foto_unit'] = "$profileunit";
+<<<<<<< HEAD
+        }if ($foto_sim = $request->file('foto_sim')) {
+=======
         }
         if ($foto_sim = $request->file('foto_sim')) {
+>>>>>>> 43f9a4851b5564829bcc10a5e3b9044fa73c80bb
             $destinationPath = 'gambar/vendor/foto_sim';
             $profilesim = $foto_sim->getClientOriginalName();
             $foto_sim->move($destinationPath, $profilesim);
             $input['foto_sim'] = "$profilesim";
+<<<<<<< HEAD
+        }if ($foto_stnk = $request->file('foto_stnk')) {
+=======
         }
         if ($foto_stnk = $request->file('foto_stnk')) {
+>>>>>>> 43f9a4851b5564829bcc10a5e3b9044fa73c80bb
             $destinationPath = 'gambar/vendor/foto_stnk';
             $profilestnk = $foto_stnk->getClientOriginalName();
             $foto_stnk->move($destinationPath, $profilestnk);
             $input['foto_stnk'] = "$profilestnk";
+<<<<<<< HEAD
+        }else{
+=======
         } else {
+>>>>>>> 43f9a4851b5564829bcc10a5e3b9044fa73c80bb
             unset($input['foto_ktp']);
         }
         $dataVendor->update($input);
