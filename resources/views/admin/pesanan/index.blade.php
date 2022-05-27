@@ -30,6 +30,7 @@
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">User Name</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Origin</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Destinasi</th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nomer Resi</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gambar</th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider3">
                 Action
@@ -44,6 +45,7 @@
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $item->usernameId->username }}</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $item->originId->origin }}</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $item->originId->destinasi }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ $item->nomer_resi }}</td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><img src="{{url('/gambar/pesanan/'.$item->gambar)}}" width="150"></td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                 <form onsubmit="return confirm('Apakah anda yakin ingin menghapus ?');" action="{{ route('admin-pesanan.destroy',$item->id) }}" method="POST">

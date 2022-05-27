@@ -30,7 +30,7 @@
             <div class="col-span-6 sm:col-span-3">
                 <label for="vendor" class="block text-sm font-medium text-gray-700">Coverage Area</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <select id="coverage_area" name="coverage_area" autocomplete="coverage_area" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                    <select id="coverage_area" name="coverage_area" autocomplete="coverage_area" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required multiple>
                         @foreach ($getcoverage as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
@@ -154,4 +154,11 @@
         </div>
     </form>
 </div>
+<script>
+    $('#coverage_area').select2({
+        width: '100%',
+        placeholder: "Select an Option",
+        allowClear: true
+    });
+</script>
 @endsection

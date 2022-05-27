@@ -134,12 +134,8 @@
             <div class="col-span-6 sm:col-span-3">
                 <label for="harga" class="block text-sm font-medium text-gray-700">Harga</label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    {{-- <input type="text" id="harga_id" name="harga_id" autocomplete="harga_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required readonly/> --}}
-                    <select id="harga_id" name="harga_id" autocomplete="harga_id" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
-                        @foreach ($getharga as $item)
-                        <option value="{{$item->id}}">{{$item->harga}}</option>
-                        @endforeach
-                    </select>
+                    <input type="text" id="harga_id" name="harga_id" autocomplete="harga_id" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md" required readonly/>
+                    
                     @error('harga_id')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -282,28 +278,28 @@
     });
     console.log("TEST")
 
-    // $pricelist = [
-    //     @foreach ($getpricelist as $item)
-    //         {
-    //             "origin": {{$item->origin}},
-    //             "destinasi": {{$item->destinasi}},
-    //                 @if(is_null($item->berat))
-    //                 "berat": 0,
-    //                 @else 
-    //                 "berat": {{$item->berat}},
-    //                 @endif
-    //             "harga": {{$item->harga}}
-    //         },
-    //     @endforeach
-    // ]
-    // function fillPrice(){
-    //     var origin =+ document.getElementById("origin").value
-    //     var destinasi =+ document.getElementById("destinasi").value
-    //     var berat_id =+ document.getElementById("berat_id").value
+    $pricelist = [
+         @foreach ($getpricelist as $item)
+             {
+                 "origin": {{$item->origin}},
+                 "destinasi": {{$item->destinasi}},
+                     @if(is_null($item->berat))
+                     "berat": 0,
+                     @else 
+                     "berat": {{$item->berat}},
+                     @endif
+                 "harga": {{$item->harga}}
+             },
+         @endforeach
+     ]
+     function fillPrice(){
+         var origin =+ document.getElementById("origin").value
+         var destinasi =+ document.getElementById("destinasi").value
+         var berat_id =+ document.getElementById("berat_id").value
 
-    //     let price = $pricelist.find(price => price.origin === origin && price.destinasi === destinasi && price.berat === berat_id);
+         let price = $pricelist.find(price => price.origin === origin && price.destinasi === destinasi && price.berat === berat_id);
 
-    //     document.getElementById("harga_id").value = price.harga
-    // }
+         document.getElementById("harga_id").value = price.harga
+     }
 </script>
 @endsection

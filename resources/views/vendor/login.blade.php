@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="text-sm">
-          <p>Don't have an account?</p><a href="/register/vendor" class="font-medium text-indigo-600 hover:text-indigo-500"> Sign Up </a>
+          <p>Don't have an account?<a href="/register/vendor" class="font-medium text-indigo-600 hover:text-indigo-500"> Sign Up </a></p>
         </div>
       </div>
     </div>

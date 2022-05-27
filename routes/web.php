@@ -9,10 +9,11 @@ use App\Http\Controllers\Admin\LoginAdminController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\PesananController;
 use App\Http\Controllers\Admin\InformasiController;
+use App\Http\Controllers\Admin\TrackingController;
 use App\Http\Controllers\Admin\UserAdminController;
 use App\Http\Controllers\Admin\PricelistController;
 use App\Http\Controllers\Admin\PaymentsController;
-use App\Http\Controllers\Admin\TrackingController;
+use App\Http\Controllers\Admin\TrackingsController;
 use App\Http\Controllers\Admin\HistoryOrderController;
 use App\Http\Controllers\User\ChangePasswordController;
 use App\Http\Controllers\User\ChangeEmailController;
@@ -29,12 +30,13 @@ use App\Http\Controllers\Affiliator\RegisterAffiliatorController;
 use App\Http\Controllers\Affiliator\DashboardAffiliatorController;
 use App\Http\Controllers\Affiliator\LoginAffiliatorController;
 use App\Http\Controllers\Affiliator\DataAffiliatorController;
+use App\Http\Controllers\Affiliator\KodeAffiliatorController;
+use App\Http\Controllers\Affiliator\PenghasilanAffiliatorController;
 use App\Http\Controllers\Agent\LoginAgentController;
 use App\Http\Controllers\Vendor\LoginVendorController;
 use App\Http\Controllers\Vendor\RegisterVendorController;
 use App\Http\Controllers\Vendor\DataVendorController;
 use App\Http\Controllers\Vendor\GoogleVendorController;
-use App\Http\Controllers\Affiliator\DatadiriAffiliatorController;
 
 Auth::routes(['verify' => true]);
 
@@ -57,6 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
     Route::resource('admin-pricelist', PricelistController::class);
     Route::resource('admin-payments', PaymentsController::class);
     Route::resource('admin-history-order', HistoryOrderController::class);
+    Route::resource('admin-trackings', TrackingsController::class);
 });
 
 //menu agent
@@ -82,6 +85,8 @@ Route::post('/store/affiliator', [RegisterAffiliatorController::class, 'store'])
 Route::group(['prefix' => 'affiliator', 'middleware' => 'auth:affiliator', 'verified'], function () {
     Route::get('/dashboard', [DashboardAffiliatorController::class, 'index'])->name('affiliator.dashboard');
     Route::resource('affiliator-data-diri', DataAffiliatorController::class);
+    Route::resource('affiliator-kode', KodeAffiliatorController::class);
+    Route::resource('affiliator-penghasilan', PenghasilanAffiliatorController::class);
 });
 
 //menu user

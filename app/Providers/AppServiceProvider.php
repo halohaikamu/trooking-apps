@@ -25,6 +25,7 @@ use App\Models\Tracking;
 use App\Models\User;
 use App\Models\Vendor;
 use App\Models\Voucher;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -56,5 +57,8 @@ class AppServiceProvider extends ServiceProvider
         // User::observe(UserObserver::class);
         // Vendor::observe(VendorObserver::class);
         // Voucher::observe(VoucherObserver::class);
+        Blade::directive('convert', function ($money) {
+            return "<?php echo 'Rp.' . number_format($money); ?>";
+        });
     }
 }

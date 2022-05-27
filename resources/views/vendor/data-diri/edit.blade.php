@@ -50,7 +50,7 @@
             <div class="col-span-6 sm:col-span-3">
                 <label for="whatsapp" class="block text-sm font-medium text-gray-700">Nomor Whatsapp</label>
                 <div class="mt-1">
-                    <input type="text" name="whatsapp" value="{{ $getdata->whatsapp }}" id="whatsapp" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+                    <input type="text" name="whatsapp" value="{{ $getdata->whatsapp }}" id="whatsapp" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required multiple>
                     @error('whatsapp')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -145,4 +145,11 @@
         </div>
     </form>
 </div>
+<script>
+    $('#coverage_area').select2({
+        width: '100%',
+        placeholder: "Select an Option",
+        allowClear: true
+    });
+</script>
 @endsection
